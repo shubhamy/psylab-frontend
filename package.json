@@ -1,5 +1,5 @@
 {
-  "name": "TAF-frontend",
+  "name": "psylab-frontend",
   "version": "0.0.1",
   "description": "Front-end for the engine that powers algorithm trading at Imba Enterprises Pvt. Ltd.",
   "main": "js/main.js",
