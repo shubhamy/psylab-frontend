@@ -23,7 +23,7 @@ It will create a http server on 3000 port by default.
 #### Note: Node.js is required. So install node.js first (https://nodejs.org/en/download/). ####
 
 ```
-$ sudo apt-get install nodejs 
+$ sudo apt-get install nodejs
 $ sudo apt-get install npm
 ```
 
@@ -37,14 +37,14 @@ $ npm install -g gulp
 
 
 ## If you are behind a proxy server ##
-for npm 
+for npm
 
 ```
  npm config set proxy "http://proxy22.iitd.ernet.in:3128/"
 ```
 
 ```
-$ cd /TAF-frontend
+$ cd /psy-frontend
 $ npm install bower
 $ npm install gulp
 $ npm install
@@ -74,7 +74,7 @@ sudo su -c "gem install sass"
 sudo su -c "gem install compass"
 
 ```
-3. Compile the project's sass files into css 
+3. Compile the project's sass files into css
 
 ```
 compass compile
@@ -103,7 +103,7 @@ please remember following things before contribute to repository
 
 * Create a different branch like if your name is **XYZ** then  branch name should be **dev-XYZ**
 * Always use same branch for work
-* **Don't** push your code to **master** branch 
+* **Don't** push your code to **master** branch
 * create pull request after your changes
 
 
