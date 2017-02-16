@@ -1,4 +1,4 @@
-// color
+// social color
 $behance:#1769ff;
 $background:#1a1a1a;
 $codgray:#171717;
@@ -11,6 +11,7 @@ $tundora:#484848;
 $twitter:#55acee;
 $white:#ffffff;
 // menu overlay
+$body-backgorund: #f7f7f7;
 $color-background: #F5F5F5;
 $color-main: #F5F5F5;
 $color-hamburger:#212121;
@@ -18,10 +19,18 @@ $color-active: #212121;
 $color-link: #FFF;
 $button-height: 27px;
 $button-width: 35px;
-
-
+// nav color
+$link:#7b8b8e;
+$hover:#ef5350;
+//responsive breaks
+$xs-break:768px;
+$sm-break:768px;
+$md-break:992px;
+$lg-break:1200px;
+$xl-break:1440px;
 // fonts
 $varela: 'Varela Round', sans-serif;
 $open-sans: 'Open Sans', sans-serif;
 $pt-sans: 'PT Sans', sans-serif;
 $titanium:'Titillium Web', sans-serif;
+$lato: 'Lato', sans-serif;

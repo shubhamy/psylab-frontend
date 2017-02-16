@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trading Automation Framework</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round" rel="stylesheet">
-    <link rel="stylesheet" href="css/hexxa.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/angular-overwrite.css">
   </head>
   <body ng-app="app" ng-controller="myCtrl">
+    <nav class="row-nav"  ng-hide="navbarHide">
+      <div layout="row"	class="wrapper container">
+        <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
 
+        </div>
+        <div flex="55" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
+          <ul>
+            <li><a href="">Play</a></li>
+            <li><a href="">Show</a></li>
+            <li><a href="">Talent</a></li>
+            <li><a href="">Guide</a></li>
+            <a ng-click="signup()" href="" class="btn btn-primary btn-circ btn-color">Sign In</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <div data-ng-view="" id="ng-view" class="slideup fade"></div>
 

@@ -3,6 +3,227 @@
 @import "partials/normalize";
 @import "partials/layout";
 @import "partials/mixins";
-body{
-  background-color:$white;
+body,html{
+  background-color:$color-background;
+  font-size: 14px;
+}
+a{
+  text-decoration: none;
+}
+// container from bootstrap
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  @media screen and (min-width: $xs-break) {
+      width: 750px;
+  }
+  @media screen and (min-width: $md-break) {
+    width: 970px;
+  }
+  @media screen and (min-width: $lg-break) {
+    width: 1170px;
+  }
+  @media screen and (min-width: $xl-break) {
+    width: 1400px;
+  }
+}
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+// index.html style starts from here
+.row-nav{
+  height: 5rem;
+  width: 100%;
+  background: $body-backgorund;
+  border-bottom: 1px solid #E0E0E0;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  .wrapper{
+    height: 100%;
+  }
+  ul li{
+    display: inline-block;
+    margin: auto 1.4rem;
+    a{
+      color: $link;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color .3s ease;
+      letter-spacing: 1px;
+      font-family: $pt-sans;
+      line-height: 1.5;
+      cursor: pointer;
+      @include transition(all 0.3s ease-in-out);
+      font-size: 1.142rem;
+      position: relative;
+      // text-shadow: 2px 2px 1px rgba(0,0,0,.08);
+      &:hover{
+        @include transition(all 0.3s ease-in-out);
+        color: $hover;
+      }
+    }
+  }
+  .btn-primary.btn-color {
+    background: rgba(239,83,80,.7);
+  }
+}
+.btn-circ {
+  border-radius: 50px;
+  overflow: hidden;
+}
+.btn {
+    border: none;
+    color: #fff;
+    font-family: inherit;
+    background: 0 0;
+    padding: 0.50rem 1.1rem;
+    margin: auto 1.14rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: 0;
+    position: relative;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+// home.html starts from here
+  // text editor scss
+.window {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+.window-titlebar {
+  height: 2em;
+  background-color: #eee;
+  padding: .5em;
+  text-align: center;
+  color: #555;
+  // disable text selection
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.window-buttons {
+  float: left;
+}
+.window-title{
+  margin-left: -5em;
+}
+.window-button {
+  display: inline-block;
+  margin: 0 .25em;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, .1);
+}
+.window-button-close {
+  background-color: #ff4545;
+}
+.window-button-hide{
+  background-color: #ffbe03;
+}
+.window-button-full{
+  background-color: #03d544;
+}
+.window-content {
+  height: 46em;
+  background-color: #fff;
+  ol{
+    margin:0;
+    -webkit-padding-start: 0;
+  }
+}
+.code {
+  font-family: monospace;
+  counter-reset: lineNum;
+  list-style: none;
+  color: #555;
+  .comment{
+    color: #06f;
+  }
+  .line {
+    display: block;
+    counter-increment: lineNum;
+    &:before {
+      display: inline-block;
+      content: counter(lineNum, decimal-leading-zero);
+      padding: .5em 1.5em;
+      margin-right: 1em;
+      font-weight: 700;
+      background-color: #f9f9f9;
+      color: #ccc;
+    }
+  }
+}
+.show-us{
+  height: 100vh;
+  font-family: $lato;
+  font-size: 1rem;
+  .right{
+    height: 100%;
+    h5{
+      font-size:1rem;
+      color: #BDBDBD;
+      margin-bottom:1rem;
+      letter-spacing: 3px;
+      font-weight: 300;
+    }
+    h1{
+      font-size: 2.3rem;
+      font-weight: 500;
+      margin-top:0;
+      text-align: center;
+      font-family: $varela;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    p{
+      line-height: 1.65em;
+      color: $link;
+      font-family: $varela;
+      max-width: 460px;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: .016em;
+    }
+  }
+}
+// signup cards
+.login-form-wrapper{
+  padding: 16px;
+  height: auto;
+  font-size: 1rem;
+  background:$white;
+  font-family: $pt-sans;
+  width:350px;
+  .log-in h2{
+    text-transform: uppercase;
+    font-family: $varela;
+    font-weight: 500;
+    font-size: 3em;
+  }
+  .btn-primary.btn-color {
+    background: rgba(239,83,80,.7);
+    padding: 0.9rem 1.0rem;
+    margin: 1rem;
+    text-align: center;
+    width: 200px;
+  }
+  .btn-wrapper{
+    margin: 1.5rem auto;
+  }
 }

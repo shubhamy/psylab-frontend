@@ -1,1 +1,53 @@
-<h1>Hello World<h1>
+<section id="section1">
+  <div class="container">
+    <div layout="row" class="show-us">
+      <div flex-gt-sm="50" layout="column" layout-align="center center" class="left">
+        <div class="window">
+          <div class="window-titlebar">
+            <span class="window-buttons">
+              <span class="window-button window-button-close"></span>
+              <span class="window-button window-button-hide"></span>
+              <span class="window-button window-button-full"></span>
+            </span>
+            <span class="window-title">Code editor</span>
+          </div>
+          <div class="window-content">
+            <ol class="code">
+              <li class="line comment">/**</li>
+              <li class="line comment">&nbsp;* A simple code editor window in pure CSS!</li>
+              <li class="line comment">&nbsp;* You're free to use it in your own projects.</li>
+              <li class="line comment">&nbsp;*/</li>
+              <li class="line"></li>
+              <li class="line">let ajax = new XMLHttpRequest();</li>
+              <li class="line"></li>
+              <li class="line">ajax.onreadystatechange = () => {</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;if (ajax.readyState === 4 ) {</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (ajax.status === 200) {</li>
+              <li class="line comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Request succeded</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;} else if (ajax.status === 400) {</li>
+              <li class="line comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// An error occured</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;} else {</li>
+              <li class="line comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// Unknown status</li>
+              <li class="line">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+              <li class="line">}</li>
+              <li class="line"></li>
+              <li class="line">ajax.open("GET", "data.json", true);</li>
+              <li class="line">ajax.send();</li>
+              <li class="line"></li>
+              <li class="line"></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div flex-gt-sm="50" layout="column" layout-align="center center" class="right">
+        <h5>HORIZON</h5>
+        <h1>Show us what you got</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed hendrerit ex, in
+          consequat erat. Morbi cursus imperdiet enim, et rutrum ipsum auctor vel. Suspendisse mi
+           lectus, tincidunt quis metus ut, efficitur accumsan lorem. Donec quis tempus libero,
+           eu consectetur leo.</p>
+      </div>
+    </div>
+  </div>
+</section>

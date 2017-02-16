@@ -277,6 +277,289 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 /* line 6, ../sass/style.scss */
-body {
-  background-color: #ffffff;
+body, html {
+  background-color: #F5F5F5;
+  font-size: 14px;
+}
+
+/* line 10, ../sass/style.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 14, ../sass/style.scss */
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media screen and (min-width: 768px) {
+  /* line 14, ../sass/style.scss */
+  .container {
+    width: 750px;
+  }
+}
+@media screen and (min-width: 992px) {
+  /* line 14, ../sass/style.scss */
+  .container {
+    width: 970px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  /* line 14, ../sass/style.scss */
+  .container {
+    width: 1170px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  /* line 14, ../sass/style.scss */
+  .container {
+    width: 1400px;
+  }
+}
+
+/* line 32, ../sass/style.scss */
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* line 40, ../sass/style.scss */
+.row-nav {
+  height: 5rem;
+  width: 100%;
+  background: #f7f7f7;
+  border-bottom: 1px solid #E0E0E0;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+/* line 48, ../sass/style.scss */
+.row-nav .wrapper {
+  height: 100%;
+}
+/* line 51, ../sass/style.scss */
+.row-nav ul li {
+  display: inline-block;
+  margin: auto 1.4rem;
+}
+/* line 54, ../sass/style.scss */
+.row-nav ul li a {
+  color: #7b8b8e;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .3s ease;
+  letter-spacing: 1px;
+  font-family: "PT Sans", sans-serif;
+  line-height: 1.5;
+  cursor: pointer;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  font-size: 1.142rem;
+  position: relative;
+}
+/* line 67, ../sass/style.scss */
+.row-nav ul li a:hover {
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  color: #ef5350;
+}
+/* line 73, ../sass/style.scss */
+.row-nav .btn-primary.btn-color {
+  background: rgba(239, 83, 80, 0.7);
+}
+
+/* line 77, ../sass/style.scss */
+.btn-circ {
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+/* line 81, ../sass/style.scss */
+.btn {
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  background: 0 0;
+  padding: 0.50rem 1.1rem;
+  margin: auto 1.14rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  outline: 0;
+  position: relative;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+/* line 99, ../sass/style.scss */
+.window {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* line 106, ../sass/style.scss */
+.window-titlebar {
+  height: 2em;
+  background-color: #eee;
+  padding: .5em;
+  text-align: center;
+  color: #555;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 119, ../sass/style.scss */
+.window-buttons {
+  float: left;
+}
+
+/* line 122, ../sass/style.scss */
+.window-title {
+  margin-left: -5em;
+}
+
+/* line 125, ../sass/style.scss */
+.window-button {
+  display: inline-block;
+  margin: 0 .25em;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* line 133, ../sass/style.scss */
+.window-button-close {
+  background-color: #ff4545;
+}
+
+/* line 136, ../sass/style.scss */
+.window-button-hide {
+  background-color: #ffbe03;
+}
+
+/* line 139, ../sass/style.scss */
+.window-button-full {
+  background-color: #03d544;
+}
+
+/* line 142, ../sass/style.scss */
+.window-content {
+  height: 46em;
+  background-color: #fff;
+}
+/* line 145, ../sass/style.scss */
+.window-content ol {
+  margin: 0;
+  -webkit-padding-start: 0;
+}
+
+/* line 150, ../sass/style.scss */
+.code {
+  font-family: monospace;
+  counter-reset: lineNum;
+  list-style: none;
+  color: #555;
+}
+/* line 155, ../sass/style.scss */
+.code .comment {
+  color: #06f;
+}
+/* line 158, ../sass/style.scss */
+.code .line {
+  display: block;
+  counter-increment: lineNum;
+}
+/* line 161, ../sass/style.scss */
+.code .line:before {
+  display: inline-block;
+  content: counter(lineNum,decimal-leading-zero);
+  padding: .5em 1.5em;
+  margin-right: 1em;
+  font-weight: 700;
+  background-color: #f9f9f9;
+  color: #ccc;
+}
+
+/* line 172, ../sass/style.scss */
+.show-us {
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  font-size: 1rem;
+}
+/* line 176, ../sass/style.scss */
+.show-us .right {
+  height: 100%;
+}
+/* line 178, ../sass/style.scss */
+.show-us .right h5 {
+  font-size: 1rem;
+  color: #BDBDBD;
+  margin-bottom: 1rem;
+  letter-spacing: 3px;
+  font-weight: 300;
+}
+/* line 185, ../sass/style.scss */
+.show-us .right h1 {
+  font-size: 2.3rem;
+  font-weight: 500;
+  margin-top: 0;
+  text-align: center;
+  font-family: "Varela Round", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+/* line 194, ../sass/style.scss */
+.show-us .right p {
+  line-height: 1.65em;
+  color: #7b8b8e;
+  font-family: "Varela Round", sans-serif;
+  max-width: 460px;
+  text-align: center;
+  font-size: 1rem;
+  letter-spacing: .016em;
+}
+
+/* line 206, ../sass/style.scss */
+.login-form-wrapper {
+  padding: 16px;
+  height: auto;
+  font-size: 1rem;
+  background: #ffffff;
+  font-family: "PT Sans", sans-serif;
+  width: 350px;
+}
+/* line 213, ../sass/style.scss */
+.login-form-wrapper .log-in h2 {
+  text-transform: uppercase;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 500;
+  font-size: 3em;
+}
+/* line 219, ../sass/style.scss */
+.login-form-wrapper .btn-primary.btn-color {
+  background: rgba(239, 83, 80, 0.7);
+  padding: 0.9rem 1.0rem;
+  margin: 1rem;
+  text-align: center;
+  width: 200px;
+}
+/* line 226, ../sass/style.scss */
+.login-form-wrapper .btn-wrapper {
+  margin: 1.5rem auto;
 }
