@@ -1,4 +1,3 @@
-/* line 45, ../sass/partials/_normalize.scss */
 article,
 aside,
 details,
@@ -13,25 +12,21 @@ summary {
   display: block;
 }
 
-/* line 61, ../sass/partials/_normalize.scss */
 audio,
 canvas,
 video {
   display: inline-block;
 }
 
-/* line 74, ../sass/partials/_normalize.scss */
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/* line 84, ../sass/partials/_normalize.scss */
 [hidden], template {
   display: none;
 }
 
-/* line 97, ../sass/partials/_normalize.scss */
 html {
   background: #1a1a1a;
   color: #000;
@@ -39,7 +34,6 @@ html {
   -ms-text-size-adjust: 100%;
 }
 
-/* line 109, ../sass/partials/_normalize.scss */
 html,
 button,
 input,
@@ -48,83 +42,68 @@ textarea {
   font-family: sans-serif;
 }
 
-/* line 119, ../sass/partials/_normalize.scss */
 body {
   margin: 0;
 }
 
-/* line 132, ../sass/partials/_normalize.scss */
 a {
   background: transparent;
 }
-/* line 139, ../sass/partials/_normalize.scss */
 a:focus {
   outline: thin dotted;
 }
-/* line 145, ../sass/partials/_normalize.scss */
 a:hover, a:active {
   outline: 0;
 }
 
-/* line 159, ../sass/partials/_normalize.scss */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-/* line 164, ../sass/partials/_normalize.scss */
 h2 {
   font-size: 1.5em;
   margin: 0.83em 0;
 }
 
-/* line 169, ../sass/partials/_normalize.scss */
 h3 {
   font-size: 1.17em;
   margin: 1em 0;
 }
 
-/* line 174, ../sass/partials/_normalize.scss */
 h4 {
   font-size: 1em;
   margin: 1.33em 0;
 }
 
-/* line 179, ../sass/partials/_normalize.scss */
 h5 {
   font-size: 0.83em;
   margin: 1.67em 0;
 }
 
-/* line 184, ../sass/partials/_normalize.scss */
 h6 {
   font-size: 0.75em;
   margin: 2.33em 0;
 }
 
-/* line 192, ../sass/partials/_normalize.scss */
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-/* line 198, ../sass/partials/_normalize.scss */
 b,
 strong {
   font-weight: bold;
 }
 
-/* line 211, ../sass/partials/_normalize.scss */
 dfn {
   font-style: italic;
 }
 
-/* line 217, ../sass/partials/_normalize.scss */
 mark {
   background: #ff0;
   color: #000;
 }
 
-/* line 233, ../sass/partials/_normalize.scss */
 code,
 kbd,
 pre,
@@ -133,30 +112,25 @@ samp {
   font-size: 1em;
 }
 
-/* line 246, ../sass/partials/_normalize.scss */
 pre {
   white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
-/* line 254, ../sass/partials/_normalize.scss */
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
-/* line 270, ../sass/partials/_normalize.scss */
 q:before, q:after {
   content: '';
   content: none;
 }
 
-/* line 279, ../sass/partials/_normalize.scss */
 small {
   font-size: 80%;
 }
 
-/* line 286, ../sass/partials/_normalize.scss */
 sub,
 sup {
   font-size: 75%;
@@ -165,46 +139,38 @@ sup {
   vertical-align: baseline;
 }
 
-/* line 294, ../sass/partials/_normalize.scss */
 sup {
   top: -0.5em;
 }
 
-/* line 298, ../sass/partials/_normalize.scss */
 sub {
   bottom: -0.25em;
 }
 
-/* line 350, ../sass/partials/_normalize.scss */
 img {
   border: 0;
 }
 
-/* line 359, ../sass/partials/_normalize.scss */
 svg:not(:root) {
   overflow: hidden;
 }
 
-/* line 369, ../sass/partials/_normalize.scss */
 figure {
   margin: 0;
 }
 
-/* line 386, ../sass/partials/_normalize.scss */
 fieldset {
   border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
 
-/* line 397, ../sass/partials/_normalize.scss */
 legend {
   border: 0;
   padding: 0;
   white-space: normal;
 }
 
-/* line 411, ../sass/partials/_normalize.scss */
 button,
 input,
 select,
@@ -215,18 +181,15 @@ textarea {
   vertical-align: baseline;
 }
 
-/* line 426, ../sass/partials/_normalize.scss */
 button, input {
   line-height: normal;
 }
 
-/* line 435, ../sass/partials/_normalize.scss */
 button,
 select {
   text-transform: none;
 }
 
-/* line 448, ../sass/partials/_normalize.scss */
 button,
 html input[type="button"],
 input[type="reset"],
@@ -235,59 +198,49 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-/* line 461, ../sass/partials/_normalize.scss */
 button[disabled],
 input[disabled] {
   cursor: default;
 }
 
-/* line 470, ../sass/partials/_normalize.scss */
 button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
 
-/* line 479, ../sass/partials/_normalize.scss */
 textarea {
   overflow: auto;
   vertical-align: top;
 }
 
-/* line 490, ../sass/partials/_normalize.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 498, ../sass/partials/_normalize.scss */
 input[type="search"] {
   -webkit-appearance: textfield;
   -moz-box-sizing: content-box;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
-/* line 506, ../sass/partials/_normalize.scss */
 input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-/* line 516, ../sass/partials/_normalize.scss */
 input[type="checkbox"], input[type="radio"] {
   box-sizing: border-box;
   padding: 0;
 }
 
-/* line 6, ../sass/style.scss */
 body, html {
   background-color: #F5F5F5;
   font-size: 14px;
 }
 
-/* line 10, ../sass/style.scss */
 a {
   text-decoration: none;
 }
 
-/* line 14, ../sass/style.scss */
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -295,31 +248,26 @@ a {
   padding-right: 15px;
 }
 @media screen and (min-width: 768px) {
-  /* line 14, ../sass/style.scss */
   .container {
     width: 750px;
   }
 }
 @media screen and (min-width: 992px) {
-  /* line 14, ../sass/style.scss */
   .container {
     width: 970px;
   }
 }
 @media screen and (min-width: 1200px) {
-  /* line 14, ../sass/style.scss */
   .container {
     width: 1170px;
   }
 }
 @media screen and (min-width: 1440px) {
-  /* line 14, ../sass/style.scss */
   .container {
     width: 1400px;
   }
 }
 
-/* line 32, ../sass/style.scss */
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
@@ -327,7 +275,6 @@ a {
   padding-right: 15px;
 }
 
-/* line 40, ../sass/style.scss */
 .row-nav {
   height: 5rem;
   width: 100%;
@@ -337,16 +284,13 @@ a {
   top: 0;
   z-index: 2;
 }
-/* line 48, ../sass/style.scss */
 .row-nav .wrapper {
   height: 100%;
 }
-/* line 51, ../sass/style.scss */
 .row-nav ul li {
   display: inline-block;
   margin: auto 1.4rem;
 }
-/* line 54, ../sass/style.scss */
 .row-nav ul li a {
   color: #7b8b8e;
   font-weight: 500;
@@ -363,7 +307,6 @@ a {
   font-size: 1.142rem;
   position: relative;
 }
-/* line 67, ../sass/style.scss */
 .row-nav ul li a:hover {
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -371,18 +314,15 @@ a {
   transition: all 0.3s ease-in-out;
   color: #ef5350;
 }
-/* line 73, ../sass/style.scss */
 .row-nav .btn-primary.btn-color {
   background: rgba(239, 83, 80, 0.7);
 }
 
-/* line 77, ../sass/style.scss */
 .btn-circ {
   border-radius: 50px;
   overflow: hidden;
 }
 
-/* line 81, ../sass/style.scss */
 .btn {
   border: none;
   color: #fff;
@@ -400,7 +340,6 @@ a {
   transition: all .3s;
 }
 
-/* line 99, ../sass/style.scss */
 .window {
   width: 100%;
   max-height: 500px;
@@ -409,7 +348,6 @@ a {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* line 106, ../sass/style.scss */
 .window-titlebar {
   height: 2em;
   background-color: #eee;
@@ -423,17 +361,14 @@ a {
   user-select: none;
 }
 
-/* line 119, ../sass/style.scss */
 .window-buttons {
   float: left;
 }
 
-/* line 122, ../sass/style.scss */
 .window-title {
   margin-left: -5em;
 }
 
-/* line 125, ../sass/style.scss */
 .window-button {
   display: inline-block;
   margin: 0 .25em;
@@ -443,49 +378,40 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* line 133, ../sass/style.scss */
 .window-button-close {
   background-color: #ff4545;
 }
 
-/* line 136, ../sass/style.scss */
 .window-button-hide {
   background-color: #ffbe03;
 }
 
-/* line 139, ../sass/style.scss */
 .window-button-full {
   background-color: #03d544;
 }
 
-/* line 142, ../sass/style.scss */
 .window-content {
   height: 46em;
   background-color: #fff;
 }
-/* line 145, ../sass/style.scss */
 .window-content ol {
   margin: 0;
   -webkit-padding-start: 0;
 }
 
-/* line 150, ../sass/style.scss */
 .code {
   font-family: monospace;
   counter-reset: lineNum;
   list-style: none;
   color: #555;
 }
-/* line 155, ../sass/style.scss */
 .code .comment {
   color: #06f;
 }
-/* line 158, ../sass/style.scss */
 .code .line {
   display: block;
   counter-increment: lineNum;
 }
-/* line 161, ../sass/style.scss */
 .code .line:before {
   display: inline-block;
   content: counter(lineNum,decimal-leading-zero);
@@ -496,17 +422,14 @@ a {
   color: #ccc;
 }
 
-/* line 172, ../sass/style.scss */
 .show-us {
   height: 100vh;
   font-family: "Lato", sans-serif;
   font-size: 1rem;
 }
-/* line 176, ../sass/style.scss */
 .show-us .right {
   height: 100%;
 }
-/* line 178, ../sass/style.scss */
 .show-us .right h5 {
   font-size: 1rem;
   color: #BDBDBD;
@@ -514,7 +437,6 @@ a {
   letter-spacing: 3px;
   font-weight: 300;
 }
-/* line 185, ../sass/style.scss */
 .show-us .right h1 {
   font-size: 2.3rem;
   font-weight: 500;
@@ -524,7 +446,6 @@ a {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-/* line 194, ../sass/style.scss */
 .show-us .right p {
   line-height: 1.65em;
   color: #7b8b8e;
@@ -535,7 +456,10 @@ a {
   letter-spacing: .016em;
 }
 
-/* line 206, ../sass/style.scss */
+.btn:hover {
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
 .login-form-wrapper {
   padding: 16px;
   height: auto;
@@ -544,14 +468,12 @@ a {
   font-family: "PT Sans", sans-serif;
   width: 350px;
 }
-/* line 213, ../sass/style.scss */
 .login-form-wrapper .log-in h2 {
   text-transform: uppercase;
   font-family: "Varela Round", sans-serif;
   font-weight: 500;
   font-size: 3em;
 }
-/* line 219, ../sass/style.scss */
 .login-form-wrapper .btn-primary.btn-color {
   background: rgba(239, 83, 80, 0.7);
   padding: 0.9rem 1.0rem;
@@ -559,7 +481,28 @@ a {
   text-align: center;
   width: 200px;
 }
-/* line 226, ../sass/style.scss */
 .login-form-wrapper .btn-wrapper {
   margin: 1.5rem auto;
+}
+
+.data-wrapper {
+  font-family: "PT Sans", sans-serif;
+  position: relative;
+  top: 100px;
+}
+.data-wrapper nav {
+  background: #fff;
+}
+.data-wrapper .key {
+  padding: 16px;
+}
+
+.data-rows {
+  background: #fff;
+}
+.data-rows .value {
+  padding: 16px;
+}
+.data-rows .item-1 {
+  background-color: rgba(201, 223, 234, 0.2);
 }

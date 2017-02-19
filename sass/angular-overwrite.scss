@@ -2,3 +2,9 @@ md-input-container.md-icon-left {
     padding-left: 36px;
     padding-right: 36px;
 }
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: rgba(239, 83, 80, 0.7);
+}
+md-input-container:not(.md-input-invalid).md-input-focused label {
+   color:rgba(239, 83, 80, 0.7);
+}

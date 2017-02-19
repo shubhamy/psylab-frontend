@@ -203,6 +203,9 @@ a{
   }
 }
 // signup cards
+.btn:hover{
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
+}
 .login-form-wrapper{
   padding: 16px;
   height: auto;
@@ -225,5 +228,27 @@ a{
   }
   .btn-wrapper{
     margin: 1.5rem auto;
+  }
+}
+
+// data.html starts from here
+.data-wrapper{
+  font-family: $pt-sans;
+  position: relative;
+  top: 100px;
+  nav{
+    background:#fff;
+  }
+  .key{
+    padding: 16px;
+  }
+}
+.data-rows{
+  background: #fff;
+  .value{
+    padding: 16px;
+  }
+  .item-1{
+    background-color: rgba(201, 223, 234, 0.2);
   }
 }

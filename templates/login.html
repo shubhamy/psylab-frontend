@@ -7,7 +7,7 @@
       <md-input-container class="md-block" flex-gt-sm>
         <label>Email</label>
         <md-icon ><i class="ti-signup ti-user"></i></md-icon>
-        <input  placeholder="" name="name" type="text" ng-model="email" value="" required >
+        <input  placeholder="" name="name" type="text" ng-model="user.email" value="" required >
         <div ng-messages="myForm.name.$error">
           <div ng-message="required">Email is required.</div>
         </div>
@@ -15,17 +15,18 @@
       <md-input-container class="md-block" flex-gt-sm>
         <label>Password</label>
         <md-icon ><i class="ti-signup ti-key"></i></md-icon>
-        <input  placeholder="" name="password" type="password" ng-model="password" value="" required >
+        <input  placeholder="" name="password" type="password" ng-model="user.password" value="" required >
         <div ng-messages="myForm.password.$error">
           <div ng-message="required">Password is required.</div>
         </div>
       </md-input-container>
       <div class="btn-wrapper" layout="column" layout-align="center center">
-        <a class="btn btn-primary btn-circ btn-color" ng-click="signIn(email,password)">Login</a>
+        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="doLogin(user)">Login</a>
         <div style="padding:30px 30px 0;">
           <a class="forget-txt" ng-click="forgetPassword($event);">Forget password?</a>
         </div>
       </div>
     </form>
   </div>
+
 </div>
