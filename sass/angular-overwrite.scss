@@ -8,3 +8,6 @@ md-input-container:not(.md-input-invalid).md-input-focused .md-input {
 md-input-container:not(.md-input-invalid).md-input-focused label {
    color:rgba(239, 83, 80, 0.7);
 }
+md-dialog {
+  max-height: 95% !important;
+}

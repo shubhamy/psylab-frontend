@@ -11,7 +11,7 @@
     <base href="/">
   </head>
   <body ng-app="app" ng-controller="myCtrl">
-    <nav class="row-nav"  ng-hide="navbarHide">
+    <nav class="row-nav"  ng-hide="isPath('/editor')">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
 
@@ -22,7 +22,8 @@
             <li><a href="">Show</a></li>
             <li><a href="#!/data">Data</a></li>
             <li><a href="">Guide</a></li>
-            <a ng-click="signup()" href="" class="btn btn-primary btn-circ btn-color">Sign In</a>
+            <a ng-click="logInCard()" href="" class="btn btn-primary btn-circ btn-color">Log In</a>
+            <a ng-click="signUpCard()" href="" class="btn btn-primary btn-circ btn-color">Sign Up</a>
           </ul>
         </div>
       </div>
@@ -37,8 +38,24 @@
     <script type='text/javascript' src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-route/angular-route.min.js"></script>
     <script type='text/javascript' src="bower_components/chart.js/chart.min.js"></script>
+    <script type='text/javascript' src="bower_components/angular-chart.js/angular-chart.js"></script>
     <script type='text/javascript' src="bower_components/angular-chart.js/chartjs-zoom.js"></script>
     <script type='text/javascript' src="bower_components/angular-chart.js/angular-chart.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
+    <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script>
+    var config = {
+      apiKey: "AIzaSyBqWorgH-ZmeXZQ_mJQ0ytgzZ-iy3vR3tM",
+      authDomain: "testcodeeditor.firebaseapp.com",
+      databaseURL: "https://testcodeeditor.firebaseio.com",
+      storageBucket: "testcodeeditor.appspot.com",
+      messagingSenderId: "96206384835"
+    };
+    firebase.initializeApp(config);
+    </script>
     <script type='text/javascript' src="js/main.js"></script>
   </body>
 </html>

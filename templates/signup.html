@@ -5,6 +5,14 @@
   <div class="form">
     <form name='myform'>
       <md-input-container class="md-block" flex-gt-sm>
+        <label>Name</label>
+        <md-icon ><i class="ti-signup ti-user"></i></md-icon>
+        <input  placeholder="" name="name" type="text" ng-model="user.name" value="" required >
+        <div ng-messages="myForm.name.$error">
+          <div ng-message="required">Name is required.</div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm>
         <label>Email</label>
         <md-icon ><i class="ti-signup ti-user"></i></md-icon>
         <input  placeholder="" name="email" type="email" ng-model="user.email" value="" required >
@@ -21,12 +29,11 @@
         </div>
       </md-input-container>
       <div class="btn-wrapper" layout="column" layout-align="center center">
-        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="signIn(user)">Sign UP</a>
+        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="createUser(user)">Sign UP</a>
         <div style="padding:30px 30px 0;">
           <a class="forget-txt" ng-click="forgetPassword($event);">Forget password?</a>
         </div>
       </div>
     </form>
   </div>
-
 </div>

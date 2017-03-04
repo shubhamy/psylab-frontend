@@ -1,5 +1,6 @@
-## Trading Automation Framework ##
+## Psylab Version 1.0 ##
 
+Psylab is a python based trading simulator. The idea is to build an ecosystem where talents can research and develop trading algorithms in the most efficient environment and the least number of lines.
 
 ### Before setup the project ###
 
