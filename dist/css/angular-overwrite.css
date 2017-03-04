@@ -14,3 +14,16 @@ md-input-container:not(.md-input-invalid).md-input-focused label {
 md-dialog {
   max-height: 95% !important;
 }
+
+.md-dialog-content h2 {
+  font-family: "Varela Round", sans-serif !important;
+}
+
+md-input-container.md-default-theme .md-input, md-input-container .md-input {
+  font-family: "PT Sans", sans-serif;
+  font-size: 1.2em;
+}
+
+.md-button.md-default-theme.md-primary, .md-button.md-primary {
+  color: rgba(239, 83, 80, 0.7);
+}

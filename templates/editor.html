@@ -14,30 +14,39 @@
       }">
     </div>
     <div class="code-execute-panel" layout="row" layout-align="center center">
-      <a href="" class="btn btn-primary btn-color" ng-click="logOut()">Execute</a>
+      <a href="" class="btn btn-primary btn-color" ng-click="saveExecute()">Execute</a>
       <a href="" class="btn btn-primary btn-color" ng-click="saveFileName()">Save</a>
       <md-select ng-model="selectedFile" md-selected-text="getSelectedFile()">
-          <md-optgroup label="Files">
-            <md-option ng-value="file.filename" ng-repeat="file in userFiles">{{file.filename}}</md-option>
-          </md-optgroup>
-        </md-select>
+        <md-optgroup label="Files">
+          <md-option ng-value="file.filename" ng-repeat="file in userFiles">{{file.filename}}</md-option>
+        </md-optgroup>
+      </md-select>
     </div>
   </div>
-  <div flex-gt-sm="50" flex="100">
-    <div class="editor-header" layout="row">
-      <div flex="50" layout="column">
-        <p>Hey!</p>
-        <h2>{{userDetails.username}}</h2>
+  <div class="response-wrapper" flex-gt-sm="50" flex="100">
+    <div class="detail-header" layout="row">
+      <div flex="70" layout="row">
+        <img src='{{userDetails.photoURL}}' />
+        <div layout="column">
+          <p>Hey!</p>
+          <h2>{{userDetails.username}}</h2>
+        </div>
       </div>
-      <div flex="50" layout="row" layout-align="center center">
+      <div flex="30" layout="row" layout-align="center center">
         <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logOut()">Logout</a>
       </div>
     </div>
-    <h1>Hey you are on editor page<h1>
-    <p>{{firebaseUser}}</p>
+    <div class="response">
+      <h2>Instruction</h2>
+      <ol>
+        <li>  Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+        <li>  Maecenas sed hendrerit ex, in consequat erat. Morbi cursus imperdiet</li>
+        <li>Enim, et rutrum ipsum auctor vel. Suspendisse </li>
+      </ol>
+    </div>
   </div>
 </div>
 
 <script>
-document.getElementById('editor').style.fontSize='16px';
+  document.getElementById('editor').style.fontSize='16px';
 </script>

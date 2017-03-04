@@ -80,7 +80,6 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
-  console.log($scope.currentPath);
   $scope.createUser = function(user) {
     console.log(user);
     $scope.message = null;
@@ -120,9 +119,21 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
       $location.path("/editor");
     })
     .catch(function(error) {
-
       var errorCode = error.code;
       var errorMessage = error.message;
+    });
+  };
+  $scope.signInWithGoogle=function () {
+    Auth.$signInWithPopup("google").then(function(result) {
+      console.log("Signed in as:", result.user.uid);
+      firebase.database().ref('users/'+result.user.uid+'/details/').set({
+          username: result.user.displayName,
+          photoURL:result.user.photoURL
+      });
+      console.log(result);
+      $location.path("/editor");
+    }).catch(function(error) {
+      console.error("Authentication failed:", error);
     });
   };
   $scope.logInCard = function(ev) {
@@ -211,6 +222,12 @@ app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams
     } else {
       return "untitled";
     }
+  };
+  $scope.saveExecute=function(){
+    var code = $scope.aceSession.getDocument().getValue();
+    firebase.database().ref('/users/'+currentAuth.uid+'/executeCode/').set({
+      code:code
+    });
   };
   $scope.saveFileName = function(ev) {
    // Appending dialog to document.body to cover sidenav in docs app
