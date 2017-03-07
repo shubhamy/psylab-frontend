@@ -472,17 +472,24 @@ a {
   text-transform: uppercase;
   font-family: "Varela Round", sans-serif;
   font-weight: 500;
-  font-size: 3em;
+  font-size: 2em;
 }
-.login-form-wrapper .btn-primary.btn-color {
-  background: rgba(239, 83, 80, 0.7);
+.login-form-wrapper .btn-primary {
+  color: #484848;
   padding: 0.9rem 1.0rem;
   margin: 1rem;
   text-align: center;
   width: 200px;
 }
+.login-form-wrapper .btn-primary.btn-color {
+  background: rgba(239, 83, 80, 0.7);
+  color: #ffffff;
+}
 .login-form-wrapper .btn-wrapper {
   margin: 1.5rem auto;
+}
+.login-form-wrapper .btn-wrapper .btn-icon {
+  width: auto;
 }
 
 .data-wrapper {

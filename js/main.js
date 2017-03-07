@@ -136,6 +136,35 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
       console.error("Authentication failed:", error);
     });
   };
+  $scope.signInWithGithub=function () {
+    Auth.$signInWithPopup("github").then(function(result) {
+      console.log("Signed in as:", result.user.uid);
+      console.log(result);
+      $location.path("/home");
+    }).catch(function(error) {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        // Step 2.
+        // User's email already exists.
+        // The pending Google credential.
+        var pendingCred = error.credential;
+        // The provider account's email address.
+        var email = error.email;
+        Auth.$signInWithRedirect("google").then(function(result) {
+          console.log("Signed in as:", result.user.uid);
+          console.log(result);
+          Auth.result.user.uid.link(pendingCred)
+              .then(function(user) {
+                console.log("Account linking success", user);
+                $location.path("/editor");
+              }, function(error) {
+                console.log("Account linking error", error);
+            });
+        }).catch(function(error) {
+          console.error("Authentication failed:", error);
+        });
+      }
+    });
+  };
   $scope.logInCard = function(ev) {
     $mdDialog.show({
       controller:'myCtrl',
@@ -151,7 +180,39 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
 
     });
   };
+  $scope.passwordReset = function(ev) {
+   // Appending dialog to document.body to cover sidenav in docs app
+   var confirm = $mdDialog.prompt()
+     .title('Please Enter your email?')
+    //  .textContent('Bowser is a common name.')
+     .placeholder('example@example.com')
+     .ariaLabel('example@example.com')
+     .initialValue('example@example.com')
+     .targetEvent(ev)
+     .ok('Reset')
+     .cancel('Cancel');
+   $mdDialog.show(confirm).then(function(result) {
+     Auth.$sendPasswordResetEmail(result).then(function() {
+      console.log("Password reset email sent successfully!");
+    }).catch(function(error) {
+      console.error("Error: ", error);
+    });
+   }, function() {
+     console.log("cancel");
+   });
+ };
+
 });
+
+
+
+
+
+
+
+
+
+// editor controller starts from here
 app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams', '$location','$http','$sce','$mdDialog','$window','$http', '$log','$document','Auth','$firebaseArray','$firebaseObject', function(currentAuth,$scope,$rootScope, $routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log,$document,Auth,$firebaseArray,$firebaseObject) {
   $scope.selectedFile=null;
   $scope.isPath= function(viewLocation) {
@@ -228,6 +289,18 @@ app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams
     firebase.database().ref('/users/'+currentAuth.uid+'/executeCode/').set({
       code:code
     });
+  };
+  $scope.deleteFile=function(){
+    console.log("delete calling");
+      if ($scope.selectedFile !== null) {
+        console.log("something calling"+$scope.selectedFile);
+        firebase.database().ref('/users/'+currentAuth.uid+'/codefile/'+$scope.selectedFile).remove().then(function(success) {
+          console.log("file deleted successfully");
+          $scope.selectedFile=null;
+        }, function(error) {
+          console.log("Error:", error);
+        });
+      }
   };
   $scope.saveFileName = function(ev) {
    // Appending dialog to document.body to cover sidenav in docs app

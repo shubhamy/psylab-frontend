@@ -13,6 +13,7 @@
   "author": "Manish Kumar <manish9461@gmail.com>",
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
+    "browser-sync": "^2.18.8",
     "del": "^2.2.0",
     "dgeni": "^0.4.2",
     "dgeni-packages": "^0.13.0",

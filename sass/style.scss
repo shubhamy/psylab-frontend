@@ -217,17 +217,24 @@ a{
     text-transform: uppercase;
     font-family: $varela;
     font-weight: 500;
-    font-size: 3em;
+    font-size: 2em;
   }
-  .btn-primary.btn-color {
-    background: rgba(239,83,80,.7);
+  .btn-primary{
+    color:$tundora;
     padding: 0.9rem 1.0rem;
     margin: 1rem;
     text-align: center;
     width: 200px;
   }
+  .btn-primary.btn-color {
+    background: rgba(239,83,80,.7);
+    color: $white;
+  }
   .btn-wrapper{
     margin: 1.5rem auto;
+    .btn-icon{
+      width: auto;
+    }
   }
 }
 
