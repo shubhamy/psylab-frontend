@@ -71,10 +71,13 @@ app.config(["$routeProvider", function($routeProvider) {
 
 
 app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope, $routeParams,$http,$window,$log,$document,Auth,$firebaseAuth, $mdSidenav,$timeout) {
+  $scope.loadingComp=false;
   if(Auth.$getAuth()){
     $location.path("/editor");
+    $timeout(function(){$scope.loadingComp=true}, 2500);
   }
   else if(Auth.$getAuth()==null){
+    $scope.loadingComp=true;
     $location.path("/");
   }
   $scope.isPath= function(viewLocation) {
@@ -91,6 +94,7 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
         firebase.database().ref('users/'+firebaseUser.uid+'/details/').set({
             username: user.name
           });
+          $mdDialog.cancel();
         $location.path("/editor");
       }).catch(function(error) {
         $scope.error = error;
@@ -116,6 +120,7 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
   $scope.signIn = function(user){
     Auth.$signInWithEmailAndPassword(user.email,user.password).then(function(firebaseUser){
       console.log(firebaseUser.uid);
+      $mdDialog.cancel();
       $location.path("/editor");
     })
     .catch(function(error) {
@@ -130,6 +135,7 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
           username: result.user.displayName,
           photoURL:result.user.photoURL
       });
+      $mdDialog.cancel();
       console.log(result);
       $location.path("/editor");
     }).catch(function(error) {
@@ -140,7 +146,8 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
     Auth.$signInWithPopup("github").then(function(result) {
       console.log("Signed in as:", result.user.uid);
       console.log(result);
-      $location.path("/home");
+      $mdDialog.cancel();
+      $location.path("/editor");
     }).catch(function(error) {
       if (error.code === 'auth/account-exists-with-different-credential') {
         // Step 2.
@@ -155,6 +162,7 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
           Auth.result.user.uid.link(pendingCred)
               .then(function(user) {
                 console.log("Account linking success", user);
+                $mdDialog.cancel();
                 $location.path("/editor");
               }, function(error) {
                 console.log("Account linking error", error);
@@ -213,8 +221,10 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
 
 
 // editor controller starts from here
-app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams', '$location','$http','$sce','$mdDialog','$window','$http', '$log','$document','Auth','$firebaseArray','$firebaseObject', function(currentAuth,$scope,$rootScope, $routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log,$document,Auth,$firebaseArray,$firebaseObject) {
+app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope','$timeout', '$routeParams', '$location','$http','$sce','$mdDialog','$window','$http', '$log','$document','Auth','$firebaseArray','$firebaseObject',
+function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log,$document,Auth,$firebaseArray,$firebaseObject) {
   $scope.selectedFile=null;
+  $timeout(function(){$scope.loadingComp=true}, 2500);
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
@@ -250,6 +260,9 @@ app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams
   };
   $scope.aceChanged = function () {
     var code = $scope.aceSession.getDocument().getValue();
+    console.log(code);
+    var sudocode=$scope.aceSession.Search.find('"',{regExp:false})
+    console.log(sudocode);
     var filename=  $scope.selectedFile;
     if (filename==null){
       firebase.database().ref('users/'+currentAuth.uid+'/codefile/untitled').set({
@@ -290,18 +303,38 @@ app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope', '$routeParams
       code:code
     });
   };
-  $scope.deleteFile=function(){
-    console.log("delete calling");
-      if ($scope.selectedFile !== null) {
-        console.log("something calling"+$scope.selectedFile);
-        firebase.database().ref('/users/'+currentAuth.uid+'/codefile/'+$scope.selectedFile).remove().then(function(success) {
-          console.log("file deleted successfully");
-          $scope.selectedFile=null;
-        }, function(error) {
-          console.log("Error:", error);
-        });
-      }
-  };
+
+  $scope.deleteFile = function(ev) {
+   // Appending dialog to document.body to cover sidenav in docs app
+   var confirm = $mdDialog.confirm()
+     .title('would you really want to delete file?')
+     .targetEvent(ev)
+     .ok('Okay!')
+     .cancel('Cancel');
+
+   $mdDialog.show(confirm).then(function(result) {
+     console.log("delete calling");
+       if ($scope.selectedFile !== null) {
+         var file=$scope.selectedFile;
+         console.log("something calling"+file);
+         $scope.selectedFile=null;
+         firebase.database().ref('/users/'+currentAuth.uid+'/codefile/'+file).remove().then(function(success) {
+           console.log("file deleted successfully");
+           $scope.selectedFile=null;
+           // TODO: repeated process create a function with lest use of firebase bandwidth
+           var userCode = firebase.database().ref('/users/'+currentAuth.uid+'/codefile/untitled');
+           $scope.userCode = new $firebaseObject(userCode);
+           $scope.userCode.$loaded().then(function(userCode){
+             $scope.aceSession.setValue($scope.userCode.code, -1);
+           });
+         }, function(error) {
+           console.log("Error:", error);
+         });
+       }
+   }, function(error) {
+     console.log("something went wrong");
+   });
+ };
   $scope.saveFileName = function(ev) {
    // Appending dialog to document.body to cover sidenav in docs app
    var confirm = $mdDialog.prompt()

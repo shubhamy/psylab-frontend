@@ -11,10 +11,13 @@
     <base href="/">
   </head>
   <body ng-app="app" ng-controller="myCtrl">
+    <div class="loader-wrapper row center" ng-hide="loadingComp">
+			<div class="loading"></div>
+		</div>
     <nav class="row-nav"  ng-hide="isPath('/editor')">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
-
+          <!-- TODO: logo -->
         </div>
         <div flex="55" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
           <ul>

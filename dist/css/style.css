@@ -237,6 +237,47 @@ body, html {
   font-size: 14px;
 }
 
+.loader-wrapper {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: #fff;
+  vertical-align: middle;
+  text-align: center;
+  z-index: 11;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  50% {
+    background: #ffffff;
+  }
+}
+.loading {
+  margin-top: calc( 50vh - 25px);
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 0.25rem solid rgba(0, 0, 0, 0.4);
+  border-top-color: #ffffff;
+  animation: spin 800ms infinite linear;
+}
+.loading--double {
+  border-style: double;
+  border-width: .5rem;
+}
+
 a {
   text-decoration: none;
 }
@@ -523,7 +564,10 @@ a {
   width: 100%;
 }
 .editor-wrapper .code-editor {
-  height: calc(100% - 70px);
+  height: calc(100% - 100px);
+}
+.editor-wrapper .code-execute-panel {
+  height: 100px;
 }
 .editor-wrapper .code-execute-panel .btn-color {
   margin: 16px;

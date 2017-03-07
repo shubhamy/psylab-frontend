@@ -9,8 +9,7 @@ var gulp = require('gulp'),
     uglifyCss = require('gulp-uglifycss'),
     compass = require('gulp-compass'),
     del = require('del'),
-    runSequence = require('run-sequence'),
-    browserSync = require('browser-sync').create();
+    runSequence = require('run-sequence');
 
 gulp.task('clean', function() {
   return del([
@@ -109,37 +108,4 @@ gulp.task('default', function() {
 // task to run in production
 gulp.task('build-prod', function() {
   return runSequence('clean', 'build-root', 'build-sourcejs', 'build-customcss', 'compass-build', 'build-templates', 'build-fonts', 'build-images','build-php','build-lib');
-});
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
-});
-
-// Sass task, will run when any SCSS files change & BrowserSync
-// will auto-update browsers
-gulp.task('sass', function () {
-    return gulp.src('sass/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('css'))
-        .pipe(reload({stream:true}));
-});
-
-// Reload all Browsers
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
-
-// Default task to be run with `gulp`
-// This default task will run BrowserSync & then use Gulp to watch files.
-// When a file is changed, an event is emitted to BrowserSync with the filepath.
-gulp.task('default', ['browser-sync'], function () {
-    gulp.watch('css/*.css', function (file) {
-        if (file.type === "changed") {
-            reload(file.path);
-        }
-    });
-    gulp.watch("*.html", ['bs-reload']);
 });
