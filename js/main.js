@@ -260,9 +260,6 @@ function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$
   };
   $scope.aceChanged = function () {
     var code = $scope.aceSession.getDocument().getValue();
-    console.log(code);
-    var sudocode=$scope.aceSession.Search.find('"',{regExp:false})
-    console.log(sudocode);
     var filename=  $scope.selectedFile;
     if (filename==null){
       firebase.database().ref('users/'+currentAuth.uid+'/codefile/untitled').set({
