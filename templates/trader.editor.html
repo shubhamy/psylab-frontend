@@ -1,0 +1,62 @@
+
+  <div class="editor-nav" layout="row" >
+    <div class="detail-header container" layout="row" layout-align="start center">
+      <div layout="row" flex="35">
+        <img src='{{userDetails.photoURL}}' />
+        <div layout="column">
+          <p>Hey!</p>
+          <h2>{{userDetails.username}}</h2>
+        </div>
+      </div>
+      <div flex="65" layout="row" layout-align="end center" class="nav-li-items">
+        <ul>
+          <li><a href="#!/editor">Algos</a></li>
+          <li><a href="#!/trader">Trader</a></li>
+          <li><a href="">Files</a></li>
+          <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logOut()">Logout</a>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div  class="editor-section" layout-gt-sm="row" layout="row">
+    <div class="response-wrapper" flex-gt-sm="50" flex="100">
+      <div class="response">
+        <p>HTML<br><span> {{userText.code}}</span></p>
+        <!-- <p>Adjectives<br><span ng-repeat='adjective in userText.adjectives'> {{adjective.normalised}} ,</span></p>
+        <p>Adverb<br><span ng-repeat='adverb in userText.adverbs'> {{adverb.normalised}} ,</span></p>
+        <p>Noun<br><span ng-repeat='noun in userText.nouns'> {{noun}} ,</span></p>
+        <p>Value<br><span ng-repeat='value in userText.values'> {{value.normalised}} ,</span></p>
+        <p>verbs<br><span ng-repeat='verbs in userText.verbss'> {{verbs.normalised}} ,</span></p> -->
+
+      </div>
+    </div>
+    <div class="convert-wrapper" flex-gt-sm="50" flex="100">
+      <div id='text-editor' class="text-editor" ui-ace="{
+          require: ['ace/ext/language_tools'],
+          advanced: {
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true
+          },
+          onLoad: aceLoaded,
+          onChange: aceChanged,
+          theme:'monokai',
+          mode: 'Text'
+        }">
+      </div>
+      <!-- <div id='code-convert' class="python-convert" ui-ace="{
+          require: ['ace/ext/language_tools'],
+          advanced: {
+            enableBasicAutocompletion: true,
+            enableLiveAutocompletion: true
+          },
+          theme:'monokai',
+          mode: 'python'
+        }">
+      </div> -->
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('text-editor').style.fontSize='16px';
+    document.getElementById('code-convert').style.fontSize='16px';
+  </script>

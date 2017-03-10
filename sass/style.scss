@@ -4,7 +4,7 @@
 @import "partials/layout";
 @import "partials/mixins";
 body,html{
-  background-color:$color-background;
+  background-color:$body-backgorund;
   font-size: 14px;
 }
 // this is loading wrapper for inde.html page
@@ -83,7 +83,7 @@ a{
 .row-nav{
   height: 5rem;
   width: 100%;
-  background: $body-backgorund;
+  background: $white;
   border-bottom: 1px solid #E0E0E0;
   position: fixed;
   top: 0;
@@ -91,6 +91,12 @@ a{
   .wrapper{
     height: 100%;
   }
+
+  .btn-primary.btn-color {
+    background: $btn-color;
+  }
+}
+.nav-li-items{
   ul li{
     display: inline-block;
     margin: auto 1.4rem;
@@ -113,9 +119,6 @@ a{
       }
     }
   }
-  .btn-primary.btn-color {
-    background: rgba(239,83,80,.7);
-  }
 }
 .btn-circ {
   border-radius: 50px;
@@ -125,9 +128,9 @@ a{
     border: none;
     color: #fff;
     font-family: inherit;
-    background: 0 0;
+    background: $btn-color;
     padding: 0.50rem 1.1rem;
-    margin: auto 1.14rem;
+    margin: 1rem 1.14rem;
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -137,14 +140,37 @@ a{
     -moz-transition: all .3s;
     transition: all .3s;
 }
+.btn-lg{
+  padding: 1rem 4rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+
+
+footer{
+  background: $footer;
+  min-height: 200px;
+  .container{
+    border-top: 1px solid $aluminium;
+  }
+}
 // home.html starts from here
   // text editor scss
+  #section1{
+    height: 100vh;
+
+  }
 .window {
   width: 100%;
-  max-height: 400px;
+  max-height: 500px;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: $xl-break) {
+    max-height: 450px;
+  }
 }
 .window-titlebar {
   height: 2em;
@@ -174,13 +200,13 @@ a{
   border: 1px solid rgba(0, 0, 0, .1);
 }
 .window-button-close {
-  background-color: #ff4545;
+  background-color:rgba(255, 69, 69, 0.6);
 }
 .window-button-hide{
-  background-color: #ffbe03;
+  background-color: rgba(255, 190, 3, 0.6);
 }
 .window-button-full{
-  background-color: #03d544;
+  background-color: rgba(3, 213, 68, 0.6);
 }
 .window-content {
   height: 46em;
@@ -220,10 +246,10 @@ a{
     height: 100%;
     h5{
       font-size:1rem;
-      color: #BDBDBD;
+      color: $aluminium;
       margin-bottom:1rem;
       letter-spacing: 3px;
-      font-weight: 300;
+      font-weight: 500;
     }
     h1{
       font-size: 2.3rem;
@@ -245,6 +271,472 @@ a{
     }
   }
 }
+
+// section2/ how it works#
+#section2{
+  background: $white;
+  .btn-wrapper{
+    padding:4rem;
+    .btn-color{
+      background:$btn-color;
+      border-radius: 4px;
+    }
+  }
+  .item-card{
+    height: 330px;
+    width: 280px;
+    margin: auto 2rem;
+    box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
+    @include transition(all 0.3s ease-in-out);
+  }
+  .item-card:hover{
+    box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+    @include transition(all 0.3s ease-in-out);
+  }
+}
+.heading-wrapper{
+  padding: 6em;
+  font-family: $varela;
+  h1{
+    color: $tundora;
+    // font-family: $montserrat;
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+.works-column{
+  font-family: $varela;
+  h3{
+    font-weight: 500;
+    color: $brightgrey;
+    text-align: center;
+  }
+  p{
+    text-align: center;
+    max-width: 250px;
+    margin: auto;
+    font-size:1em;
+    line-height: 1.4em;
+    color: $aluminium;
+  }
+}
+
+#section3{
+  min-height: 100vh;
+}
+
+// icons style starts from here
+
+
+.icon4,.icon5 {
+  width: 140px;
+  height: 140px;
+  margin: 25px auto;
+}
+.icon5{
+  position: relative;
+}
+.pen {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1s, pen ease 6s 1s infinite;
+}
+
+@keyframes pen {
+  0% {
+    transform: translate(0, 0);
+  }
+  15% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: translate(5px, 5px);
+  }
+  45% {
+    transform: translate(5px, 5px);
+  }
+  60% {
+    transform: translate(-2px, -2px);
+  }
+  75% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+
+.icon5 {
+  transform: translateY(-15px);
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInLeft {
+  animation-name: fadeInLeft;
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+/************* ICON4 *****************/
+
+.line1 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 0.4s, coding1 ease 6s 4s infinite;
+}
+
+.line2 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 0.6s, coding2 ease 6s 4s infinite;
+}
+
+.line3 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 0.8s, coding3 ease 6s 4s infinite;
+}
+
+.line4 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.0s, coding4 ease 6s 4s infinite;
+}
+
+.line5 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.2s, coding5 ease 6s 4s infinite;
+}
+
+.line6 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.4s, coding6 ease 6s 4s infinite;
+}
+
+.line7 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.6s, coding6 ease 6s 4s infinite;
+}
+
+@keyframes coding1 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  14% {
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+  15% {
+    transform: translate(0, 45px);
+  }
+  30% {
+    transform: translate(0, 40px);
+    opacity: 1;
+  }
+  45% {
+    transform: translate(0, 30px);
+  }
+  60% {
+    transform: translate(0, 20px);
+  }
+  75% {
+    transform: translate(0, 10px);
+  }
+  90% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coding2 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(0, -5px);
+    opacity: 1;
+  }
+  29% {
+    transform: translate(0, -10px);
+    opacity: 0;
+  }
+  30% {
+    transform: translate(0, 40px);
+  }
+  45% {
+    transform: translate(0, 30px);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(0, 20px);
+  }
+  75% {
+    transform: translate(0, 10px);
+  }
+  90% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coding3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(0, -5px);
+  }
+  30% {
+    transform: translate(0, -10px);
+    opacity: 1;
+  }
+  44% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+  45% {
+    transform: translate(0, 30px);
+  }
+  60% {
+    transform: translate(0, 20px);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(0, 10px);
+  }
+  90% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coding4 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(0, -5px);
+  }
+  30% {
+    transform: translate(0, -10px);
+  }
+  45% {
+    transform: translate(0, -20px);
+    opacity: 1;
+  }
+  59% {
+    transform: translate(0, -30px);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(0, 20px);
+  }
+  75% {
+    transform: translate(0, 10px);
+    opacity: 1;
+  }
+  90% {
+    transform: translate(0, 5px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coding5 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(0, -5px);
+  }
+  30% {
+    transform: translate(0, -10px);
+  }
+  45% {
+    transform: translate(0, -20px);
+  }
+  60% {
+    transform: translate(0, -30px);
+    opacity: 1;
+  }
+  74% {
+    transform: translate(0, -40px);
+    opacity: 0;
+  }
+  75% {
+    transform: translate(0, 10px);
+  }
+  90% {
+    transform: translate(0, 5px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes coding6 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  15% {
+    transform: translate(0, -5px);
+  }
+  30% {
+    transform: translate(0, -10px);
+  }
+  45% {
+    transform: translate(0, -20px);
+  }
+  60% {
+    transform: translate(0, -30px);
+  }
+  75% {
+    transform: translate(0, -40px);
+    opacity: 1;
+  }
+  89% {
+    transform: translate(0, -50px);
+    opacity: 0;
+  }
+  90% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+/************* ICON5 *****************/
+
+.file1 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1s, file ease 6s 2.6s infinite;
+}
+
+.file2 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.2s, file2 ease 6s 2.6s infinite;
+}
+
+.file3 {
+  opacity: 0;
+  animation: fadeInLeft both 1s 1.4s, file3 ease 6s 2.6s infinite;
+}
+
+@keyframes file {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(0, -25px);
+    opacity: 0;
+  }
+  71% {
+    transform: translate(0, 30px);
+    opacity: 0;
+  }
+  72% {
+    transform: translate(0, 30px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes file2 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(0, -20px);
+    opacity: 0;
+  }
+  51% {
+    transform: translate(0, 40px);
+    opacity: 0;
+  }
+  52% {
+    transform: translate(0, 40px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes file3 {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(0, -15px);
+    opacity: 0;
+  }
+  21% {
+    transform: translate(0, 70px);
+    opacity: 0;
+  }
+  22% {
+    transform: translate(0, 70px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // signup cards
 .btn:hover{
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.15);
@@ -270,7 +762,7 @@ a{
     width: 200px;
   }
   .btn-primary.btn-color {
-    background: rgba(239,83,80,.7);
+    background: $btn-color;
     color: $white;
   }
   .btn-wrapper{
@@ -304,27 +796,24 @@ a{
 }
 
 // editor.html is starts from here
-
-.editor-section{
-  overflow: hidden;
-  height: 100vh;
-}
-.editor-wrapper{
+.editor-nav{
+  height: 70px;
+  border-bottom: 1px solid #d0d0d0;
   width: 100%;
-  .code-editor{
-    height: calc(100% - 100px);
-  }
-  .code-execute-panel{
-    height: 100px;
-    .btn-color{
-      margin: 16px;
-      background: rgba(239, 83, 80, 0.7);
-    }
-  }
 }
-.response-wrapper{
-  font-size: 16px;
-  border-left: 1px solid #bdbdbd;
+.detail-header{
+  max-height:70px;
+  padding: 1em 1.5em;
+  font-family: $varela;
+  // box-shadow: 7px 5px 20px 6px #d0d0d0;
+  img{
+    height: 50px;
+    width: 50px;
+    // position: relative;
+    // top: -8px;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
   p{
     margin: 0;
     font-size: 1em;
@@ -333,37 +822,55 @@ a{
     text-transform: uppercase;
     font-family: $varela;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 1em;
     margin: 0;
   }
-  .detail-header{
-    width: 100%;
-    padding: 1em 1.5em;
-    font-family: $varela;
-    border-bottom: 1px solid #d0d0d0;
-    box-shadow: 7px 5px 20px 6px #d0d0d0;
-    img{
-      height: 60px;
-      width: 60px;
-      border-radius: 50%;
-      margin-right: 1rem;
-    }
-    .btn-color{
-      font-family: $varela !important;
-      background: rgba(239, 83, 80, 0.7);
-    }
+  .btn-color{
+    font-family: $varela !important;
+    background:$btn-color;
   }
+}
+
+.editor-section{
+  overflow: hidden;
+  height: calc(100vh - 70px);
+}
+.response-wrapper{
+  font-size: 16px;
+  // border-left: 1px solid #bdbdbd;
+
   .response{
     padding: 1em 1.5em;
     font-family: $varela;
     color: $tundora;
     h2{
-      font-size: 1.7em;
+      font-size: 1em;
       margin-top: 20px;
     }
     ol li{
       margin:.5em 0;
       font-size: 1em;
     }
+  }
+}
+
+.editor-wrapper{
+  width: 100%;
+  .code-editor{
+    height: calc(100% - 70px);
+  }
+  .code-execute-panel{
+    height: 70px;
+    border-bottom: 1px solid #d0d0d0;
+    .btn-color{
+      margin: 16px;
+      background:$btn-color;
+    }
+  }
+}
+.convert-wrapper{
+  height: calc(100% - 70px);
+  .text-editor, .python-convert{
+    height: 50%;
   }
 }

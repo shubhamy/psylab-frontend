@@ -1,4 +1,6 @@
-var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','firebase','ui.ace']);
+-(function() {
+
+var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','firebase','ui.ace','nlpCompromise']);
 app.factory("Auth", ["$firebaseAuth",
   function($firebaseAuth) {
     return $firebaseAuth();
@@ -53,6 +55,19 @@ app.config(["$routeProvider", function($routeProvider) {
         return Auth.$requireSignIn();
       }]
     }
+  }).when("/trader", {
+    // the rest is the same for ui-router and ngRoute...
+    controller: "TextEditorCtrl",
+    templateUrl: "templates/trader.editor.html",
+    resolve: {
+      // controller will not be loaded until $requireSignIn resolves
+      // Auth refers to our $firebaseAuth wrapper in the factory below
+      "currentAuth": ["Auth", function(Auth) {
+        // $requireSignIn returns a promise so the resolve waits for it to complete
+        // If the promise is rejected, it will throw a $stateChangeError (see above)
+        return Auth.$requireSignIn();
+      }]
+    }
   }).when("/editor", {
     // the rest is the same for ui-router and ngRoute...
     controller: "EditorCtrl",
@@ -69,11 +84,11 @@ app.config(["$routeProvider", function($routeProvider) {
   });
 }]);
 
-
-app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope, $routeParams,$http,$window,$log,$document,Auth,$firebaseAuth, $mdSidenav,$timeout) {
+app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope, $routeParams,$http,$window,$log,$document,Auth,$firebaseAuth, $mdSidenav,$timeout,nlp) {
+  // console.log(nlpctrl);
   $scope.loadingComp=false;
   if(Auth.$getAuth()){
-    $location.path("/editor");
+    $location.path("/trader");
     $timeout(function(){$scope.loadingComp=true}, 2500);
   }
   else if(Auth.$getAuth()==null){
@@ -220,9 +235,9 @@ app.controller('myCtrl', function($scope,$location,$mdDialog,$mdToast,$rootScope
 
 
 
+app.controller("EditorCtrl", function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log, $document, Auth, $firebaseArray, $firebaseObject,nlp) {
 // editor controller starts from here
-app.controller("EditorCtrl", ['currentAuth','$scope','$rootScope','$timeout', '$routeParams', '$location','$http','$sce','$mdDialog','$window','$http', '$log','$document','Auth','$firebaseArray','$firebaseObject',
-function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log,$document,Auth,$firebaseArray,$firebaseObject) {
+  var URL_PREFIX = 'http://192.168.0.103:8080/';
   $scope.selectedFile=null;
   $timeout(function(){$scope.loadingComp=true}, 2500);
   $scope.isPath= function(viewLocation) {
@@ -332,6 +347,19 @@ function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$
      console.log("something went wrong");
    });
  };
+
+ $scope.testRequest=function () {
+   var url=URL_PREFIX
+   $http({
+        method: 'GET',
+        url: url
+      }).then(function successCallback(response) {
+        console.log(response);
+      }, function errorCallback(error) {
+          console.log(error);
+    });
+
+ };
   $scope.saveFileName = function(ev) {
    // Appending dialog to document.body to cover sidenav in docs app
    var confirm = $mdDialog.prompt()
@@ -359,15 +387,69 @@ function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$
  };
 
 
-}]);
+});
+
+app.controller("TextEditorCtrl", function(currentAuth,$scope,$rootScope, $timeout,$routeParams, $location,$http,$sce,$mdDialog,$window,$http, $log, $document, Auth, $firebaseArray, $firebaseObject,nlp) {
+// editor controller starts from here
+$scope.userText=[];
+  var URL_PREFIX = 'http://192.168.0.103:8080/';
+  $scope.selectedFile=null;
+  $timeout(function(){$scope.loadingComp=true}, 2500);
+  $scope.isPath= function(viewLocation) {
+    return viewLocation === $location.path();
+  };
+  $scope.logOut=function () {
+    Auth.$signOut();
+    Auth.$onAuthStateChanged(function(firebaseUser) {
+      if(firebaseUser==null){
+          $location.path("/");
+      }
+    });
+  };
+
+  $scope.aceLoaded = function(_editor) {
+    $scope.aceSession = _editor.getSession();
+    $scope.aceSession.setValue($scope.userText.text, -1);
+  };
+  $scope.aceChanged = function () {
+    var text = $scope.aceSession.getDocument().getValue();
+    $scope.userText.nouns=nlp(text).nouns().out('array');
+    // converting to lowercase
+    text=nlp(text).toLowerCase().out();
+    // dehyphenating the string
+    text=nlp(text).replace('-',' ').all().out();
+    text=nlp(text).values().toNumber().all().out()
+    console.log(text);
+    // replace normal syntax
+    text=nlp(text).replace('is greater than','>').all().out();
+    text=nlp(text).replace('is less than','<').all().out();
+    text=nlp(text).replace('is lower than','<').all().out();
+    text=nlp(text).replace('equal','=').all().out();
+    text=nlp(text).replace('and','and').all().out();
+    text=nlp(text).replace('and','or').all().out();
+    $scope.userText.code=text;
+
+  };
+
+ $scope.testRequest=function () {
+   var url=URL_PREFIX
+   $http({
+        method: 'GET',
+        url: url
+      }).then(function successCallback(response) {
+        console.log(response);
+      }, function errorCallback(error) {
+          console.log(error);
+    });
+
+ };
+
+});
 
 
 
 
-
-
-
-
+})();
 
 
 

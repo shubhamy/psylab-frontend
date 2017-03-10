@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trading Automation Framework</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/angular-overwrite.css">
     <base href="/">
   </head>
-  <body ng-app="app" ng-controller="myCtrl">
+  <body ng-app="app" ng-controller="myCtrl as vm">
     <div class="loader-wrapper row center" ng-hide="loadingComp">
 			<div class="loading"></div>
 		</div>
-    <nav class="row-nav"  ng-hide="isPath('/editor')">
+    <nav class="row-nav"  ng-hide="isPath('/editor')||isPath('/trader')">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
           <!-- TODO: logo -->
@@ -32,7 +32,12 @@
     </nav>
 
     <div data-ng-view="" id="ng-view" class="slideup fade"></div>
-
+    <footer id="footer">
+      <div class="container">
+        <div>
+        </div>
+      </div>
+    </footer>
     <script type='text/javascript' src="bower_components/jquery/dist/jquery.js"></script>
     <script type='text/javascript' src="bower_components/angular/angular.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-material/angular-material.min.js"></script>
@@ -46,6 +51,7 @@
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
+    <script type="text/javascript" src="bower_components/angular-nlp-compromise/dist/angular-nlp-compromise.js"></script>
     <script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
     <script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
