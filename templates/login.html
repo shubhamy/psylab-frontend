@@ -7,25 +7,35 @@
       <md-input-container class="md-block" flex-gt-sm>
         <label>Email</label>
         <md-icon ><i class="ti-signup ti-user"></i></md-icon>
-        <input  placeholder="" name="name" type="text" ng-model="email" value="" required >
-        <div ng-messages="myForm.name.$error">
+        <input  placeholder="" name="email" type="email" ng-model="user.email" value="" required >
+        <div ng-messages="myForm.email.$error">
           <div ng-message="required">Email is required.</div>
         </div>
       </md-input-container>
       <md-input-container class="md-block" flex-gt-sm>
         <label>Password</label>
         <md-icon ><i class="ti-signup ti-key"></i></md-icon>
-        <input  placeholder="" name="password" type="password" ng-model="password" value="" required >
+        <input  placeholder="" name="password" type="password" ng-model="user.password" value="" required >
         <div ng-messages="myForm.password.$error">
           <div ng-message="required">Password is required.</div>
         </div>
       </md-input-container>
       <div class="btn-wrapper" layout="column" layout-align="center center">
-        <a class="btn btn-primary btn-circ btn-color" ng-click="signIn(email,password)">Login</a>
-        <div style="padding:30px 30px 0;">
-          <a class="forget-txt" ng-click="forgetPassword($event);">Forget password?</a>
+        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="signIn(user)">Log In</a>
+        <div layout="row">
+          <a href="" class="btn btn-primary btn-circ btn-icon" ng-click="signInWithGoogle()">
+            <img height="30" width="30" src="images/google.svg"/>
+          </a>
+          <a href="" class="btn btn-primary btn-circ btn-icon" ng-click="signInWithGithub()">
+            <img height="30" width="30" src="images/github.svg"/>
+          </a>
+        </div>
+        <div style="padding:30px 30px 0;" layout="column">
+          <a href="" ng-click="signUpCard()">Create a New account</a>
+          <a class="forget-txt" href="" ng-click="passwordReset();">Forget password?</a>
         </div>
       </div>
     </form>
   </div>
+
 </div>

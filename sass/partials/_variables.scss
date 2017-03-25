@@ -1,3 +1,8 @@
+// loader
+$base-line-height: 50px;
+$white: rgb(0,0,0);
+$off-white: rgba($white, 0.4);
+$spin-duration: 800ms;
 // social color
 $behance:#1769ff;
 $background:#1a1a1a;
@@ -7,11 +12,23 @@ $facebook:#3b5998;
 $instagram:#405de6;
 $linkedin:#0077b5;
 $tomato:#ed4040;
-$tundora:#484848;
 $twitter:#55acee;
 $white:#ffffff;
+// header color
+$tundora:#252525;
+
+// subheader color
+$brightgrey:#575963;
+
+// paragraph color
+$greychateau:#9DA3AD ;
+$aluminium:#83888D;
+// footer
+$footer:#191919;
+// btn-color
+$btn-color:#1F8EED;
 // menu overlay
-$body-backgorund: #f7f7f7;
+$body-backgorund: #f8f9fe;
 $color-background: #F5F5F5;
 $color-main: #F5F5F5;
 $color-hamburger:#212121;
@@ -34,3 +51,4 @@ $open-sans: 'Open Sans', sans-serif;
 $pt-sans: 'PT Sans', sans-serif;
 $titanium:'Titillium Web', sans-serif;
 $lato: 'Lato', sans-serif;
+$montserrat:  'Montserrat', sans-serif;
