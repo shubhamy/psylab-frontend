@@ -25,7 +25,7 @@ gulp.task('build-php', function() {
     .pipe(gulp.dest('dist/php'));
 })
 gulp.task('build-root', function() {
-  return gulp.src(['index.html'])
+  return gulp.src(['index.html','main.js'])
     .pipe(gulp.dest('dist'));
 });
 
@@ -45,6 +45,7 @@ gulp.task('build-templates', function () {
 });
 gulp.task('build-sourcejs', function() {
   return gulp.src(['js/*.js'])
+    .pipe(concat('psylab.js'))
     .pipe(gulp.dest('dist/js'));
 });
 gulp.task('build-customcss', function() {

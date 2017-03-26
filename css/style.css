@@ -461,6 +461,10 @@ footer .container .icons .github:hover {
   height: 100vh;
   overflow: hidden;
 }
+#section1 .btn-color {
+  background: #1F8EED;
+  border-radius: 4px;
+}
 #section1 .select {
   -webkit-touch-callout: initial;
   -webkit-user-select: initial;
@@ -558,17 +562,6 @@ footer .container .icons .github:hover {
 }
 #section2 .container {
   position: relative;
-  top: -350px;
-}
-@media screen and (max-width: 1440px) {
-  #section2 .container {
-    top: -220px;
-  }
-}
-@media screen and (max-width: 1200px) {
-  #section2 .container {
-    top: -200px;
-  }
 }
 
 .editor-img {

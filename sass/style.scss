@@ -224,6 +224,10 @@ footer{
 #section1{
   height: 100vh;
   overflow: hidden;
+  .btn-color{
+    background:$btn-color;
+    border-radius: 4px;
+  }
   .select{
     -webkit-touch-callout: initial;
     -webkit-user-select: initial;
@@ -305,13 +309,13 @@ z-index: 1000 !important;
   }
   .container{
     position: relative;
-    top: -350px;
-    @media screen and (max-width: $xl-break) {
-      top: -220px;
-    }
-    @media screen and (max-width: $lg-break) {
-      top: -200px;
-    }
+    // top: -350px;
+    // @media screen and (max-width: $xl-break) {
+    //   top: -220px;
+    // }
+    // @media screen and (max-width: $lg-break) {
+    //   top: -200px;
+    // }
   }
 
 }
