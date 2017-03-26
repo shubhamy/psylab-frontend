@@ -1,7 +1,7 @@
 
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise']);
 
-var URL_PREFIX = 'http://localhost:8000/';
+var URL_PREFIX = 'http://localhost:8080/';
 var CLIENT_ID='6IHW13vUvCYWrSQLTMaXPW1Sd1BICxgeWSOwQWmw';
 var CLIENT_SECRET='3GpWUcoGhov6aIDQ0KTffkwH72LfN4DOEciNXfWljPwichBNwq1sb2UY0UsFSuiX4T3eeRvmL5djBreEGIbKJaxKcY1aUSZdNiZ8SfQg3W434PYhoWlQNjUEW0HYd5PT';
 // using angular material without any default theme
@@ -101,12 +101,21 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
         var deferred = $q.defer();
         $http({
              method: "POST",
+             transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+             },
              data: {
                 'email':user.email,
                 'password':user.password,
+                'client_id': CLIENT_ID,
+                'client_secret': CLIENT_SECRET,
+                'grant_type': 'client_credentials'
              },
              headers: {
-                'Content-Type': 'application/json; charset=UTF-8'
+                'Content-Type': 'application/x-www-form-urlencoded'
               },
              url: url
            }).then(function successCallback(response) {
