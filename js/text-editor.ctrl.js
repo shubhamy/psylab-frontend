@@ -1,6 +1,56 @@
 
-app.controller("TextEditorCtrl", function($scope, $rootScope, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $window, $log, $document, nlp) {
-// editor controller starts from here
+var CONTENT_TYPE='application/json; charset=UTF-8';
+var AUTHORIZATION='Bearer oW2NAC3ScKwLLS35bh8wokcdJxlEzP'
+app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $window, $log, $document, nlp) {
+  // http://192.168.0.107:8080/api/p/tickers
+  // /api/p/eng POST name(statergy), stratergy, ticker, no. of share
+  $scope.tickers=[];
+  $scope.fetchTickers= function(){
+    var url=URL_PREFIX+'api/p/tickers/';
+    $http({
+         method: "GET",
+         headers: {
+            'Content-Type': CONTENT_TYPE,
+            'Authorization':AUTHORIZATION
+          },
+         url: url
+       }).then(function successCallback(response) {
+         $scope.tickers=response.data;
+         console.log(response);
+       }, function errorCallback(error) {
+     });
+  };
+  $scope.fetchTickers();
+  $scope.getTickers = function(searchText) {
+    var deferred = $q.defer();
+    $timeout(function() {
+        var tickers = $scope.tickers.filter(function(ticker) {
+            return (ticker.symbol.toUpperCase().indexOf(searchText.toUpperCase()) !== -1);
+        });
+        deferred.resolve(tickers);
+    }, 0);
+    return deferred.promise;
+  };
+
+  $scope.fetchIndicator= function(){
+    var url=URL_PREFIX+'api/p/indicators/';
+    $http({
+         method: "GET",
+         headers: {
+            'Content-Type': CONTENT_TYPE,
+            'Authorization':AUTHORIZATION
+          },
+         url: url
+       }).then(function successCallback(response) {
+        //  $scope.tickers=response.data;
+         console.log(response);
+       }, function errorCallback(error) {
+     });
+  };
+
+  // $scope.fetchIndicator();
+
+
   $scope.aceLoaded = function(_editor) {
     $scope.aceSession = _editor.getSession();
   };
@@ -53,5 +103,5 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $timeout, $routePa
       $scope.texttoCode.push($scope.codeObj);
     }
     console.log($scope.texttoCode);
-  }
+  };
 });

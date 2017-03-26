@@ -2,6 +2,18 @@
   <div class="response-wrapper" flex-gt-sm="50" flex="100">
     <div class="response">
       <p>HTML<br><span>{{texttoCode}}</span></p>
+      <!-- <div ng-repeat="ticker in tickers">
+        <p>{{ticker.symbol}}</p>
+      </div> -->
+      <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="ticker in getTickers(searchText)" md-item-text="ticker.symbol" placeholder="Search states" md-no-cache="true">
+        <md-item-template>
+            <span>{{ticker.symbol}} - </span>
+            <!-- <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.name}}</span> -->
+        </md-item-template>
+        <md-not-found>
+            No matches found.
+        </md-not-found>
+      </md-autocomplete>
     </div>
   </div>
   <div class="convert-wrapper" flex-gt-sm="50" flex="100">
@@ -25,4 +37,5 @@
 <script>
   document.getElementById('text-editor').style.fontSize='16px';
   document.getElementById('code-convert').style.fontSize='16px';
+  document.getElementById('editor').style.fontColor='black';
 </script>

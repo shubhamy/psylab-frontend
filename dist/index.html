@@ -25,7 +25,7 @@
             <li><a href="#!/play">Play</a></li>
             <li><a href="">Show</a></li>
             <li><a href="#!/data">Data</a></li>
-            <li><a href="">Guide</a></li>
+            <li><a href="#!/trader">Trader</a></li>
             <a ng-click="logInCard()" href="" class="btn btn-primary btn-circ btn-color">Sign In</a>
           </ul>
           <ul ng-show="isPath('/editor')||isPath('/trader') || isPath('/file')">
@@ -37,7 +37,7 @@
         </div>
       </div>
     </nav>
-    <div data-ng-view="" id="ng-view" class="slideup fade"></div>
+    <div data-ng-view="" id="ng-view" class="slideup fade" style="position:relative;top:70px;"></div>
     <footer id="footer" ng-hide="isPath('/editor')||isPath('/trader')">
       <div class="container" layout="row" layout-align="start start">
         <div flex="30">
