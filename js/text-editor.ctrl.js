@@ -1,7 +1,6 @@
 
 app.controller("TextEditorCtrl", function($scope, $rootScope, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $window, $log, $document, nlp) {
 // editor controller starts from here
-  var URL_PREFIX = 'http://192.168.0.103:8080/';
   $scope.aceLoaded = function(_editor) {
     $scope.aceSession = _editor.getSession();
   };

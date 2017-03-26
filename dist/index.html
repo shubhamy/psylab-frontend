@@ -12,21 +12,27 @@
     <base href="/">
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
-    <!-- <div class="loader-wrapper row center" ng-hide="loadingComp">
+    <div class="loader-wrapper row center" ng-hide="loadingComp">
 			<div class="loading"></div>
-		</div> -->
-    <nav class="row-nav"  ng-hide="isPath('/editor')||isPath('/trader')">
+		</div>
+    <nav class="row-nav">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
           <!-- TODO: logo -->
         </div>
         <div flex="55" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
-          <ul>
-            <li><a href="">Play</a></li>
+          <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file')">
+            <li><a href="#!/play">Play</a></li>
             <li><a href="">Show</a></li>
             <li><a href="#!/data">Data</a></li>
             <li><a href="">Guide</a></li>
             <a ng-click="logInCard()" href="" class="btn btn-primary btn-circ btn-color">Sign In</a>
+          </ul>
+          <ul ng-show="isPath('/editor')||isPath('/trader') || isPath('/file')">
+            <li><a href="#!/editor">Algos</a></li>
+            <li><a href="#!/trader">Trader</a></li>
+            <li><a href="#!/file">Files</a></li>
+            <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logOut()">Logout</a>
           </ul>
         </div>
       </div>

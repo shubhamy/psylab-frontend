@@ -1,6 +1,5 @@
 app.controller("CodeEditorCtrl", function($scope, $rootScope, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $window, $log, $document, nlp) {
 
-  $scope.selectedFile=null;
   $scope.aceLoaded = function(_editor,userDetails) {
     $scope.aceSession = _editor.getSession();
   };
