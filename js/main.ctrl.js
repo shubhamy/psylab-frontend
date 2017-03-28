@@ -2,6 +2,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
+  $scope.playVisible=false;
   $scope.userInfo = null;
   $scope.signUpCard = function(ev) {
     $mdDialog.show({
@@ -67,25 +68,48 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
     console.log(user);
     Auth.login(user).then(function(response) {
         $scope.userInfo = response;
-        $location.path("/editor");
+        $location.path("/file");
+        $mdDialog.cancel();
       });
   };
+  $scope.logOut = function () {
+      Auth.logout().then(function (result) {
+          $scope.userInfo = null;
+          $location.path("/");
+          $mdToast.show(
+            $mdToast.simple()
+            .textContent('User logout sucessfully!')
+            .position('bottom right')
+            .hideDelay(3000)
+          );
+      }, function (error) {
+          console.log(error);
+      });
+  };
+
+$scope.playVideo=function () {
+  $scope.playVisible=true;
+
+};
+
+
+
   var svg = d3.select("svg").on("touchmove mousemove", moved),
       width = +svg.attr("width"),
       height = +svg.attr("height");
 
-  var sites = d3.range(200)
+  var sites = d3.range(50)
       .map(function(d) { return [Math.random() * width, Math.random() * height]; });
 
   var voronoi = d3.voronoi()
       .extent([[-1, -1], [width + 1, height + 1]]);
 
-  var polygon = svg.append("g")
-      .attr("class", "polygons")
-    .selectAll("path")
-    .data(voronoi.polygons(sites))
-    .enter().append("path")
-      .call(redrawPolygon);
+  // var polygon = svg.append("g")
+  //     .attr("class", "polygons")
+  //   .selectAll("path")
+  //   .data(voronoi.polygons(sites))
+  //   .enter().append("path")
+  //     .call(redrawPolygon);
 
   var link = svg.append("g")
       .attr("class", "links")
@@ -109,16 +133,16 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
 
   function redraw() {
     var diagram = voronoi(sites);
-    polygon = polygon.data(diagram.polygons()).call(redrawPolygon);
+    // polygon = polygon.data(diagram.polygons()).call(redrawPolygon);
     link = link.data(diagram.links()), link.exit().remove();
     link = link.enter().append("line").merge(link).call(redrawLink);
     site = site.data(sites).call(redrawSite);
   }
 
-  function redrawPolygon(polygon) {
-    polygon
-        .attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; });
-  }
+  // function redrawPolygon(polygon) {
+  //   polygon
+  //       .attr("d", function(d) { return d ? "M" + d.join("L") + "Z" : null; });
+  // }
 
   function redrawLink(link) {
     link
@@ -133,7 +157,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
         .attr("cx", function(d) { return d[0]; })
         .attr("cy", function(d) { return d[1]; });
   }
+  $scope.loadingComp=true;
   $timeout(function() {
-    $scope.loadingComp=true;
-  }, 1500);
+  }, 500);
 });

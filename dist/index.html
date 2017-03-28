@@ -6,6 +6,7 @@
     <title>Trading Automation Framework</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="themify-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/angular-overwrite.css">
     <link rel="stylesheet" href="css/icons.css">
@@ -15,16 +16,16 @@
     <div class="loader-wrapper row center" ng-hide="loadingComp">
 			<div class="loading"></div>
 		</div>
-    <nav class="row-nav">
+    <nav ng-class="{'home':isPath('/')}" class="row-nav">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="45" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
           <!-- TODO: logo -->
         </div>
         <div flex="55" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
           <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file')">
-            <li><a href="#!/play">Play</a></li>
-            <li><a href="">Show</a></li>
-            <li><a href="#!/data">Data</a></li>
+            <li><a href="#!/play">Feature</a></li>
+            <li><a href="">Pricing</a></li>
+            <li><a href="#!/data">Contact</a></li>
             <li><a href="#!/trader">Trader</a></li>
             <a ng-click="logInCard()" href="" class="btn btn-primary btn-circ btn-color">Sign In</a>
           </ul>
@@ -37,8 +38,8 @@
         </div>
       </div>
     </nav>
-    <div data-ng-view="" id="ng-view" class="slideup fade" style="position:relative;top:70px;"></div>
-    <footer id="footer" ng-hide="isPath('/editor')||isPath('/trader')">
+    <div data-ng-view="" ng-class="{'home':isPath('/')}" class="ngview"></div>
+    <footer id="footer" ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file')">
       <div class="container" layout="row" layout-align="start start">
         <div flex="30">
           <h3>Psylab Ltd.</h3>

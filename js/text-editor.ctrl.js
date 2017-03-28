@@ -1,10 +1,35 @@
 
-var CONTENT_TYPE='application/json; charset=UTF-8';
-var AUTHORIZATION='Bearer oW2NAC3ScKwLLS35bh8wokcdJxlEzP'
-app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $window, $log, $document, nlp) {
+app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
+  var CONTENT_TYPE='application/json; charset=UTF-8';
+  var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   // http://192.168.0.107:8080/api/p/tickers
-  // /api/p/eng POST name(statergy), stratergy, ticker, no. of share
+  // /api/p/eng POST name(statergy), strategy, ticker, no. of share
   $scope.tickers=[];
+  $scope.selectedItem=null;
+  $scope.strategies=[];
+  $scope.userFiles=[];
+  $scope.filename='untitled';
+  $scope.selectedItemChange = selectedItemChange;
+  function selectedItemChange(item) {
+    $scope.selectedItem=item;
+  };
+  function getUserFiles(){
+    var url=URL_PREFIX+'api/p/eng/';
+    console.log($scope.selectedItem);
+    $http({
+         method: "GET",
+         headers: {
+            'Content-Type': CONTENT_TYPE,
+            'Authorization':AUTHORIZATION
+          },
+         url: url
+       }).then(function successCallback(response) {
+         console.log(response);
+         $scope.userFiles=response.data;
+       }, function errorCallback(error) {
+         console.log(error);
+     });
+  };
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
     $http({
@@ -20,6 +45,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
        }, function errorCallback(error) {
      });
   };
+  getUserFiles();
   $scope.fetchTickers();
   $scope.getTickers = function(searchText) {
     var deferred = $q.defer();
@@ -31,7 +57,29 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     }, 0);
     return deferred.promise;
   };
-
+  $scope.setSelectedFile= function(file){
+    if ($scope.selectedFile !== undefined) {
+      for (i=0;i<$scope.userFiles.length; i++) {
+        if ($scope.selectedFile==$scope.userFiles[i].name){
+          $scope.aceSession.setValue($scope.userFiles[i].strategy);
+          $scope.strategies.shares=$scope.userFiles[i].shares;
+          $scope.selectedItem=$scope.userFiles[i].ticker;
+          $scope.strategyPk=$scope.userFiles[i].pk;
+        }
+      };
+      return $scope.selectedFile;
+    } else {
+      return "Please select an item";
+    }
+  };
+  $scope.editFile=function (file) {
+    console.log(file);
+    $scope.selectedFile=file.name;
+    $scope.aceSession.setValue(file.strategy);
+    $scope.strategies.shares=file.shares;
+    $scope.selectedItem=file.ticker;
+    $scope.strategyPk=file.pk;
+  };
   $scope.fetchIndicator= function(){
     var url=URL_PREFIX+'api/p/indicators/';
     $http({
@@ -47,7 +95,93 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
        }, function errorCallback(error) {
      });
   };
-
+  $scope.fetchUserFile
+  // $scope.saveFileName = function(ev) {
+  //    // Appending dialog to document.body to cover sidenav in docs app
+  //
+  //  };
+  $scope.saveStrategy= function(ev,us){
+    console.log(us);
+    if ($scope.selectedFile == undefined) {
+      var confirm = $mdDialog.prompt()
+        .title('What would you name your File?')
+       //  .textContent('Bowser is a common name.')
+        .placeholder('File Name')
+        .ariaLabel('File Name')
+        .initialValue('untitled')
+        .targetEvent(ev)
+        .ok('Okay!')
+        .cancel('Cancel');
+      $mdDialog.show(confirm).then(function(result) {
+        var code = $scope.aceSession.getDocument().getValue();
+        var url=URL_PREFIX+'api/p/eng/';
+        console.log($scope.selectedItem);
+        $http({
+             method: "POST",
+             data:{
+               name:result,
+               strategy:code,
+               ticker:$scope.selectedItem.symbol,
+               shares:us.shares
+             },
+             headers: {
+                'Content-Type': CONTENT_TYPE,
+                'Authorization':AUTHORIZATION
+              },
+             url: url
+           }).then(function successCallback(response) {
+             $mdToast.show(
+               $mdToast.simple()
+               .textContent('File sucessfully saved!')
+               .position('bottom right')
+               .hideDelay(3000)
+             );
+           }, function errorCallback(error) {
+             $mdToast.show(
+               $mdToast.simple()
+               .textContent('Something went wrong, Please check all the input field')
+               .position('bottom right')
+               .hideDelay(3000)
+             );
+         });
+        $scope.selectedFile=result;
+      }, function() {
+        $scope.status = 'You didn\'t name your dog.';
+      });
+    }
+    else{
+      var code = $scope.aceSession.getDocument().getValue();
+      var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
+      console.log($scope.selectedItem);
+      $http({
+           method: "PUT",
+           data:{
+             strategy:code,
+             ticker:$scope.selectedItem.symbol,
+             shares:us.shares
+           },
+           headers: {
+              'Content-Type': CONTENT_TYPE,
+              'Authorization':AUTHORIZATION
+            },
+           url: url
+         }).then(function successCallback(response) {
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('File sucessfully saved!')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+         }, function errorCallback(error) {
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('Something went wrong, Please check all the input field')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+       });
+    }
+  };
   // $scope.fetchIndicator();
 
 

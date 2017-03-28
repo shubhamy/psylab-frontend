@@ -1,9 +1,9 @@
 
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise']);
 
-var URL_PREFIX = 'http://192.168.0.103:8080/';
+var URL_PREFIX = 'http://psylab.fwd.wf/';
 var CLIENT_ID='6IHW13vUvCYWrSQLTMaXPW1Sd1BICxgeWSOwQWmw';
-var CLIENT_SECRET='3GpWUcoGhov6aIDQ0KTffkwH72LfN4DOEciNXfWljPwichBNwq1sb2UY0UsFSuiX4T3eeRvmL5djBreEGIbKJaxKcY1aUSZdNiZ8SfQg3W434PYhoWlQNjUEW0HYd5PT';
+var CLIENT_SECRET='r8QNKCvIahutSDKq6Jj8s0fnJ9tvnlgUyS6ESEgLLRLCAVNiQozkp7hCKQIlpdBg8YgsBtraQQnS0dahgeJeMcJb7zrQglKwQdLAgpNGbITofStCRd8C6CNVo6Qcou6X';
 // using angular material without any default theme
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
@@ -45,14 +45,14 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     controller: "TextEditorCtrl",
     templateUrl: "templates/trader.editor.html",
     resolve: {
-        // auth: function ($q, Auth) {
-        //     var userInfo = Auth.getUserInfo();
-        //     if (userInfo) {
-        //         return $q.when(userInfo);
-        //     } else {
-        //         return $q.reject({ authenticated: false });
-        //     }
-        // }
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
     }
   }).when("/editor", {
     controller: "CodeEditorCtrl",
@@ -68,17 +68,17 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
         }
     }
   }).when("/file", {
-    controller: "FileCtrl",
+    controller: "TextEditorCtrl",
     templateUrl: "templates/file.html",
     resolve: {
-        // auth: function ($q, Auth) {
-        //     var userInfo = Auth.getUserInfo();
-        //     if (userInfo) {
-        //         return $q.when(userInfo);
-        //     } else {
-        //         return $q.reject({ authenticated: false });
-        //     }
-        // }
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
     }
   });
 }]);
@@ -101,12 +101,21 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
         var deferred = $q.defer();
         $http({
              method: "POST",
+             transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+             },
              data: {
                 'email':user.email,
                 'password':user.password,
+                'client_id': CLIENT_ID,
+                'client_secret': CLIENT_SECRET,
+                'grant_type': 'client_credentials'
              },
              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                'Content-Type': 'application/x-www-form-urlencoded'
               },
              url: url
            }).then(function successCallback(response) {
@@ -125,21 +134,21 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
 
     function logout() {
         var deferred = $q.defer();
-
         $http({
             method: "POST",
-            url: "/api/logout",
+            url: URL_PREFIX+"logout/",
             headers: {
-                "access_token": userInfo.accessToken
+              'Content-Type': 'application/json; charset=UTF-8',
+              'Authorization':'Bearer '+userInfo.accessToken
             }
         }).then(function (result) {
+            console.log(result);
             userInfo = null;
             $window.sessionStorage["userInfo"] = null;
             deferred.resolve(result);
         }, function (error) {
             deferred.reject(error);
         });
-
         return deferred.promise;
     };
 

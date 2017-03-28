@@ -1,4 +1,72 @@
-<h3>Hey</h3>
-<h3>Hey</h3>
-<h3>Hey</h3>
-<h3 style="margin-bottom:200px;">Hey</h3>
+<div flex class="container file-section">
+  <nav class="search-nav md-whiteframe-1dp">
+    <div layout="row"  layout-align="center center">
+      <div flex="50" layout="row">
+        <md-input-container  class="md-block" flex-gt-sm >
+          <label>Search Order...</label>
+          <md-icon ><i class="ti-search"></i></md-icon>
+          <input type="text" ng-model="search_query" focus>
+        </md-input-container>
+        <a href="" class="btn btn-primary btn-color">create</a>
+      </div>
+    </div>
+    <div class="key" layout="row" layout-align="center center">
+      <div flex-gt-sm="50">
+        <span>Name</span>
+      </div>
+      <div flex-gt-sm="20">
+        <span>Modified</span>
+      </div>
+      <div flex-gt-sm="30">
+        <span>Action</span>
+      </div>
+    </div>
+  </nav>
+  <div class="md-whiteframe-1dp data-rows">
+    <md-divider></md-divider>
+    <a class="value item-{{$index%2}}" href="" ng-repeat="file in userFiles| filter:search_query |orderBy:'name'" layout="row" layout-align="center center" ng-click="editFile(file)">
+      <div flex-gt-sm="50">
+        <span>{{file.name}} hexxa.min.str</span>
+      </div>
+      <div flex-gt-sm="20">
+        <span>{{file.created}} 24th Feb 2016 16:40 PM</span>
+      </div>
+      <div flex-gt-sm="30">
+        <span>{{file.orderSecurityId}}</span>
+      </div>
+    </a>
+    <md-divider></md-divider>
+    <div class="value" href="" layout="row" layout-align="center center" ng-click="editFile(file)">
+      <div flex-gt-sm="50">
+        <i class="ti-write"></i>
+        <span>hexxa.min.str</span>
+      </div>
+      <div flex-gt-sm="20">
+        <span>24th Feb 2016 16:40 PM</span>
+      </div>
+      <div flex-gt-sm="30">
+        <a href="" class="btn btn-primary btn-color">test</a>
+        <a href="" class="btn btn-primary btn-color">edit</a>
+      </div>
+    </div>
+    <md-divider></md-divider>
+    <div class="value" layout="row" layout-align="center center" ng-click="editFile(file)">
+      <div flex-gt-sm="50">
+        <i class="ti-write"></i>
+        <span>market stroke</span>
+      </div>
+      <div flex-gt-sm="20">
+        <span>24th Feb 2016 16:40 PM</span>
+      </div>
+      <div flex-gt-sm="30">
+        <a href="" class="btn btn-primary btn-color">test</a>
+        <a href="" class="btn btn-primary btn-color">edit</a>
+      </div>
+    </div>
+  </div>
+
+  <div ng-repeat="order in userFiles">
+    <!-- <p>{{order}}</p> -->
+  </div>
+</div>
+<br><br><br><br><br><br>

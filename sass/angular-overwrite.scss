@@ -5,10 +5,10 @@ md-input-container.md-icon-left {
     padding-right: 36px;
 }
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
-    border-color: rgba(239, 83, 80, 0.7);
+    border-color: #1F8EED;
 }
 md-input-container:not(.md-input-invalid).md-input-focused label {
-   color:rgba(239, 83, 80, 0.7);
+   color:#1F8EED;
 }
 md-dialog {
   max-height: 95% !important;
@@ -18,8 +18,8 @@ md-dialog {
 }
 md-input-container.md-default-theme .md-input, md-input-container .md-input{
   font-family: $pt-sans;
-  font-size: 1.2em;
+  font-size: 1rem;
 }
 .md-button.md-default-theme.md-primary, .md-button.md-primary{
-  color: rgba(239, 83, 80, 0.7);
+  color: #1F8EED;
 }

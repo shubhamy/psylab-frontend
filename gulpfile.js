@@ -25,7 +25,7 @@ gulp.task('build-php', function() {
     .pipe(gulp.dest('dist/php'));
 })
 gulp.task('build-root', function() {
-  return gulp.src(['index.html','main.js'])
+  return gulp.src(['index.html','main.js','themify-icons.css'])
     .pipe(gulp.dest('dist'));
 });
 

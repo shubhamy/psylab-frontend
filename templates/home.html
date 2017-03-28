@@ -1,5 +1,5 @@
-<section id="section1">
-  <div class="container hover noselect" layout="column" layout-align="center center">
+<section id="section1" layout="column" layout-align="center center">
+  <div class="container hover" layout="column" layout-align="center center">
     <h5>HORIZON</h5>
     <h1 onselectstart="return false" class="noselect">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</h1>
     <div class="btn-wrapper" layout="column" layout-align="center center">
@@ -149,6 +149,42 @@
 </section>
 <section id="section3">
   <div class="heading-wrapper" layout="column" layout-align="center center">
-    <h1>Who we are</h1>
+    <h1>Need a head start</h1>
+  </div>
+  <div class="container" layout="row" layout-align="center center">
+    <div flex='50' class="text-wrapper">
+      <h3>Lorem Ipusm ausum</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada pellentesque nisl
+         ut dictum. Curabitur erat est, convallis et nunc vitae, posuere finibus erat. Mauris
+
+      </p>
+    </div>
+    <div flex='50' class="video-wrapper" layout="row" layout-align="center center">
+      <div class="bg-img" ng-if="!playVisible"></div>
+      <a class="img-overlay" layout="row" href='' ng-click="playVideo()"  layout-align="center center">
+        <div ng-if="!playVisible" layout="row" layout-align="center center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="play-icon" viewBox="0 0 50 50">
+              <path d="M10,5.251v39.497L43.572,25L10,5.251z"></path>
+          </svg>
+        </div>
+        <iframe class='video-embed' ng-if="playVisible" src="https://www.youtube.com/embed/C_3d6GntKbk?autoplay=1" frameborder="0" allowfullscreen></iframe>
+      </a>
+    </div>
+  </div>
+</section>
+<section id="section4">
+  <div class="heading-wrapper" layout="column" layout-align="center center">
+    <h1>Benefits & feature</h1>
+  </div>
+</section>
+<section id="section5">
+  <div class="heading-wrapper" layout="column" layout-align="center center">
+    <h1>Wants to say hello?</h1>
+    <p>contact us to request a demo or schedule 1 on 1 training. No string attached</p>
+  </div>
+  <div class="form-wrapper" layout="row" layout-align="center center">
+    <input placeholder="name@email.com" type="email" name="email" class="custom-input" ng-model="user.email" required>
+    <a href="" class="btn btn-lg btn-primary btn-color" ng-click="logInCard()">Get Started</a>
   </div>
 </section>
