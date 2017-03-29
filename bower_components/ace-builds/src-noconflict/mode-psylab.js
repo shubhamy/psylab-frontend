@@ -7,7 +7,7 @@ var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
 var PsylabHighlightRules = function() {
 
     var keywords = (
-        "and|as|assert|break|class|continue|else|except|buy|" +
+        "and|as|assert|break|sell|continue|else|except|buy|" +
         "finally|for|from|if|in|not|or|pass|" +
         "return|try|while|with|"
     );
@@ -17,14 +17,11 @@ var PsylabHighlightRules = function() {
     );
 
     var builtinFunctions = (
-        "abs|divmod|input|open|staticmethod|all|enumerate|int|ord|str|any|" +
-        "eval|isinstance|pow|sum|basestring|execfile|issubclass|print|super|" +
-        "binfile|iter|property|tuple|bool|filter|len|range|type|bytearray|" +
-        "float|list|raw_input|unichr|callable|format|locals|reduce|unicode|" +
-        "chr|frozenset|long|reload|vars|classmethod|getattr|map|repr|xrange|" +
-        "cmp|globals|max|reversed|zip|compile|hasattr|memoryview|round|" +
-        "__import__|complex|hash|min|set|apply|delattr|help|next|setattr|" +
-        "buffer|dict|hex|object|slice|coerce|dir|id|oct|sorted|intern"
+        "upper_bollinger_band|lower_bollinger_band|current_price|open_interest|volume|" +
+        "close_price|open_price|lowest_price|highest_price|stochastic_oscillator|" +
+        "rate_of_change|on_balance_volume|money_flow_index|moving_average_convergence_divergence|" +
+        "relative_strength_index|moving_average|exponential_moving_average|" +
+        "average_directional_index"
     );
     var keywordMapper = this.createKeywordMapper({
         "invalid.deprecated": "debugger",

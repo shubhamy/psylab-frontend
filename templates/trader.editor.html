@@ -1,9 +1,9 @@
 <div  class="editor-section" layout-gt-sm="row" layout="row">
-  <div class="response-wrapper" flex-gt-sm="50" flex="100">
+  <div class="response-wrapper" flex-gt-sm="40" flex="100">
     <div class="response">
       <form name="userStrategiesForm" class=" md-whiteframe-1dp">
         <div class="breadcrumbs">
-          <h3><span>Trader</span><i class="ti-angle-right"></i>{{selectedFile}} hello</h3>
+          <h3><span>Strategy</span><i class="ti-angle-right"></i>{{selectedFile}}</h3>
         </div>
         <md-autocomplete
         md-selected-item="selectedItem"
@@ -32,7 +32,7 @@
       <form>
     </div>
   </div>
-  <div class="convert-wrapper" flex-gt-sm="50" flex="100">
+  <div class="convert-wrapper" flex-gt-sm="60" flex="100">
     <div id='text-editor' class="text-editor" ui-ace="{
         require: ['ace/ext/language_tools'],
         advanced: {
@@ -48,11 +48,11 @@
     <div class="code-execute-panel" layout="row" layout-align="center center">
       <a href="" class="btn btn-primary btn-color" ng-click="textExecute()">Execute</a>
       <a href="" class="btn btn-primary btn-color" ng-click="saveStrategy($event,strategies)">Save</a>
-      <md-select ng-model="selectedFile" md-selected-text="setSelectedFile()">
+      <!-- <md-select ng-model="selectedFile" md-selected-text="setSelectedFile()">
         <md-optgroup label="Files">
           <md-option ng-value="file.name" ng-repeat="file in userFiles">{{file.name}}</md-option>
         </md-optgroup>
-      </md-select>
+      </md-select> -->
     </div>
   </div>
 </div>
@@ -60,3 +60,8 @@
   document.getElementById('text-editor').style.fontSize='16px';
   document.getElementById('code-convert').style.fontSize='16px';
 </script>
+<style>
+  .ace-chrome .ace_support.ace_function{
+    color: #1F8EED;
+  }
+</style>

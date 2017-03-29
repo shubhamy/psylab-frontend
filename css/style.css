@@ -358,7 +358,7 @@ a {
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  color: #ef5350;
+  color: #1F8EED;
 }
 
 .row-nav.home {
@@ -486,7 +486,7 @@ footer .container .icons .github:hover {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
+  background: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%), url("../images/desk_items.png") no-repeat right bottom;
 }
 #section1 .btn-color {
   background: #ffffff;
@@ -579,17 +579,149 @@ footer .container .icons .github:hover {
 
 #section2 {
   background: #ffffff;
+}
+#section2 .wave-wrapper {
+  margin-top: 20px;
+  margin-left: 30px;
+  position: relative;
+  height: 500px;
+  width: 500px;
+}
+#section2 .wave-wrapper .custom-card {
+  position: absolute;
+  background: #ffffff;
+  z-index: 10;
+  font-size: 16px;
+  line-height: 27px;
+  color: #9da6b8;
+  font-family: "Open Sans", sans-serif;
+  max-width: 350px;
+  padding: 16px;
+  font-weight: 300;
+  border-radius: 15px;
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+}
+#section2 .wave-wrapper .custom-card i {
+  font-size: 26px;
+  margin-right: 20px;
+  background-image: -webkit-linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  background-image: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: 2em;
+}
+#section2 .wave-wrapper .custom-card.first {
+  right: -120px;
+  bottom: 80px;
+}
+#section2 .wave-wrapper .custom-card.second {
+  top: 100px;
+}
+#section2 .wave-wrapper .custom-card.third {
+  left: -120px;
+  bottom: 50px;
+}
+#section2 .beat {
+  width: 170px;
+  height: 170px;
+  opacity: 0.6;
+  border: 2px solid #1F8EED;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  z-index: 10;
+}
+#section2 .dot {
+  border: 1px solid #1F8EED;
+  background: transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  -webkit-animation: beat 3s ease-out;
+  -moz-animation: beat 3s ease-out;
+  animation: beat 3s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+#section2 .dot2 {
+  border: 1px solid #1F8EED;
+  background: transparent;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  -webkit-animation: beat 3s ease-out;
+  -moz-animation: beat 3s ease-out;
+  animation: beat 3s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-delay: 1s;
+  /* Safari 4.0 - 8.0 */
+  animation-delay: 1s;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+@-moz-keyframes beat {
+  0% {
+    -moz-transform: scale(0.25);
+    opacity: 0.0;
+  }
+  25% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    -moz-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+@-webkit-keyframes "beat" {
+  0% {
+    -webkit-transform: scale(0.25);
+    opacity: 0.0;
+  }
+  25% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+#section3 {
   max-height: 950px;
 }
-#section2 .btn-wrapper {
+#section3 .btn-wrapper {
   padding: 4rem;
 }
-#section2 .btn-wrapper .btn-color {
+#section3 .btn-wrapper .btn-color {
   background: #1F8EED;
   border-radius: 4px;
 }
-#section2 .container {
+#section3 .container {
   position: relative;
+  padding-bottom: 100px;
 }
 
 .editor-img {
@@ -621,6 +753,7 @@ footer .container .icons .github:hover {
 .item-card {
   height: 330px;
   width: 280px;
+  background: #ffffff;
   margin: auto 2rem;
   box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   -moz-transition: all 0.3s ease-in-out;
@@ -669,13 +802,14 @@ footer .container .icons .github:hover {
   color: #83888D;
 }
 
-#section3 {
+#section4 {
+  background: white;
   font-family: "Varela Round", sans-serif;
 }
-#section3 .container {
-  margin-bottom: 100px;
+#section4 .container {
+  padding-bottom: 100px;
 }
-#section3 .text-wrapper h3 {
+#section4 .text-wrapper h3 {
   font-size: 2rem;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -683,7 +817,7 @@ footer .container .icons .github:hover {
   opacity: 0.8;
   margin: 0;
 }
-#section3 .text-wrapper p {
+#section4 .text-wrapper p {
   font-size: 16px;
   line-height: 27px;
   color: #9da6b8;
@@ -790,28 +924,47 @@ footer .container .icons .github:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-#section4 {
-  background: #ffffff;
-  min-height: 100vh;
+#section5 .heading-wrapper {
+  box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
+  padding: 2rem;
+  border-radius: 7px;
+  max-width: 700px;
+  background: white;
+  margin: 4rem auto;
+}
+#section5 .heading-wrapper h1 {
+  font-weight: 300;
+  margin-bottom: 3rem;
+}
+#section5 .heading-wrapper h1 span {
+  color: #1F8EED;
+}
+#section5 .btn-color {
+  background: #1F8EED;
 }
 
-#section5 {
+#section6 {
+  height: 100vh;
+  background: #ffffff;
+}
+
+#section7 {
   background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
 }
-#section5 h1 {
+#section7 h1 {
   color: #ffffff;
 }
-#section5 .heading-wrapper {
+#section7 .heading-wrapper {
   padding-bottom: 1rem;
 }
-#section5 .heading-wrapper p {
+#section7 .heading-wrapper p {
   color: #ffffff;
   font-family: "Montserrat", sans-serif;
 }
-#section5 .form-wrapper {
+#section7 .form-wrapper {
   padding-bottom: 100px;
 }
-#section5 .custom-input {
+#section7 .custom-input {
   width: 350px;
   display: block;
   border-radius: 4px;
@@ -828,11 +981,11 @@ footer .container .icons .github:hover {
   font-size: 16px;
   color: #0e6252;
 }
-#section5 .custom-input:focus::-webkit-input-placeholder, #section5 .md-input:valid::-webkit-input-placeholder {
+#section7 .custom-input:focus::-webkit-input-placeholder, #section7 .md-input:valid::-webkit-input-placeholder {
   color: #1F8EED;
   font-size: 16px;
 }
-#section5 .btn-color {
+#section7 .btn-color {
   padding: 1.19rem 4rem;
   color: #ffffff;
   border-radius: 4px;
@@ -995,6 +1148,7 @@ footer .container .icons .github:hover {
 }
 
 .convert-wrapper {
+  padding: 1em 1.5em;
   height: calc(100% - 70px);
 }
 .convert-wrapper .text-editor, .convert-wrapper .python-convert {
@@ -1048,6 +1202,9 @@ footer .container .icons .github:hover {
   color: #373c46;
   text-transform: capitalize;
   font-size: 18px;
+}
+.file-section .value.item-1 {
+  background-color: rgba(201, 223, 234, 0.2);
 }
 .file-section .data-rows .btn-color {
   background: #1F8EED;

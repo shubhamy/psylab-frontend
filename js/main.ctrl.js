@@ -2,6 +2,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
+  $scope.isUserLoggedIn=Auth.getUserInfo();
   $scope.playVisible=false;
   $scope.userInfo = null;
   $scope.signUpCard = function(ev) {

@@ -4,31 +4,14 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   // http://192.168.0.107:8080/api/p/tickers
   // /api/p/eng POST name(statergy), strategy, ticker, no. of share
-  $scope.tickers=[];
   $scope.selectedItem=null;
   $scope.strategies=[];
   $scope.userFiles=[];
-  $scope.filename='untitled';
+  $scope.selectedFile='untitled';
+  var file=$rootScope.selectedFile;
   $scope.selectedItemChange = selectedItemChange;
   function selectedItemChange(item) {
     $scope.selectedItem=item;
-  };
-  function getUserFiles(){
-    var url=URL_PREFIX+'api/p/eng/';
-    console.log($scope.selectedItem);
-    $http({
-         method: "GET",
-         headers: {
-            'Content-Type': CONTENT_TYPE,
-            'Authorization':AUTHORIZATION
-          },
-         url: url
-       }).then(function successCallback(response) {
-         console.log(response);
-         $scope.userFiles=response.data;
-       }, function errorCallback(error) {
-         console.log(error);
-     });
   };
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
@@ -40,17 +23,18 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           },
          url: url
        }).then(function successCallback(response) {
-         $scope.tickers=response.data;
+         $rootScope.tickersArray=response.data;
          console.log(response);
        }, function errorCallback(error) {
      });
   };
-  getUserFiles();
-  $scope.fetchTickers();
+  if ($rootScope.tickersArray==null){
+    $scope.fetchTickers();
+  }
   $scope.getTickers = function(searchText) {
     var deferred = $q.defer();
     $timeout(function() {
-        var tickers = $scope.tickers.filter(function(ticker) {
+        var tickers = $rootScope.tickersArray.filter(function(ticker) {
             return (ticker.symbol.toUpperCase().indexOf(searchText.toUpperCase()) !== -1);
         });
         deferred.resolve(tickers);
@@ -58,51 +42,19 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     return deferred.promise;
   };
   $scope.setSelectedFile= function(file){
-    if ($scope.selectedFile !== undefined) {
-      for (i=0;i<$scope.userFiles.length; i++) {
-        if ($scope.selectedFile==$scope.userFiles[i].name){
-          $scope.aceSession.setValue($scope.userFiles[i].strategy);
-          $scope.strategies.shares=$scope.userFiles[i].shares;
-          $scope.selectedItem=$scope.userFiles[i].ticker;
-          $scope.strategyPk=$scope.userFiles[i].pk;
-        }
-      };
-      return $scope.selectedFile;
-    } else {
-      return "Please select an item";
-    }
-  };
-  $scope.editFile=function (file) {
-    console.log(file);
-    $scope.selectedFile=file.name;
     $scope.aceSession.setValue(file.strategy);
     $scope.strategies.shares=file.shares;
     $scope.selectedItem=file.ticker;
     $scope.strategyPk=file.pk;
+    $scope.selectedFile=file.name;
+    $rootScope.selectedFile=null;
   };
-  $scope.fetchIndicator= function(){
-    var url=URL_PREFIX+'api/p/indicators/';
-    $http({
-         method: "GET",
-         headers: {
-            'Content-Type': CONTENT_TYPE,
-            'Authorization':AUTHORIZATION
-          },
-         url: url
-       }).then(function successCallback(response) {
-        //  $scope.tickers=response.data;
-         console.log(response);
-       }, function errorCallback(error) {
-     });
-  };
-  $scope.fetchUserFile
-  // $scope.saveFileName = function(ev) {
-  //    // Appending dialog to document.body to cover sidenav in docs app
-  //
-  //  };
+  $timeout(function() {
+    $scope.setSelectedFile(file);
+  }, 100);
   $scope.saveStrategy= function(ev,us){
     console.log(us);
-    if ($scope.selectedFile == undefined) {
+    if ($scope.selectedFile == 'untitled') {
       var confirm = $mdDialog.prompt()
         .title('What would you name your File?')
        //  .textContent('Bowser is a common name.')
@@ -136,6 +88,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .position('bottom right')
                .hideDelay(3000)
              );
+            $scope.selectedFile=result;
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()
@@ -144,7 +97,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .hideDelay(3000)
              );
          });
-        $scope.selectedFile=result;
       }, function() {
         $scope.status = 'You didn\'t name your dog.';
       });
@@ -184,7 +136,9 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   };
   // $scope.fetchIndicator();
 
-
+  window.onbeforeunload = function() {
+     return "Did you save your stuff?"
+   }
   $scope.aceLoaded = function(_editor) {
     $scope.aceSession = _editor.getSession();
   };

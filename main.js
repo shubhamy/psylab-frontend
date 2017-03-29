@@ -1,7 +1,7 @@
 
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise']);
 
-var URL_PREFIX = 'http://psylab.fwd.wf/';
+var URL_PREFIX = 'http://localhost:8080/';
 var CLIENT_ID='6IHW13vUvCYWrSQLTMaXPW1Sd1BICxgeWSOwQWmw';
 var CLIENT_SECRET='r8QNKCvIahutSDKq6Jj8s0fnJ9tvnlgUyS6ESEgLLRLCAVNiQozkp7hCKQIlpdBg8YgsBtraQQnS0dahgeJeMcJb7zrQglKwQdLAgpNGbITofStCRd8C6CNVo6Qcou6X';
 // using angular material without any default theme
@@ -68,7 +68,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
         }
     }
   }).when("/file", {
-    controller: "TextEditorCtrl",
+    controller: "FileCtrl",
     templateUrl: "templates/file.html",
     resolve: {
         auth: function ($q, Auth) {
