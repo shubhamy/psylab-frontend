@@ -30,7 +30,7 @@
             <a ng-click="logInCard()" href=""  ng-if="isUserLoggedIn=='null'" class="btn btn-primary btn-circ btn-color">Sign In</a>
             <a ng-click="logOut()" href="" ng-if="isUserLoggedIn!='null'" class="btn btn-primary btn-circ btn-color">Logout</a>
           </ul>
-          <ul ng-show="isPath('/editor')||isPath('/trader') || isPath('/file')">
+          <ul class="second-nav" ng-show="isPath('/editor')||isPath('/trader') || isPath('/file')">
             <li><a href="#!/file">Catalogue</a></li>
             <li><a href="#!/trader">Strategy</a></li>
             <li><a href="#!/file">PaperTrade</a></li>
@@ -125,6 +125,8 @@
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
     <script type="text/javascript" src="bower_components/angular-nlp-compromise/dist/angular-nlp-compromise.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+    <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
     <script type='text/javascript' src="main.js"></script>
     <script type='text/javascript' src="js/psylab.js"></script>
   </body>

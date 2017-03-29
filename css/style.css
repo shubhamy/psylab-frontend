@@ -1,3 +1,4 @@
+@charset "UTF-8";
 article,
 aside,
 details,
@@ -235,10 +236,19 @@ input[type="checkbox"], input[type="radio"] {
 body, html {
   background-color: #f8f9fe;
   font-size: 14px;
+  overflow-x: hidden;
 }
 
 *:focus {
   outline: none !important;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .loader-wrapper {
@@ -361,6 +371,10 @@ a {
   color: #1F8EED;
 }
 
+.second-nav li a {
+  font-size: 12px !important;
+}
+
 .row-nav.home {
   top: 0;
   position: absolute;
@@ -406,11 +420,15 @@ a {
 .ngview {
   position: relative;
   top: 70px;
+  min-height: calc(100vh - 70px);
+  z-index: 5;
+  background: #f8f9fe;
 }
 
 .ngview.home {
   position: relative;
   top: 0;
+  z-index: inherit;
 }
 
 footer {
@@ -486,7 +504,7 @@ footer .container .icons .github:hover {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%), url("../images/desk_items.png") no-repeat right bottom;
+  background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
 }
 #section1 .btn-color {
   background: #ffffff;
@@ -502,6 +520,12 @@ footer .container .icons .github:hover {
   user-select: initial;
   pointer-events: initial;
   cursor: initial;
+}
+
+canvas {
+  position: absolute !important;
+  top: 0 !important;
+  z-index: 2;
 }
 
 .noselect {
@@ -925,11 +949,8 @@ footer .container .icons .github:hover {
 }
 
 #section5 .heading-wrapper {
-  box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   padding: 2rem;
   border-radius: 7px;
-  max-width: 700px;
-  background: white;
   margin: 4rem auto;
 }
 #section5 .heading-wrapper h1 {
@@ -944,10 +965,134 @@ footer .container .icons .github:hover {
 }
 
 #section6 {
-  height: 100vh;
   background: #ffffff;
 }
 
+.timeline ul {
+  padding: 50px 0;
+}
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 3px;
+  margin: 0 auto;
+  padding-top: 50px;
+  background: #e8e8e8;
+}
+.timeline ul li:after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  z-index: 22;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e8e8e8;
+}
+.timeline ul li:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  z-index: 100;
+  background: #1F8EED !important;
+  bottom: 5px;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 15px;
+  background: #ffffff;
+  z-index: 10;
+  font-size: 16px;
+  line-height: 27px;
+  color: #9da6b8;
+  font-family: "Open Sans", sans-serif;
+  padding: 16px;
+  font-weight: 300;
+  border-radius: 15px;
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+}
+.timeline ul li div i {
+  font-size: 36px;
+  margin: auto 20px auto 0;
+  background-image: -webkit-linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  background-image: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+.timeline ul li:nth-child(1) {
+  background: linear-gradient(120deg, rgba(0, 0, 0, 0) 0%, #e8e8e8 75%);
+}
+
+.timeline ul li:nth-child(3) {
+  background: linear-gradient(120deg, #e8e8e8 0%, rgba(0, 0, 0, 0) 75%);
+  padding-top: 100px;
+}
+.timeline ul li:nth-child(3):before {
+  content: none;
+}
+.timeline ul li:nth-child(3):after {
+  content: none;
+}
+
+.timeline ul li:nth-child(odd) div {
+  left: 45px;
+}
+
+.timeline ul li:nth-child(even) div {
+  left: -439px;
+}
+
+/* EFFECTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.timeline ul li::after {
+  transition: background .5s ease-in-out;
+}
+
+.timeline ul li div {
+  opacity: 1;
+  transition: all .5s ease-in-out;
+}
+
+.timeline ul li.in-view div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* GENERAL MEDIA QUERIES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (max-width: 900px) {
+  .timeline ul li div {
+    width: 250px;
+  }
+
+  .timeline ul li:nth-child(even) div {
+    left: -289px;
+    /*250+45-6*/
+  }
+}
+@media screen and (max-width: 600px) {
+  .timeline ul li {
+    margin-left: 20px;
+  }
+
+  .timeline ul li div {
+    width: calc(100vw - 91px);
+  }
+
+  .timeline ul li:nth-child(even) div {
+    left: 45px;
+  }
+}
 #section7 {
   background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
 }
@@ -1174,7 +1319,7 @@ footer .container .icons .github:hover {
   border-radius: 4px;
   font-size: 1.2rem;
   margin: 2rem .7rem;
-  max-height: 25px !important;
+  max-height: 35px !important;
 }
 
 .file-section {
