@@ -25,9 +25,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   $routeProvider.when("/", {
     controller: "MainCtrl",
     templateUrl: "templates/home.html"
-  }).when("/play", {
-    controller: "MainCtrl",
-    templateUrl: "templates/play.html"
+  }).when("/data", {
+    controller: "DataCtrl",
+    templateUrl: "templates/data.html"
   }).when("/details", {
     controller: "detailCtrl",
     templateUrl: "templates/details.html",

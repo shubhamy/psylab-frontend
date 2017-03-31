@@ -2,7 +2,9 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
+  // document.getElementsByTagName("CA                                     NVAS")[0].setAttribute("class", "canvasclass");
   $scope.isUserLoggedIn=Auth.getUserInfo();
+  console.log($scope.isUserLoggedIn);
   $scope.playVisible=false;
   $scope.userInfo = null;
   $scope.signUpCard = function(ev) {
@@ -93,7 +95,7 @@ $scope.playVideo=function () {
 
 };
 
-  // 
+  //
   //
   // var svg = d3.select("svg").on("touchmove mousemove", moved),
   //     width = +svg.attr("width"),

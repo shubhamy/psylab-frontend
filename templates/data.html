@@ -3,86 +3,13 @@
 chart-labels="labels" chart-series="series" chart-options="options"
 chart-dataset-override="datasetOverride" chart-click="onClick">
 </canvas>
-  <nav class="search-nav md-whiteframe-1dp">
-    <div layout="row"  layout-align="center ceneter">
-      <div flex="50" >
-        <md-input-container  class="md-block" flex-gt-sm >
-          <label>Search Order...</label>
-          <input type="text" ng-model="search_query" focus>
-        </md-input-container>
-      </div>
-    </div>
-    <div class="key" layout="row" layout-align="center center">
-      <div flex-gt-sm="10">
-        <span>OrderID</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>SecurityId</span>
-      </div>
-      <!-- <div flex-gt-sm="25">
-        <span>Desc</span>
-      </div> -->
-      <div flex-gt-sm="10">
-        <span>Status</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>Side</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>Price</span>
-      </div>
-      <div flex-gt-sm="5">
-        <span>Qty</span>
-      </div>
-      <div flex-gt-sm="15">
-        <span>Value</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>ExecPrice</span>
-      </div>
-      <div flex-gt-sm="15">
-        <span>created</span>
-      </div>
-    </div>
-  </nav>
-  <div class="md-whiteframe-1dp data-rows">
-    <md-divider></md-divider>
-    <div class="value item-{{$index%2}}" ng-repeat="order in orders| filter:search_query |orderBy:'orderId'" layout="row" layout-align="center center">
-      <div flex-gt-sm="10">
-        <span>{{order.orderId}}</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>{{order.orderSecurityId}}</span>
-      </div>
-      <!-- <div flex-gt-sm="15">
-        <span>{{order.eve_desc}}</span>
-      </div> -->
-      <div flex-gt-sm="10">
-        <span>{{order.orderstatus}}</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>{{order.side}}</span>
-      </div>
-      <div flex-gt-sm="10">
-        <!-- <span>{{order.eve_date | date:'dd/MM/yyyy' }}</span> -->
-        <span>{{order.price}}</span>
-      </div>
-      <div flex-gt-sm="5">
-        <span>{{order.quantity}}</span>
-      </div>
-      <div flex-gt-sm="15">
-        <span>{{order.value}}</span>
-      </div>
-      <div flex-gt-sm="10">
-        <span>{{order.execPrice}}</span>
-      </div>
-      <div flex-gt-sm="15">
-        <span>{{order.created | date:'dd/MM/yyyy' }}</span>
-      </div>
-    </div>
-  </div>
 
-  <div ng-repeat="order in orders">
-    <!-- <p>{{order}}</p> -->
-  </div>
 </div>
+<style>
+canvas{
+  display: block;
+  padding: 30px;
+  width: 1370px;
+  background: white;
+}
+</style>

@@ -298,6 +298,8 @@ footer{
 canvas{
   position: absolute !important;
   top: 0 !important;
+  // visibility: hidden;
+  // display:none;
   z-index: 2;
 }
 .noselect {
