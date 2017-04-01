@@ -12,10 +12,10 @@
 <section id="section2">
   <div class="heading-wrapper" layout="column" layout-align="center center">
     <h1>Write your strategies in plain text</h1>
-    <div class="wave-wrapper"  layout="column" layout-align="center center">
-      <div class="dot"></div>
+    <div class="wave-wrapper"  layout-gt-md="column" layout-align="center center">
+      <div show-gt-md hide-xs hide-sm class="dot"></div>
       <!-- <div class="beat"></div> -->
-      <div class="dot2"></div>
+      <div show-gt-md hide-xs hide-sm class="dot2"></div>
       <div class="custom-card first" layout="row" layout-align="center center">
         <i class='ti-stats-up'></i>
         <p>20 days Exponential Moving Average crosses 10 days Exponential moving average</p>
@@ -39,7 +39,7 @@
     <div class="heading-wrapper" layout="column" layout-align="center center">
       <h1>Features & benefits</h1>
     </div>
-    <div class="works-column" layout="row" layout-align="center center">
+    <div class="works-column" layout-gt-sm="row" layout="column" layout-align="center center">
         <div class="item-card">
           <div class="icon4">
             <svg id="icon4" viewBox="0 0 140 140">
@@ -174,8 +174,8 @@
   <div class="heading-wrapper" layout="column" layout-align="center center">
     <h1>Need a head start</h1>
   </div>
-  <div class="container" layout="row" layout-align="center center">
-    <div flex='50' class="text-wrapper">
+  <div class="container" layout-gt-sm="row" layout="column" layout-align="center center">
+    <div flex-gt-sm='50' class="text-wrapper" layout-align-xs="center center" layout-align-sm="center center">
       <h3>Lorem Ipusm ausum</h3>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In malesuada pellentesque nisl
@@ -183,7 +183,7 @@
 
       </p>
     </div>
-    <div flex='50' class="video-wrapper" layout="row" layout-align="center center">
+    <div flex-gt-sm='50' class="video-wrapper" layout="row" layout-align="center center">
       <div class="bg-img" ng-if="!playVisible"></div>
       <a class="img-overlay" layout="row" href='' ng-click="playVideo()"  layout-align="center center">
         <div ng-if="!playVisible" layout="row" layout-align="center center">
@@ -207,7 +207,7 @@
   </div>
 </section>
 <section id="section6">
-  <div class="heading-wrapper" layout="column" layout-align="center center">
+  <div class="heading-wrapper" layout="column" l`ayout-align="center center">
     <h1>What's next</h1>
   </div>
   <section class="timeline">
@@ -234,7 +234,7 @@
     <h1>Wants to say hello?</h1>
     <p>contact us to request a demo or schedule 1 on 1 training. No string attached</p>
   </div>
-  <div class="form-wrapper" layout="row" layout-align="center center">
+  <div class="form-wrapper" layout-gt-sm="row" layout="column" layout-align="center center">
     <input placeholder="name@email.com" type="email" name="email" class="custom-input" ng-model="user.email" required>
     <a href="" class="btn btn-lg btn-primary btn-color" ng-click="logInCard()">Get Started</a>
   </div>

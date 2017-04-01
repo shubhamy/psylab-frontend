@@ -23,6 +23,9 @@
     </div>
   </nav>
   <div class="md-whiteframe-1dp data-rows">
+    <div class="loader-wrapper row center" ng-hide="fileLoading=='200'">
+			<div class="loading"></div>
+		</div>
     <md-divider></md-divider>
     <div ng-repeat="file in userFiles| filter:search_query |orderBy:'name'">
       <div class="value item-{{$index%2}}" href="" layout="row" layout-align="center center" >

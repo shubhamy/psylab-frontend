@@ -1,5 +1,5 @@
 
-var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise']);
+var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise','ngMessages']);
 
 var URL_PREFIX = 'http://localhost:8080/';
 var CLIENT_ID='6IHW13vUvCYWrSQLTMaXPW1Sd1BICxgeWSOwQWmw';
@@ -80,6 +80,9 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
             }
         }
     }
+  }).otherwise({
+    controller: "MainCtrl",
+    templateUrl: "templates/error.html"
   });
 }]);
 app.run(["$rootScope", "$location", function ($rootScope, $location) {
@@ -169,3 +172,34 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
         getUserInfo: getUserInfo
     };
 }]);
+app.directive("passwordVerify", function() {
+   return {
+      require: "ngModel",
+      scope: {
+        passwordVerify: '='
+      },
+      link: function(scope, element, attrs, ctrl) {
+        scope.$watch(function() {
+            var combined;
+
+            if (scope.passwordVerify || ctrl.$viewValue) {
+               combined = scope.passwordVerify + '_' + ctrl.$viewValue;
+            }
+            return combined;
+        }, function(value) {
+            if (value) {
+                ctrl.$parsers.unshift(function(viewValue) {
+                    var origin = scope.passwordVerify;
+                    if (origin !== viewValue) {
+                        ctrl.$setValidity("passwordVerify", false);
+                        return undefined;
+                    } else {
+                        ctrl.$setValidity("passwordVerify", true);
+                        return viewValue;
+                    }
+                });
+            }
+        });
+     }
+   };
+});

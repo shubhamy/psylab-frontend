@@ -40,9 +40,9 @@
       </div>
     </nav>
     <div data-ng-view="" ng-class="{'home':isPath('/')}" class="ngview"></div>
-    <footer id="footer" ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file')">
-      <div class="container" layout="row" layout-align="start start">
-        <div flex="30">
+    <footer id="footer" ng-show="isPath('/')">
+      <div class="container" layout-gt-sm="row" layou="column" layout-align="start start">
+        <div flex-gt-sm="30" hide-sm hide-xs>
           <h3>Psylab Ltd.</h3>
           <a href="">hello@psylab.io</a>
           <p>71-75 Shelton Street<br>
@@ -51,7 +51,7 @@
               WC2H 9JQ
           </p>
         </div>
-        <div flex="30">
+        <div flex-gt-sm="30" hide-sm hide-xs>
           <h3>Company</h3>
           <ul class="company" layout="column">
             <li>
@@ -76,7 +76,7 @@
             </li>
           </ul>
         </div>
-        <div class="icons" layout="column" layout-align="center center " flex="40">
+        <div class="icons" layout="column" layout-align="center center" flex-gt-sm="40">
           <h3>We're Soical</h3><br>
           <ul layout="row">
             <li>
@@ -117,6 +117,7 @@
     <script type='text/javascript' src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type='text/javascript' src="bower_components/angular-messages/angular-messages.min.js"></script>
     <script type='text/javascript' src="bower_components/moment/moment.js"></script>
     <script type='text/javascript' src="bower_components/chart.js/chart.min.js"></script>
     <script type='text/javascript' src="bower_components/angular-chart.js/angular-chart.js"></script>
@@ -126,9 +127,9 @@
     <script type="text/javascript" src="bower_components/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="bower_components/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
     <script type="text/javascript" src="bower_components/angular-nlp-compromise/dist/angular-nlp-compromise.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
     <script src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/js/controls/OrbitControls.js"></script>
-    <script type="text/javascript" src="bower_components/threejs/particle-wave.js"></script>
+    <script type="text/javascript" src="bower_components/threejs/particle-wave.js"></script> -->
     <script type='text/javascript' src="main.js"></script>
     <script type='text/javascript' src="js/psylab.js"></script>
   </body>

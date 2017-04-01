@@ -3,33 +3,36 @@
     <h2>Log In</h2>
   </div>
   <div class="form">
-    <form name='myform'>
+    <form name='userForm' novalidate>
       <md-input-container class="md-block">
         <label>Email</label>
         <md-icon ><i class="ti-signup ti-user"></i></md-icon>
-        <input required type="email" name="clientEmail" ng-model="user.email" ng-pattern="/^.+@.+\..+$/" />
-        <div ng-messages="projectForm.clientEmail.$error" role="alert">
-          <div ng-message-exp="['required', 'pattern']">
-            Enter a valid email.
+        <input required type="email" name="email" ng-model="user.email"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+        <div ng-messages="userForm.email.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+            Please enter a valid email
           </div>
         </div>
       </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Password</label>
         <md-icon ><i class="ti-signup ti-key"></i></md-icon>
-        <input  placeholder="" name="password" type="password" ng-model="user.password" value="" required >
-        <div ng-show="myForm.password.$invalid">
-          <div ng-message="required">Password is required.</div>
+        <input required type="password" name="password" ng-model="user.password" minlength="8"/>
+        <div ng-messages="userForm.password.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength']">
+            Password is required
+          </div>
         </div>
       </md-input-container>
       <div class="btn-wrapper" layout="column" layout-align="center center">
-        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logInUser(user)">Log In</a>
-        <div style="padding:30px 30px 0;" layout="column">
-          <a href="" ng-click="signUpCard()">Create a New account</a>
+        <button ng-disabled="userForm.$invalid" class="btn btn-primary btn-circ btn-color" ng-click="logInUser(user)">Log In</button>
+        <div style="padding-top:8px;" layout="column">
+          <button class="btn btn-primary btn-secondary btn-circ btn-color" ng-click="signUpCard()">Sign Up</button>
           <!-- <a class="forget-txt" href="" ng-click="passwordReset();">Forget password?</a> -->
         </div>
       </div>
     </form>
   </div>
-
 </div>

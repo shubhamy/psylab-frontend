@@ -3,35 +3,47 @@
     <h2>Sign Up</h2>
   </div>
   <div class="form">
-    <form name='myform'>
-      <md-input-container class="md-block" flex-gt-sm>
-        <label>Name</label>
-        <md-icon ><i class="ti-signup ti-user"></i></md-icon>
-        <input  placeholder="" name="name" type="text" ng-model="user.name" value="" required >
-        <div ng-messages="myForm.name.$error">
-          <div ng-message="required">Name is required.</div>
-        </div>
-      </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm>
+    <form name='signForm' novalidate>
+      <md-input-container class="md-block">
         <label>Email</label>
         <md-icon ><i class="ti-signup ti-user"></i></md-icon>
-        <input  placeholder="" name="email" type="email" ng-model="user.email" value="" required >
-        <div ng-messages="myForm.email.$error">
-          <div ng-message="required">Email is required.</div>
+        <input required type="email" name="email" ng-model="user.email"
+               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+        <div ng-messages="signForm.email.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+            Please enter a valid email
+          </div>
         </div>
       </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm>
+      <md-input-container class="md-block">
         <label>Password</label>
         <md-icon ><i class="ti-signup ti-key"></i></md-icon>
-        <input  placeholder="" name="password" type="password" ng-model="user.password" value="" required >
-        <div ng-messages="myForm.password.$error">
-          <div ng-message="required">Password is required.</div>
+        <input required type="password" name="password" ng-model="user.password" minlength="8"/>
+        <div ng-messages="signForm.password.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength']">
+            Password is required
+          </div>
+        </div>
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Retype Password</label>
+        <md-icon ><i class="ti-signup ti-key"></i></md-icon>
+        <input required type="password" name="confirm_password" ng-model="user.password_verify" minlength="8" data-password-verify="user.password" />
+        <div ng-messages="signForm.password2.$error" role="alert">
+          <div ng-message-exp="['required', 'minlength']">
+            Password is required
+          </div>
+          <div style="font-size:12px;padding-top:5px;" ng-show="signForm.confirm_password.$error.passwordVerify">
+            Fields are not equal!
+          </div>
         </div>
       </md-input-container>
       <div class="btn-wrapper" layout="column" layout-align="center center">
-        <a href="" class="btn btn-primary btn-circ btn-color" ng-click="createUser(user)">Sign UP</a>
-        <div style="padding:30px 30px 0;">
-          <a class="forget-txt" ng-click="forgetPassword($event);">Forget password?</a>
+        <button ng-disabled="signForm.$invalid" class="btn btn-primary btn-circ btn-color" ng-click="createUser(user)">Sign Up</button>
+        <div style="padding-top:8px;" layout="column">
+          <button class="btn btn-primary btn-secondary btn-circ btn-color" ng-click="signUpCard()">Log In</button>
+          <!-- <a class="forget-txt" href="" ng-click="passwordReset();">Forget password?</a> -->
         </div>
       </div>
     </form>

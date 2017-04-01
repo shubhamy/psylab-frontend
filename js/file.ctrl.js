@@ -15,8 +15,12 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
        }).then(function successCallback(response) {
          console.log(response);
          $rootScope.userFiles=response.data;
+         $rootScope.fileLoading=response.status;
        }, function errorCallback(error) {
-         console.log(error);
+         if(error.status==401){
+           userInfo = null;
+           $window.sessionStorage["userInfo"] = null;
+         };
      });
   };
   if ($rootScope.userFiles==null){

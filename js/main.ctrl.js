@@ -2,9 +2,8 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
-  // document.getElementsByTagName("CA                                     NVAS")[0].setAttribute("class", "canvasclass");
+  // document.getElementsByTagName("CANVAS")[0].setAttribute("ng-if", "isPath('/')");
   $scope.isUserLoggedIn=Auth.getUserInfo();
-  console.log($scope.isUserLoggedIn);
   $scope.playVisible=false;
   $scope.userInfo = null;
   $scope.signUpCard = function(ev) {
@@ -68,10 +67,17 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
     });
   };
   $scope.logInUser=function (user) {
-    console.log(user);
+    $scope.loadingComp=false;
     Auth.login(user).then(function(response) {
+        $scope.loadingComp=true;
         $scope.userInfo = response;
         $location.path("/file");
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('User sucessfully logged in!')
+          .position('bottom right')
+          .hideDelay(3000)
+        );
         $mdDialog.cancel();
       });
   };
