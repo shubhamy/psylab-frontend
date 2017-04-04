@@ -687,7 +687,7 @@ z-index: 1000 !important;
       rgba(48, 180, 224, 0.5)
     ),
     url('../images/vid.jpg');
-    background-size: 100%;
+      background-size: 100%;
     @media screen and (max-width: $xl-break) {
       width: 600px;
       height: 338px;

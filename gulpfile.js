@@ -16,24 +16,22 @@ gulp.task('clean', function() {
     'dist/**/*'
   ]);
 });
-gulp.task('build-lib', function() {
+gulp.task('build-bower-lib', function() {
   return gulp.src('bower_components/**/*')
     .pipe(gulp.dest('dist/bower_components'));
 })
-gulp.task('build-php', function() {
-  return gulp.src('php/**/*')
-    .pipe(gulp.dest('dist/php'));
+gulp.task('build-node-lib', function() {
+  return gulp.src('node_modules/chartjs-plugin-zoom/*')
+    .pipe(gulp.dest('dist/node_modules/chartjs-plugin-zoom'));
 })
 gulp.task('build-root', function() {
   return gulp.src(['index.html','main.js','themify-icons.css'])
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/'));
 });
-
 gulp.task('build-images', function() {
   return gulp.src(['images/**'])
     .pipe(gulp.dest('dist/images'));
 });
-
 gulp.task('build-fonts', function () {
   return gulp.src('fonts/**')
     .pipe(gulp.dest('dist/fonts'));
@@ -61,20 +59,16 @@ gulp.task('compass-build', function() {
     }))
     .pipe(gulp.dest('dist/css'));
 });
-
 gulp.task('build', function() {
-  return runSequence(['build-root','build-php', 'build-sourcejs', 'build-customcss','compass-build', 'build-templates'], 'jshint');
+  return runSequence(['build-root', 'build-sourcejs', 'build-customcss','compass-build', 'build-templates'], 'jshint');
 });
 
 gulp.task('watch-js', function() {
   gulp.watch('js/*.js', ['build-sourcejs']);
 });
-gulp.task('watch-img', function() {
-  gulp.watch('images/**', ['build-images']);
-});
-gulp.task('watch-php', function() {
-  gulp.watch('php/**', ['build-php']);
-});
+// gulp.task('watch-img', function() {
+//   gulp.watch('images/**', ['build-images']);
+// });
 gulp.task('watch-css', function() {
   gulp.watch('css/*.css', ['build-customcss']);
 });
@@ -82,9 +76,11 @@ gulp.task('compass-watch', function () {
   gulp.watch('sass/*.scss', ['compass-build']);
 });
 gulp.task('watch-html', function() {
-  gulp.watch('**/*.html', ['build']);
+  gulp.watch('templates/*.html', ['build-templates']);
 });
-
+gulp.task('watch-root', function() {
+  gulp.watch(['index.html','main.js'], ['build-root']);
+});
 gulp.task('connect', function() {
   connect.server({
     root: 'dist',
@@ -101,12 +97,12 @@ gulp.task('jshint', function() {
 
 // default task
 gulp.task('default', function() {
-  return runSequence('clean', 'build', 'build-fonts', 'build-images','build-php', 'build-lib','compass-build',
-    ['watch-js', 'watch-css', 'watch-html','watch-php', 'watch-img','compass-watch','connect']
+  return runSequence('clean', 'build-root','build-templates', 'build-fonts','build-sourcejs', 'jshint', 'build-images', 'build-bower-lib','build-node-lib','compass-build',
+    ['watch-js', 'watch-css', 'watch-html','watch-root','compass-watch','connect']
   );
 });
 
 // task to run in production
 gulp.task('build-prod', function() {
-  return runSequence('clean', 'build-root', 'build-sourcejs', 'build-customcss', 'compass-build', 'build-templates', 'build-fonts', 'build-images','build-php','build-lib');
+  return runSequence('clean', 'build-root', 'build-sourcejs', 'build-customcss', 'compass-build', 'build-templates', 'build-fonts', 'build-images','build-bower-lib','build-node-lib');
 });
