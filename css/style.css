@@ -897,15 +897,24 @@ canvas {
     margin-bottom: 3rem;
   }
 }
-
-@media screen and (min-width: 1280px) {
-  .video-wrapper {
-    height: 270px;
+@media screen and (max-width: 1440px) {
+  #section4 .video-wrapper {
+    height: 493px;
   }
 }
-@media screen and (min-width: 1440px) {
-  .video-wrapper {
-    height: 340px;
+@media screen and (max-width: 1280px) {
+  #section4 .video-wrapper {
+    height: 439px;
+  }
+}
+@media screen and (max-width: 960px) {
+  #section4 .video-wrapper {
+    height: 384px;
+  }
+}
+@media screen and (max-width: 600px) {
+  #section4 .video-wrapper {
+    height: 219px;
   }
 }
 
@@ -917,26 +926,26 @@ canvas {
 }
 @media screen and (max-width: 1440px) {
   .bg-img {
-    width: 600px;
-    height: 338px;
+    width: 900px;
+    height: 493px;
   }
 }
 @media screen and (max-width: 1280px) {
   .bg-img {
-    width: 470px;
-    height: 265px;
+    width: 800px;
+    height: 439px;
   }
 }
 @media screen and (max-width: 960px) {
   .bg-img {
-    width: 400px;
-    height: 225px;
+    width: 700px;
+    height: 384px;
   }
 }
 @media screen and (max-width: 600px) {
   .bg-img {
-    width: 300px;
-    height: 168px;
+    width: 400px;
+    height: 219px;
   }
 }
 
@@ -955,43 +964,44 @@ canvas {
   height: 35px;
   width: 35px;
 }
-@media screen and (min-width: 600px) {
+@media screen and (max-width: 1440px) {
   .img-overlay {
-    width: 300px;
+    width: 900px;
+    height: 493px;
+  }
+  .img-overlay .video-embed {
+    width: 900px;
+    height: 493px;
   }
 }
-@media screen and (min-width: 960px) {
+@media screen and (max-width: 1280px) {
+  .img-overlay {
+    width: 900px;
+    height: 506px;
+  }
+  .img-overlay .video-embed {
+    width: 900px;
+    height: 506px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .img-overlay {
+    width: 700px;
+    height: 384px;
+  }
+  .img-overlay .video-embed {
+    width: 700px;
+    height: 384px;
+  }
+}
+@media screen and (max-width: 600px) {
   .img-overlay {
     width: 400px;
-    height: 225px;
+    height: 219px;
   }
   .img-overlay .video-embed {
     width: 400px;
-    height: 225px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .img-overlay {
-    width: 470px;
-    height: 265px;
-  }
-  .img-overlay div {
-    height: 80px;
-    width: 80px;
-  }
-  .img-overlay .video-embed {
-    width: 470px;
-    height: 265px;
-  }
-}
-@media screen and (min-width: 1440px) {
-  .img-overlay {
-    width: 600px;
-    height: 338px;
-  }
-  .img-overlay .video-embed {
-    width: 600px;
-    height: 338px;
+    height: 219px;
   }
 }
 .img-overlay:hover {
