@@ -103,9 +103,8 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
 }]);
 app.run(["$rootScope", "$location", function ($rootScope, $location) {
     $rootScope.$on("$routeChangeSuccess", function (userInfo) {
-        console.log(userInfo);
+        // console.log(userInfo);
     });
-
     $rootScope.$on("$routeChangeError", function (event, current, previous, eventObj) {
         if (eventObj.authenticated === false) {
             $location.path("/");
@@ -114,7 +113,6 @@ app.run(["$rootScope", "$location", function ($rootScope, $location) {
 }]);
 app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
     var userInfo;
-
     function login(user) {
         var url=URL_PREFIX+'login/';
         var deferred = $q.defer();

@@ -234,7 +234,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 body, html {
-  background-color: #f8f9fe;
+  background-color: #ffffff;
   font-size: 14px;
   overflow-x: hidden;
 }
@@ -444,7 +444,7 @@ a {
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: #f8f9fe;
+  background: #ffffff;
 }
 
 .ngview.home {
@@ -1403,9 +1403,11 @@ canvas {
   color: black;
   color: #83888D;
   background: transparent;
+  transition: color .3s ease;
 }
 .file-section .value:hover {
   background: #EEE;
+  transition: color .3s ease;
 }
 .file-section .value div:first-child {
   color: #373c46;
@@ -1416,13 +1418,28 @@ canvas {
   padding: 16px;
   cursor: pointer;
 }
+.file-section .active-color {
+  height: 24px;
+  width: 24px;
+  margin: 0 16px;
+  border-radius: 50%;
+  background: #ef0d33;
+  opacity: 0.8;
+}
+.file-section .active-color.green {
+  background: #23E0BA;
+}
 .file-section .value.item-1 {
   background-color: rgba(201, 223, 234, 0.2);
+}
+.file-section .value.item-1:hover {
+  background: #EEE;
+  transition: color .3s ease;
 }
 .file-section .data-rows .btn-color {
   background: #1F8EED;
   padding: 0.3rem 1.1rem;
-  margin: 1rem .7rem;
+  margin: .2rem .7rem;
   border-radius: 4px;
 }
 .file-section .data-rows i {
@@ -1542,4 +1559,66 @@ canvas {
   background: #1F8EED;
   border-radius: 4px;
   padding: 1rem 1.1rem;
+}
+
+.backtest-section {
+  min-height: calc(100vh - 70px);
+}
+.backtest-section .strategy {
+  margin: 30px auto;
+  padding: 16px;
+  max-height: 300px;
+  background: #ffffff;
+}
+.backtest-section .strategy span {
+  font-family: "Open Sans", sans-serif;
+  color: #83888D;
+  font-size: 14px;
+}
+.backtest-section .strategy p {
+  font-size: 16px;
+  padding-top: .5rem;
+}
+.backtest-section .strategy .date-picker {
+  margin-top: 50px;
+}
+.backtest-section p {
+  font-size: 16px;
+  color: #575963;
+  line-height: 27px;
+  font-family: "Open Sans", sans-serif;
+}
+.backtest-section .performance {
+  margin: 9px 30px;
+  width: 100%;
+}
+.backtest-section .performance h2 {
+  color: #575963;
+  font-family: "Montserrat", sans-serif;
+}
+.backtest-section .performance div {
+  padding: 16px;
+  font-family: "PT Sans", sans-serif;
+}
+.backtest-section .performance div span {
+  color: #83888D;
+  font-size: 14px;
+}
+.backtest-section .performance div p {
+  font-size: 16px;
+  padding-top: .5rem;
+}
+
+.graph-wrapper canvas {
+  position: relative !important;
+  height: 320px !important;
+  width: 100% !important;
+}
+.graph-wrapper .graph {
+  background: #ffffff;
+  width: 100%;
+}
+.graph-wrapper .graph h2 {
+  color: #575963;
+  font-family: "Montserrat", sans-serif;
 }

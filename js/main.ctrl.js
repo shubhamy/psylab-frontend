@@ -92,6 +92,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
             .position('bottom right')
             .hideDelay(3000)
           );
+          window.location.reload(1);
       }, function (error) {
           console.log(error);
       });
