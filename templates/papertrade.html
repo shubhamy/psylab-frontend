@@ -1,0 +1,11 @@
+<div flex class="container papertrade-section" layout="row" layout-align="center center">
+  <div class="card md-whiteframe-1dp" layout="column" layout-align="center center" md-padding>
+    <p>{{selectedFile.name}}</p>
+    <p>{{selectedFile.ticker.symbol}}</p>
+    <p>{{selectedFile.shares}}</p>
+    <p>{{selectedFile.trade_frequency}}</p>
+    <p>{{selectedFile.is_active}}</p>
+    <a href="" ng-click="togglePapertrade(ev)" ng-if="selectedFile.is_active==false" class="btn btn-primary btn-color">Start Papertrade</a>
+    <a href="" ng-click="togglePapertrade(ev)" ng-if="selectedFile.is_active!=false" class="btn btn-primary btn-color">stop paperTrade</a>
+  </div>
+</div>

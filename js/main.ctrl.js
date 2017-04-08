@@ -1,9 +1,9 @@
-app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $rootScope, $routeParams, $http, $window, $log, $document, $mdSidenav, $mdToast, $timeout, nlp, Auth) {
+app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $rootScope, $routeParams, $http, $window, $log, $document, $mdSidenav, $timeout, nlp, Auth) {
   $scope.isPath= function(viewLocation) {
     return viewLocation === $location.path();
   };
   // document.getElementsByTagName("CANVAS")[0].setAttribute("ng-if", "isPath('/')");
-  $scope.isUserLoggedIn=Auth.getUserInfo();
+  $rootScope.isUserLoggedIn=Auth.getUserInfo();
   $scope.playVisible=false;
   $scope.userInfo = null;
   $scope.signUpCard = function(ev) {
@@ -20,7 +20,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
       });
   };
   $scope.createUser=function (user) {
-    var url=URL_PREFIX+'api/register/'
+    var url=URL_PREFIX+'api/register/';
     $http({
          method: "POST",
          data:{
@@ -32,7 +32,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
           },
          url: url
        }).then(function successCallback(response) {
-         if (response.status=200){
+         if (response.status===200){
            $mdDialog.cancel();
            $mdToast.show(
              $mdToast.simple()
@@ -40,9 +40,9 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
              .position('bottom right')
              .hideDelay(3000)
            );
-         };
+         }
        }, function errorCallback(error) {
-         if (error.status=302){
+         if (error.status===302){
            $mdDialog.cancel();
            $mdToast.show(
              $mdToast.simple()
@@ -50,7 +50,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
              .position('bottom right')
              .hideDelay(3000)
            );
-         };
+         }
      });
   };
   $scope.logInCard = function(ev) {
@@ -71,6 +71,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
     Auth.login(user).then(function(response) {
         $scope.loadingComp=true;
         $scope.userInfo = response;
+        $rootScope.isUserLoggedIn=true;
         $location.path("/file");
         $mdToast.show(
           $mdToast.simple()

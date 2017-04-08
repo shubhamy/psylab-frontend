@@ -1523,3 +1523,23 @@ canvas {
     margin-top: 30px;
   }
 }
+
+.papertrade-section {
+  min-height: calc(100vh - 70px);
+}
+.papertrade-section .card {
+  width: 400px;
+  height: 500px;
+  background: #ffffff;
+}
+.papertrade-section .card p {
+  font-size: 16px;
+  line-height: 27px;
+  color: #373c46;
+  font-family: "Open Sans", sans-serif;
+}
+.papertrade-section .card .btn-color {
+  background: #1F8EED;
+  border-radius: 4px;
+  padding: 1rem 1.1rem;
+}

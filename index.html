@@ -22,19 +22,20 @@
           <!-- TODO: logo -->
         </div>
         <div flex="65" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
-          <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file')">
+          <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file') || isPath('/backtest') || isPath('/papertrade')">
             <li><a href="#!/play">Feature</a></li>
-            <li><a href="">Pricing</a></li>
+            <li><a href="#!/trader">Strategy</a></li>
             <li><a href="#!/data">Contact</a></li>
             <li><a href="#!/file" ng-if="isUserLoggedIn!=undefined">Catalogue</a></li>
             <a ng-click="logInCard()" href=""  ng-if="isUserLoggedIn==undefined" class="btn btn-primary btn-circ btn-color">Sign In</a>
             <a ng-click="logOut()" href="" ng-if="isUserLoggedIn!=undefined" class="btn btn-primary btn-circ btn-color">Logout</a>
           </ul>
-          <ul class="second-nav" ng-show="isPath('/editor')||isPath('/trader') || isPath('/file')">
-            <li><a href="#!/file">Catalogue</a></li>
-            <li><a href="#!/trader">Strategy</a></li>
-            <li><a href="#!/file">PaperTrade</a></li>
-            <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logOut()">Logout</a>
+          <ul class="second-nav" ng-show="isPath('/editor')||isPath('/trader') || isPath('/file') || isPath('/backtest') || isPath('/papertrade')">
+            <li><a href="#!/file">Home</a></li>
+            <li><a href="#!/file" ng-if="isUserLoggedIn!=undefined">Catalogue</a></li>
+            <li><a href="#!/trader" ng-if="isUserLoggedIn!=undefined">Strategy</a></li>
+            <a ng-click="logInCard()" href=""  ng-if="isUserLoggedIn==undefined" class="btn btn-primary btn-circ btn-color">Sign In</a>
+            <a href="" class="btn btn-primary btn-circ btn-color" ng-click="logOut()"  ng-if="isUserLoggedIn!=undefined">Logout</a>
           </ul>
         </div>
       </div>

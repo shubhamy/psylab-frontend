@@ -1326,3 +1326,22 @@ z-index: 1000 !important;
     }
   }
 }
+.papertrade-section{
+  min-height: calc(100vh - 70px);
+  .card{
+    width: 400px;
+    height: 500px;
+    background: $white;
+    p{
+    font-size: 16px;
+    line-height: 27px;
+    color: $tundora;
+    font-family: "Open Sans", sans-serif;
+    }
+    .btn-color{
+      background:$btn-color;
+      border-radius: 4px;
+      padding: 1rem 1.1rem;
+    }
+  }
+}

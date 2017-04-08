@@ -29,6 +29,42 @@
             <div ng-message="pattern" class="my-message">That doesn't look like a valid number.</div>
           </div>
         </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Frequency</label>
+          <md-select ng-model="strategies.frequency">
+            <md-option ng-repeat="frequency in frequencies" value="{{frequency}}">
+              {{frequency}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Precentage Loss</label>
+            <input name="loss" ng-model="strategies.loss" placeholder="10"
+                   required ng-pattern="/^[0-9]{1,7}$/"  md-minlength='1' md-maxlength="2">
+            <div ng-messages="userStrategiesForm.loss.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply Some precentage loss.</div>
+              <div ng-message="pattern" class="my-message">
+                That doesn't look like a valid precentage.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Precentage sould be less than 100
+              </div>
+            </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Profit stop</label>
+            <input name="profit" ng-model="strategies.profit" placeholder="10"
+                 required ng-pattern="/^[0-9]{1,7}$/"  md-minlength='1' md-maxlength="2">
+            <div ng-messages="userStrategiesForm.profit.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply Some precentage profit.</div>
+              <div ng-message="pattern" class="my-message">
+                That doesn't look like a valid precentage.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Precentage sould be less than 100
+              </div>
+            </div>
+        </md-input-container>
       <form>
     </div>
   </div>

@@ -43,17 +43,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     }
   }).when("/trader", {
     controller: "TextEditorCtrl",
-    templateUrl: "templates/trader.editor.html",
-    resolve: {
-        auth: function ($q, Auth) {
-            var userInfo = Auth.getUserInfo();
-            if (userInfo) {
-                return $q.when(userInfo);
-            } else {
-                return $q.reject({ authenticated: false });
-            }
-        }
-    }
+    templateUrl: "templates/trader.editor.html"
   }).when("/editor", {
     controller: "CodeEditorCtrl",
     templateUrl: "templates/editor.html",
@@ -70,6 +60,32 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
   }).when("/file", {
     controller: "FileCtrl",
     templateUrl: "templates/file.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/backtest", {
+    controller: "BacktestCtrl",
+    templateUrl: "templates/backtest.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/papertrade", {
+    controller: "PapertradeCtrl",
+    templateUrl: "templates/papertrade.html",
     resolve: {
         auth: function ($q, Auth) {
             var userInfo = Auth.getUserInfo();

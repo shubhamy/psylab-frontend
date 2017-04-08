@@ -1,6 +1,10 @@
 
-app.controller("DataCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
-
+app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
+  var CONTENT_TYPE='application/json; charset=UTF-8';
+  if (Auth.getUserInfo().accessToken!==undefined){
+    var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
+  }
+  console.log($rootScope.selectedFile);
     $scope.orders=[
       {time: '2017-01-01 14:00', pnl: Math.floor(Math.random() * 50) + 50},
       {time: '2017-01-01 14:01', pnl: Math.floor(Math.random() * 50) + 50},
@@ -71,9 +75,9 @@ app.controller("DataCtrl", function($scope, $rootScope, $q, $timeout, $routePara
       $scope.graphdata.push({x:$scope.orders[i].time,y:$scope.orders[i].pnl});
       // console.log($scope.graphdata);
       // console.log(data.data[i]);
-    };
+    }
     $scope.series = ['Series A', 'Series B'];
-    $scope.data=[]
+    $scope.data=[];
     $scope.data.push($scope.graphdata);
     console.log($scope.data);
     $scope.onClick = function (points, evt) {

@@ -28,7 +28,7 @@ app.controller("CodeEditorCtrl", function($scope, $rootScope, $timeout, $routePa
  };
 
  $scope.testRequest=function () {
-   var url=URL_PREFIX+'/admin'
+   var url=URL_PREFIX+'/admin';
    $http({
         method: 'GET',
         url: url
