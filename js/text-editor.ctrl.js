@@ -1,6 +1,5 @@
 app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
   var CONTENT_TYPE='application/json; charset=UTF-8';
-  $rootScope.selectedItem=null;
   $scope.hideterm2=true;
   $scope.strategies=[];
   $scope.userFiles=[];
@@ -66,6 +65,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.logInUser=function (user) {
     Auth.login(user).then(function(response) {
         $scope.userInfo = response;
+        $rootScope.isUserLoggedIn=true;
         var AUTHORIZATION='Bearer '+response.accessToken;
         $mdToast.show(
           $mdToast.simple()
@@ -90,7 +90,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                data:{
                  name:result,
                  strategy:$rootScope.editor1code,
-                 ticker:$rootScope.selectedItem,
+                 ticker:$rootScope.selectedItem.symbol,
                  shares:$rootScope.pendingStrategy.shares,
                  trade_frequency:$rootScope.pendingStrategy.frequency
                },

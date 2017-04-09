@@ -234,7 +234,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 body, html {
-  background-color: #ffffff;
+  background-color: #f8f9fe;
   font-size: 14px;
   overflow-x: hidden;
 }
@@ -444,7 +444,7 @@ a {
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: #ffffff;
+  background: #f8f9fe;
 }
 
 .ngview.home {
