@@ -4,20 +4,20 @@
       <div flex="50" layout="row">
         <md-input-container  class="md-block" flex-gt-sm >
           <label>Search Strategy...</label>
-          <md-icon ><i class="ti-search"></i></md-icon>
           <input type="text" ng-model="search_query" focus>
+          <md-icon ><i class="ti-search"></i></md-icon>
         </md-input-container>
-        <a href="#!/trader" class="btn btn-primary btn-color">create</a>
+        <a href="" ng-click="createStrategy()" class="btn btn-primary btn-color">create</a>
       </div>
     </div>
     <div class="key" layout="row" layout-align="center center">
-      <div flex-gt-sm="50">
+      <div flex-gt-sm="40">
         <span>Name</span>
       </div>
-      <div flex-gt-sm="20">
+      <div flex-gt-sm="30">
         <span>Modified</span>
       </div>
-      <div flex-gt-sm="30">
+      <div flex-gt-sm="30" layout="row" layout-align="center center">
         <span>Action</span>
       </div>
     </div>
@@ -29,12 +29,12 @@
     <md-divider></md-divider>
     <div ng-repeat="file in userFiles| filter:search_query |orderBy:'name'">
       <div class="value item-{{$index%2}}" href="" layout="row" layout-align="center center" >
-        <div flex-gt-sm="50" ng-click="editFile(file)" layout="row" layout-align="start center">
+        <div flex-gt-sm="40" ng-click="editFile(file)" layout="row" layout-align="start center">
           <span ng-class="{'green':file.is_active===true}" class="active-color"></span>
           <span>{{file.name}}</span>
         </div>
-        <div flex-gt-sm="20">
-          <span>{{file.created}}</span>
+        <div flex-gt-sm="30">
+          <span>{{file.updated |  date:'medium'}}</span>
         </div>
         <div flex-gt-sm="30" layout="row" layout-align="center center">
           <a ng-click="backTest(file)" class="btn btn-primary btn-color">backtest</a>

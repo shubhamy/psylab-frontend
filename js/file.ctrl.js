@@ -22,10 +22,13 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
          }
      });
   }
-  if ($rootScope.userFiles===null){
+  if ($rootScope.userFiles===null || $rootScope.userFiles===undefined){
     getUserFiles();
   }
-    getUserFiles();
+  $scope.createStrategy=function(){
+    $location.path("/trader");
+    $rootScope.selectedFile=null;
+  };
   $scope.editFile=function (file) {
     $location.path("/trader");
     $rootScope.selectedFile=file;
@@ -37,5 +40,5 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
   $scope.paperTrade=function(file){
     $location.path("/papertrade");
     $rootScope.selectedFile=file;
-  }
+  };
 });

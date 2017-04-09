@@ -1318,7 +1318,6 @@ canvas {
   font-size: 1em;
 }
 .response-wrapper .response form {
-  max-width: 70%;
   width: auto;
   background: #ffffff;
   padding: 30px;
@@ -1348,11 +1347,12 @@ canvas {
 .editor-wrapper .code-editor {
   height: calc(100% - 70px);
 }
-.editor-wrapper .code-execute-panel {
+
+.code-execute-panel {
   height: 70px;
   border-bottom: 1px solid #d0d0d0;
 }
-.editor-wrapper .code-execute-panel .btn-color {
+.code-execute-panel .btn-color {
   margin: 16px;
   background: #1F8EED;
 }
@@ -1383,7 +1383,7 @@ canvas {
   padding: 0.4rem 1.5rem;
   border-radius: 4px;
   font-size: 1.2rem;
-  margin: 2rem .7rem;
+  margin: 2.5rem 2rem;
   max-height: 35px !important;
 }
 
@@ -1419,8 +1419,8 @@ canvas {
   cursor: pointer;
 }
 .file-section .active-color {
-  height: 24px;
-  width: 24px;
+  height: 18px;
+  width: 18px;
   margin: 0 16px;
   border-radius: 50%;
   background: #ef0d33;
@@ -1559,6 +1559,9 @@ canvas {
   background: #1F8EED;
   border-radius: 4px;
   padding: 1rem 1.1rem;
+}
+.papertrade-section .card .btn-color p {
+  color: #ffffff;
 }
 
 .backtest-section {

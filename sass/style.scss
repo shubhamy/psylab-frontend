@@ -1125,7 +1125,6 @@ z-index: 1000 !important;
       font-size: 1em;
     }
     form{
-      max-width: 70%;
       width: auto;
       background: $white;
       padding: 30px;
@@ -1156,13 +1155,13 @@ z-index: 1000 !important;
   .code-editor{
     height: calc(100% - 70px);
   }
-  .code-execute-panel{
-    height: 70px;
-    border-bottom: 1px solid #d0d0d0;
-    .btn-color{
-      margin: 16px;
-      background:$btn-color;
-    }
+}
+.code-execute-panel{
+  height: 70px;
+  border-bottom: 1px solid #d0d0d0;
+  .btn-color{
+    margin: 16px;
+    background:$btn-color;
   }
 }
 .convert-wrapper{
@@ -1191,7 +1190,7 @@ z-index: 1000 !important;
     padding: 0.4rem 1.5rem;
     border-radius: 4px;;
     font-size: 1.2rem;
-    margin: 2rem .7rem;
+    margin: 2.5rem 2rem;
     max-height: 35px !important;
   }
 }
@@ -1226,8 +1225,8 @@ z-index: 1000 !important;
     }
   }
   .active-color{
-    height: 24px;
-    width: 24px;
+    height: 18px;
+    width: 18px;
     margin: 0 16px;
     border-radius: 50%;
     background:#ef0d33;
@@ -1359,6 +1358,9 @@ z-index: 1000 !important;
     .btn-color{
       background:$btn-color;
       border-radius: 4px;
+      p{
+        color: $white;
+      }
       padding: 1rem 1.1rem;
     }
   }

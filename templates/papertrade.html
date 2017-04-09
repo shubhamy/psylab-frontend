@@ -5,7 +5,9 @@
     <p>{{selectedFile.shares}}</p>
     <p>{{selectedFile.trade_frequency}}</p>
     <p>{{selectedFile.is_active}}</p>
-    <a href="" ng-click="togglePapertrade(ev)" ng-if="selectedFile.is_active==false" class="btn btn-primary btn-color">Start Papertrade</a>
-    <a href="" ng-click="togglePapertrade(ev)" ng-if="selectedFile.is_active!=false" class="btn btn-primary btn-color">stop paperTrade</a>
+    <a href="" ng-click="togglePapertrade(ev)" class="btn btn-primary btn-color">
+      <p ng-if="selectedFile.is_active==false">Start Papertrade</p>
+      <p ng-if="selectedFile.is_active!=false">Papertrade is runing</p>
+    </a>
   </div>
 </div>

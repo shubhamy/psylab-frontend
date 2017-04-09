@@ -4,7 +4,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
   if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
-    $location.path('/file')
+    $location.path('/file');
   }
   $scope.togglePapertrade=function (ev) {
     if($rootScope.selectedFile.is_active===true){
@@ -36,6 +36,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .hideDelay(3000)
              );
              $rootScope.selectedFile.is_active=false;
+             getUserFiles();
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()
@@ -97,5 +98,5 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
            });
       }
     }
-  }
+  };
 });

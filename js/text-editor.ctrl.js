@@ -1,17 +1,16 @@
 app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
   var CONTENT_TYPE='application/json; charset=UTF-8';
-  if (Auth.getUserInfo().accessToken!==undefined){
-    var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
-  }
-  $scope.selectedItem=null;
+  $rootScope.selectedItem=null;
+  $scope.hideterm2=true;
   $scope.strategies=[];
   $scope.userFiles=[];
   $scope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
   $scope.selectedFile='untitled';
   var file=$rootScope.selectedFile;
-  $scope.selectedItemChange = selectedItemChange;
+  $rootScope.selectedItemChange = selectedItemChange;
   function selectedItemChange(item) {
-    $scope.selectedItem=item;
+    $rootScope.selectedItem=item;
+    console.log($rootScope.selectedItem);
   }
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
@@ -27,7 +26,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
        }, function errorCallback(error) {
      });
   };
-  if ($rootScope.tickersArray===null){
+  if ($rootScope.tickersArray===null || $rootScope.tickersArray===undefined){
     $scope.fetchTickers();
   }
   $scope.getTickers = function(searchText) {
@@ -43,7 +42,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.setSelectedFile= function(file){
     $scope.aceSession.setValue(file.strategy);
     $scope.strategies.shares=file.shares;
-    $scope.selectedItem=file.ticker;
+    $rootScope.selectedItem=file.ticker;
     $scope.strategyPk=file.pk;
     $scope.selectedFile=file.name;
     $scope.frequency=file.trade_frequency;
@@ -54,9 +53,76 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       $scope.setSelectedFile(file);
     }
   }, 100);
+  $scope.addTerminal=function () {
+    $scope.hideterm2=!$scope.hideterm2;
+  };
+  $scope.aceChanged=function () {
+    $rootScope.editor1code = $scope.aceSession.getDocument().getValue();
+  };
+  $scope.backTest=function(){
+    $location.path("/backtest");
+    $rootScope.selectedFile=file;
+  };
+  $scope.logInUser=function (user) {
+    Auth.login(user).then(function(response) {
+        $scope.userInfo = response;
+        var AUTHORIZATION='Bearer '+response.accessToken;
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('User sucessfully logged in!')
+          .position('bottom right')
+          .hideDelay(3000)
+        );
+        $mdDialog.cancel();
+        var confirm = $mdDialog.prompt()
+          .title('What would you name your File?')
+         //  .textContent('Bowser is a common name.')
+          .placeholder('File Name')
+          .ariaLabel('File Name')
+          .initialValue('untitled')
+          .ok('Okay!')
+          .cancel('Cancel');
+        $mdDialog.show(confirm).then(function(result) {
+          var url=URL_PREFIX+'api/p/eng/';
+          console.log(result+' '+$rootScope.editor1code+' '+$rootScope.pendingStrategy);
+          $http({
+               method: "POST",
+               data:{
+                 name:result,
+                 strategy:$rootScope.editor1code,
+                 ticker:$rootScope.selectedItem,
+                 shares:$rootScope.pendingStrategy.shares,
+                 trade_frequency:$rootScope.pendingStrategy.frequency
+               },
+               headers: {
+                  'Content-Type': CONTENT_TYPE,
+                  'Authorization':AUTHORIZATION
+                },
+               url: url
+             }).then(function successCallback(response) {
+               $mdToast.show(
+                 $mdToast.simple()
+                 .textContent('File sucessfully saved!')
+                 .position('bottom right')
+                 .hideDelay(3000)
+               );
+              $scope.selectedFile=result;
+             }, function errorCallback(error) {
+               $mdToast.show(
+                 $mdToast.simple()
+                 .textContent('Something went wrong, Please check all the input field')
+                 .position('bottom right')
+                 .hideDelay(3000)
+               );
+           });
+        }, function() {
+          $scope.status = 'You didn\'t name your dog.';
+        });
+      });
+  };
   $scope.saveStrategy= function(ev,us){
-    console.log(us);
-    if($rootScope.isUserLoggedIn===null || $rootScope.isUserLoggedIn===null){
+    $rootScope.pendingStrategy=us;
+    if($rootScope.isUserLoggedIn===null || $rootScope.isUserLoggedIn===undefined){
       $mdDialog.show({
         controller:'TextEditorCtrl',
         templateUrl: 'templates/login.html',
@@ -68,64 +134,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       .then(function(answer) {
       }, function() {
       });
-      $scope.logInUser=function (user) {
-        Auth.login(user).then(function(response) {
-            $scope.userInfo = response;
-            var AUTHORIZATION='Bearer '+response.accessToken;
-            $mdToast.show(
-              $mdToast.simple()
-              .textContent('User sucessfully logged in!')
-              .position('bottom right')
-              .hideDelay(3000)
-            );
-            $mdDialog.cancel();
-            var confirm = $mdDialog.prompt()
-              .title('What would you name your File?')
-             //  .textContent('Bowser is a common name.')
-              .placeholder('File Name')
-              .ariaLabel('File Name')
-              .initialValue('untitled')
-              .targetEvent(ev)
-              .ok('Okay!')
-              .cancel('Cancel');
-            $mdDialog.show(confirm).then(function(result) {
-              var code = $scope.aceSession.getDocument().getValue();
-              var url=URL_PREFIX+'api/p/eng/';
-              console.log($scope.selectedItem);
-              $http({
-                   method: "POST",
-                   data:{
-                     name:result,
-                     strategy:code,
-                     ticker:$scope.selectedItem.symbol,
-                     shares:us.shares
-                   },
-                   headers: {
-                      'Content-Type': CONTENT_TYPE,
-                      'Authorization':AUTHORIZATION
-                    },
-                   url: url
-                 }).then(function successCallback(response) {
-                   $mdToast.show(
-                     $mdToast.simple()
-                     .textContent('File sucessfully saved!')
-                     .position('bottom right')
-                     .hideDelay(3000)
-                   );
-                  $scope.selectedFile=result;
-                 }, function errorCallback(error) {
-                   $mdToast.show(
-                     $mdToast.simple()
-                     .textContent('Something went wrong, Please check all the input field')
-                     .position('bottom right')
-                     .hideDelay(3000)
-                   );
-               });
-            }, function() {
-              $scope.status = 'You didn\'t name your dog.';
-            });
-          });
-      };
     }
     else{
       if ($scope.selectedFile == 'untitled') {
@@ -139,16 +147,15 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           .ok('Okay!')
           .cancel('Cancel');
         $mdDialog.show(confirm).then(function(result) {
-          var code = $scope.aceSession.getDocument().getValue();
           var url=URL_PREFIX+'api/p/eng/';
-          console.log($scope.selectedItem);
           $http({
                method: "POST",
                data:{
                  name:result,
-                 strategy:code,
-                 ticker:$scope.selectedItem.symbol,
-                 shares:us.shares
+                 strategy:$rootScope.editor1code,
+                 ticker:$rootScope.selectedItem.symbol,
+                 shares:us.shares,
+                 trade_frequency:us.frequency
                },
                headers: {
                   'Content-Type': CONTENT_TYPE,
@@ -176,14 +183,12 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
         });
       }
       else{
-        var code = $scope.aceSession.getDocument().getValue();
         var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
-        console.log($scope.selectedItem);
         $http({
              method: "PUT",
              data:{
-               strategy:code,
-               ticker:$scope.selectedItem.symbol,
+               strategy:$rootScope.editor1code,
+               ticker:$rootScope.selectedItem.symbol,
                shares:us.shares
              },
              headers: {
@@ -216,55 +221,10 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
    };
   $scope.aceLoaded = function(_editor) {
     $scope.aceSession = _editor.getSession();
+    $scope.aceSession.setUseWrapMode(true);
+    $scope.aceSession.setWrapLimitRange(80, 80);
   };
-  $scope.createObj=function(text){
-    console.log(text);
-    text=nlp(text).replace('is greater than','>').all().out();
-    text=nlp(text).replace('is less than','<').all().out();
-    text=nlp(text).replace('is lower than','<').all().out();
-    text=nlp(text).replace('is equal to','=').all().out();
-    text=nlp(text).replace('is greater than equal to','=>').all().out();
-    text=nlp(text).replace('is less than equal to','<=').all().out();
-    text=nlp(text).replace('is lower than equal to','<=').all().out();
-    text=nlp(text).replace('open interest','openInterest').all().out();
-    $scope.codeObj.side=nlp(text).terms().slice(0,1).out();
-    $scope.codeObj.condstate=[];
-    $scope.codeObj.condstate[0]=nlp(text).terms().slice(3,6).out();
-    // $scope.texttoCode.push({security:'icici'});
-    $scope.texttoCode.security='icici';
-    return nlp(text).terms().slice(6).out();
-  };
-  $scope.updateObj=function(text){
-    console.log(text);
-
-  };
-  $scope.aceChanged = function () {
-
-  };
-  $scope.textExecute=function() {
-    var text = $scope.aceSession.getDocument().getValue();
-    $scope.texttoCode=[];
-    var textLength=(nlp(text).match('and').length)+(nlp(text).match('or').length);
-    text=$scope.createObj(text);
-    $scope.codeObj.condition=[];
-    console.log(text);
-    if (textLength=>2) {
-      var count=1;
-      for (var i=1; i<=textLength;i++){
-        if(0<nlp(text).match('and sell').length||0<nlp(text).match('and buy').length){
-          $scope.texttoCode.push({side:nlp(text).terms().slice(1,2).out(),cond_state:[nlp(text).terms().slice(3,6).out()]});
-          text=nlp(text).terms().slice(6).out();
-          console.log(text);
-        }
-        else{
-          $scope.codeObj.condition[count-1]=nlp(text).terms().slice(0,1).out();
-          $scope.codeObj.condstate[count]=nlp(text).terms().slice(1,4).out();
-          text=nlp(text).terms().slice(4).out();
-          count=count+1;
-        }
-      }
-      $scope.texttoCode.push($scope.codeObj);
-    }
-    console.log($scope.texttoCode);
+  $scope.aceLoaded2 = function(_editor) {
+    $scope.aceSession2 = _editor.getSession();
   };
 });

@@ -5,7 +5,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
   if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
-    $location.path('/file')
+    $location.path('/file');
   }
     $scope.orders=[
       {time: '2017-01-01 14:00', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
