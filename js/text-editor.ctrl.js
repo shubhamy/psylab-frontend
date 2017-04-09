@@ -6,10 +6,12 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
   $scope.selectedFile='untitled';
   var file=$rootScope.selectedFile;
+  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+    $location.path('/file');
+  }
   $rootScope.selectedItemChange = selectedItemChange;
   function selectedItemChange(item) {
     $rootScope.selectedItem=item;
-    console.log($rootScope.selectedItem);
   }
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
@@ -21,7 +23,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
          url: url
        }).then(function successCallback(response) {
          $rootScope.tickersArray=response.data;
-         console.log(response);
        }, function errorCallback(error) {
      });
   };
@@ -62,6 +63,54 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     $location.path("/backtest");
     $rootScope.selectedFile=file;
   };
+
+  $scope.saveUntitled=function () {
+    $mdDialog.cancel();
+    // TODO: check if file already exists
+    var confirm = $mdDialog.prompt()
+      .title('What would you name your File?')
+     //  .textContent('Bowser is a common name.')
+      .placeholder('File Name')
+      .ariaLabel('File Name')
+      .initialValue('untitled')
+      .ok('Okay!')
+      .cancel('Cancel');
+    $mdDialog.show(confirm).then(function(result) {
+      var url=URL_PREFIX+'api/p/eng/';
+      $http({
+           method: "POST",
+           data:{
+             name:result,
+             strategy:$rootScope.editor1code,
+             ticker:$rootScope.selectedItem.symbol,
+             shares:$rootScope.pendingStrategy.shares,
+             trade_frequency:$rootScope.pendingStrategy.frequency
+           },
+           headers: {
+              'Content-Type': CONTENT_TYPE,
+              'Authorization':'Bearer '+Auth.getUserInfo().accessToken
+            },
+           url: url
+         }).then(function successCallback(response) {
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('File sucessfully saved!')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+          $scope.selectedFile=result;
+         }, function errorCallback(error) {
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('Something went wrong, Please check all the input field')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+       });
+    }, function() {
+      $scope.status = 'You didn\'t name your dog.';
+    });
+  }
   $scope.logInUser=function (user) {
     Auth.login(user).then(function(response) {
         $scope.userInfo = response;
@@ -73,93 +122,60 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           .position('bottom right')
           .hideDelay(3000)
         );
-        $mdDialog.cancel();
-        var confirm = $mdDialog.prompt()
-          .title('What would you name your File?')
-         //  .textContent('Bowser is a common name.')
-          .placeholder('File Name')
-          .ariaLabel('File Name')
-          .initialValue('untitled')
-          .ok('Okay!')
-          .cancel('Cancel');
-        $mdDialog.show(confirm).then(function(result) {
-          var url=URL_PREFIX+'api/p/eng/';
-          console.log(result+' '+$rootScope.editor1code+' '+$rootScope.pendingStrategy);
-          $http({
-               method: "POST",
-               data:{
-                 name:result,
-                 strategy:$rootScope.editor1code,
-                 ticker:$rootScope.selectedItem.symbol,
-                 shares:$rootScope.pendingStrategy.shares,
-                 trade_frequency:$rootScope.pendingStrategy.frequency
-               },
-               headers: {
-                  'Content-Type': CONTENT_TYPE,
-                  'Authorization':AUTHORIZATION
-                },
-               url: url
-             }).then(function successCallback(response) {
-               $mdToast.show(
-                 $mdToast.simple()
-                 .textContent('File sucessfully saved!')
-                 .position('bottom right')
-                 .hideDelay(3000)
-               );
-              $scope.selectedFile=result;
-             }, function errorCallback(error) {
-               $mdToast.show(
-                 $mdToast.simple()
-                 .textContent('Something went wrong, Please check all the input field')
-                 .position('bottom right')
-                 .hideDelay(3000)
-               );
-           });
-        }, function() {
-          $scope.status = 'You didn\'t name your dog.';
-        });
+        $scope.saveUntitled();
       });
   };
   $scope.saveStrategy= function(ev,us){
     $rootScope.pendingStrategy=us;
-    if($rootScope.isUserLoggedIn===null || $rootScope.isUserLoggedIn===undefined){
-      $mdDialog.show({
-        controller:'TextEditorCtrl',
-        templateUrl: 'templates/login.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-      })
-      .then(function(answer) {
-      }, function() {
-      });
+    if($rootScope.editor1code==null || $rootScope.selectedItem.symbol==null || $rootScope.pendingStrategy.shares==null || $rootScope.pendingStrategy.frequency==null){
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Please check all the input field')
+        .position('bottom right')
+        .hideDelay(3000)
+      );
     }
     else{
-      if ($scope.selectedFile == 'untitled') {
-        var confirm = $mdDialog.prompt()
-          .title('What would you name your File?')
-         //  .textContent('Bowser is a common name.')
-          .placeholder('File Name')
-          .ariaLabel('File Name')
-          .initialValue('untitled')
-          .targetEvent(ev)
-          .ok('Okay!')
-          .cancel('Cancel');
-        $mdDialog.show(confirm).then(function(result) {
-          var url=URL_PREFIX+'api/p/eng/';
+      if($rootScope.isUserLoggedIn===null || $rootScope.isUserLoggedIn===undefined){
+        var confirm = $mdDialog.confirm()
+            .title('You are not Logged In')
+            .textContent('Please login first to save your important file')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('Please do it!')
+            .cancel('Cancel');
+        $mdDialog.show(confirm).then(function() {
+          $mdDialog.show({
+            controller:'TextEditorCtrl',
+            templateUrl: 'templates/login.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+          })
+          .then(function(answer) {
+              }, function() {
+            });
+          }, function() {
+
+          });
+      }
+      else{
+        if ($scope.selectedFile == 'untitled') {
+          $scope.saveUntitled();
+        }
+        else{
+          var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
           $http({
-               method: "POST",
+               method: "PUT",
                data:{
-                 name:result,
                  strategy:$rootScope.editor1code,
                  ticker:$rootScope.selectedItem.symbol,
-                 shares:us.shares,
-                 trade_frequency:us.frequency
+                 shares:us.shares
                },
                headers: {
                   'Content-Type': CONTENT_TYPE,
-                  'Authorization':AUTHORIZATION
+                  'Authorization':'Bearer '+Auth.getUserInfo().accessToken
                 },
                url: url
              }).then(function successCallback(response) {
@@ -169,7 +185,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                  .position('bottom right')
                  .hideDelay(3000)
                );
-              $scope.selectedFile=result;
              }, function errorCallback(error) {
                $mdToast.show(
                  $mdToast.simple()
@@ -178,44 +193,10 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                  .hideDelay(3000)
                );
            });
-        }, function() {
-          $scope.status = 'You didn\'t name your dog.';
-        });
-      }
-      else{
-        var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
-        $http({
-             method: "PUT",
-             data:{
-               strategy:$rootScope.editor1code,
-               ticker:$rootScope.selectedItem.symbol,
-               shares:us.shares
-             },
-             headers: {
-                'Content-Type': CONTENT_TYPE,
-                'Authorization':AUTHORIZATION
-              },
-             url: url
-           }).then(function successCallback(response) {
-             $mdToast.show(
-               $mdToast.simple()
-               .textContent('File sucessfully saved!')
-               .position('bottom right')
-               .hideDelay(3000)
-             );
-           }, function errorCallback(error) {
-             $mdToast.show(
-               $mdToast.simple()
-               .textContent('Something went wrong, Please check all the input field')
-               .position('bottom right')
-               .hideDelay(3000)
-             );
-         });
+        }
       }
     }
   };
-  // $scope.fetchIndicator();
-
   window.onbeforeunload = function() {
      return "Did you save your stuff?";
    };
