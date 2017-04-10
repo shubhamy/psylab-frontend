@@ -25,14 +25,14 @@
   </div>
   <div layout="row">
     <div flex="60" class="graph-wrapper" layout="column">
-      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center" layout-padding layout-margin>
+      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
         <h2>Order Vs Time</h2>
         <canvas id="line" class="chart chart-line" chart-data="pnlGraphData"
         chart-labels="labels" chart-series="series" chart-options="pnloptions"
         chart-dataset-override="pnldatasetOverride" chart-click="onClick">
         </canvas>
       </div>
-      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center" layout-padding layout-margin>
+      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
         <h2>PnL Vs Time</h2>
         <!-- <canvas id="bar" class="chart chart-bar"
           chart-data="orderGraphData" chart-labels="orderlabel" chart-options="orderoptions">
@@ -42,14 +42,44 @@
         </canvas>
       </div>
     </div>
-    <div flex="30">
+    <div flex="35" flex-offset-gt-sm="5">
       <div class="md-whiteframe-1dp performance" layout="column" layout-align="center center">
         <h2>Performance</h2>
+        <table>
+          <tr>
+            <td>Total PnL</td>
+            <td>1023</td>
+          </tr>
+          <tr>
+            <td>Volatility</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td>Sharpe ratio</td>
+            <td>.4</td>
+          </tr>
+          <tr>
+            <td>Sortino ratio</td>
+            <td>43</td>
+          </tr>
+          <tr>
+            <td>Max Drowdown</td>
+            <td>Giovanni Rovelli</td>
+          </tr>
+          <tr>
+            <td>Wining Rate</td>
+            <td>Giovanni Rovelli</td>
+          </tr>
+          <tr>
+            <td>Losing rate</td>
+            <td>Giovanni Rovelli</td>
+          </tr>
+          <tr>
+            <td>CAGR</td>
+            <td>Giovanni Rovelli</td>
+          </tr>
+        </table>
         <md-divider></md-divider>
-        <div flex layout="row" layout-align="center center">
-          <span flex="50">PnL</span>
-          <p flex="50">32</p>
-        </div>
       </div>
     </div>
   </div>

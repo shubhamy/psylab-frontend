@@ -1394,11 +1394,13 @@ z-index: 1000 !important;
     font-family: "Open Sans", sans-serif;
   }
   .performance{
-    margin:9px 30px;
+    // margin:9px 30px;
+    background: $white;
     width: 100%;
     h2{
       color:$brightgrey;
       font-family: $montserrat;
+      margin: 3rem auto;
     }
     div{
       padding: 16px;
@@ -1412,17 +1414,40 @@ z-index: 1000 !important;
         padding-top: .5rem;
       }
     }
+
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      font-family: $open-sans;
+      margin-bottom: 2rem;
+    }
+
+    td, th {
+      /*border: 1px solid #dddddd;*/
+      text-align: left;
+      padding: 12px;
+      font-size: 14px;
+      color: $aluminium;
+    }
+    tr{
+      td:nth-child(even){
+        font-family: $pt-sans;
+        color: $tundora;
+        font-size: 16px;
+      }
+    }
   }
 }
 .graph-wrapper{
   canvas{
     position: relative !important;
-    height: 320px !important;
-    width: 100% !important;
+    // height: 320px !important;
+    // width: 100% !important;
   }
   .graph{
     background: $white;
     width: 100%;
+    padding: 20px;
     h2{
       color:$brightgrey;
       font-family: $montserrat;

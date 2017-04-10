@@ -1592,12 +1592,13 @@ canvas {
   font-family: "Open Sans", sans-serif;
 }
 .backtest-section .performance {
-  margin: 9px 30px;
+  background: #ffffff;
   width: 100%;
 }
 .backtest-section .performance h2 {
   color: #575963;
   font-family: "Montserrat", sans-serif;
+  margin: 3rem auto;
 }
 .backtest-section .performance div {
   padding: 16px;
@@ -1611,15 +1612,32 @@ canvas {
   font-size: 16px;
   padding-top: .5rem;
 }
+.backtest-section .performance table {
+  border-collapse: collapse;
+  width: 80%;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 2rem;
+}
+.backtest-section .performance td, .backtest-section .performance th {
+  /*border: 1px solid #dddddd;*/
+  text-align: left;
+  padding: 12px;
+  font-size: 14px;
+  color: #83888D;
+}
+.backtest-section .performance tr td:nth-child(even) {
+  font-family: "PT Sans", sans-serif;
+  color: #373c46;
+  font-size: 16px;
+}
 
 .graph-wrapper canvas {
   position: relative !important;
-  height: 320px !important;
-  width: 100% !important;
 }
 .graph-wrapper .graph {
   background: #ffffff;
   width: 100%;
+  padding: 20px;
 }
 .graph-wrapper .graph h2 {
   color: #575963;
