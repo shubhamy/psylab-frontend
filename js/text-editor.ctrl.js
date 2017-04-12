@@ -48,8 +48,9 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     $scope.frequency=file.trade_frequency;
     $rootScope.selectedFile=null;
   };
+  console.log(file);
   $timeout(function() {
-    if (file!==null || file!==undefined){
+    if (file!==undefined){
       $scope.setSelectedFile(file);
     }
   }, 100);

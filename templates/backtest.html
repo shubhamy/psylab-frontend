@@ -1,6 +1,6 @@
 <div flex class="container backtest-section">
   <div layout="column" class="md-whiteframe-1dp strategy">
-    <div flex layout="row" layout-align="center center">
+    <div flex layout="row" class="data"layout-align="center center">
       <div flex="25">
         <span>Name</span>
         <p>{{selectedFile.name}}</p>
@@ -19,27 +19,26 @@
       </div>
     </div>
     <div class="date-picker" flex layout="row" layout-align="center center">
-      <md-datepicker ng-model="selectedFile.from" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
-      <md-datepicker ng-model="selectedFile.to" md-placeholder="Enter date" md-open-on-focus></md-datepicker>
+      <md-datepicker ng-model="selectedFile.from" md-placeholder="Start date" md-open-on-focus></md-datepicker>
+      <md-datepicker ng-model="selectedFile.to" md-placeholder="End date" md-open-on-focus></md-datepicker>
     </div>
   </div>
   <div layout="row">
     <div flex="60" class="graph-wrapper" layout="column">
       <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
         <h2>Order Vs Time</h2>
-        <canvas id="line" class="chart chart-line" chart-data="pnlGraphData"
-        chart-labels="labels" chart-series="series" chart-options="pnloptions"
-        chart-dataset-override="pnldatasetOverride" chart-click="onClick">
+        <canvas id="line" class="chart chart-line" chart-data="pnlGraphData" chart-series="series" chart-options="orderoptions"
+        chart-dataset-override="orderdatasetOverride" chart-click="onClick">
         </canvas>
       </div>
       <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
         <h2>PnL Vs Time</h2>
-        <!-- <canvas id="bar" class="chart chart-bar"
-          chart-data="orderGraphData" chart-labels="orderlabel" chart-options="orderoptions">
-        </canvas> -->
-        <canvas id="bar" class="chart chart-bar" chart-data="orderGraphData"
-          chart-options="orderoptions" chart-click="onClick">
+        <canvas id="bar" class="chart chart-bar" chart-options="pnloptions"
+          chart-dataset-override="pnldatasetOverride" chart-data="orderGraphData" chart-labels="orderlabels" chart-series="series">
         </canvas>
+        <!-- <canvas id="bar" class="chart chart-bar" chart-data="orderGraphData"
+          chart-options="orderoptions" chart-click="onClick">
+        </canvas> -->
       </div>
     </div>
     <div flex="35" flex-offset-gt-sm="5">

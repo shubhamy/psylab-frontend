@@ -1195,7 +1195,7 @@ z-index: 1000 !important;
   }
 }
 .file-section{
-  padding-top: 100px;
+  padding-top: 2rem;
   font-family: $pt-sans;
   .key{
     padding: 16px 30px;
@@ -1384,7 +1384,10 @@ z-index: 1000 !important;
       padding-top: .5rem;
     }
     .date-picker{
-      margin-top: 50px;
+      margin-top:2rem;
+    }
+    .data{
+      padding: 10px 10px 0px 10px;
     }
   }
   p{

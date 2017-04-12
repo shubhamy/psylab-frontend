@@ -1388,7 +1388,7 @@ canvas {
 }
 
 .file-section {
-  padding-top: 100px;
+  padding-top: 2rem;
   font-family: "PT Sans", sans-serif;
 }
 .file-section .key {
@@ -1583,7 +1583,10 @@ canvas {
   padding-top: .5rem;
 }
 .backtest-section .strategy .date-picker {
-  margin-top: 50px;
+  margin-top: 2rem;
+}
+.backtest-section .strategy .data {
+  padding: 10px 10px 0px 10px;
 }
 .backtest-section p {
   font-size: 16px;

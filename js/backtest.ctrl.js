@@ -4,9 +4,9 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
-    $location.path('/file');
-  }
+  // if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+  //   $location.path('/file');
+  // }
     $scope.orders=[
       {time: '2017-01-01 14:00', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
       {time: '2017-01-01 14:01', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
@@ -71,14 +71,12 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     ];
     $scope.pnldata=[];
     $scope.orderdata=[];
+    $scope.orderlabels=[];
+
     for (i= 0;i<60; i++) {
-      // if(ln-30<=i){
-      //   $scope.pnldata.push({x:ln-i-1,y:data.data[i].price});
-      // }
       $scope.pnldata.push({x:$scope.orders[i].time,y:$scope.orders[i].pnl});
-      $scope.orderdata.push({x:$scope.orders[i].time,y:$scope.orders[i].order});
-      // console.log($scope.pnldata);
-      // console.log(data.data[i]);
+      $scope.orderlabels.push($scope.orders[i].time);
+      $scope.orderdata.push($scope.orders[i].order);
     }
     $scope.series = ['Series A', 'Series B'];
     $scope.pnlGraphData=[];
@@ -86,8 +84,6 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     $scope.orderGraphData=[];
 
     $scope.orderGraphData.push($scope.orderdata);
-    console.log($scope.pnlGraphData);
-    console.log($scope.orderGraphData);
     $scope.onClick = function (points, evt) {
       console.log(points, evt);
     };
@@ -130,44 +126,17 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
       scales: {
         yAxes: [
           {
-            id: 'y-axis-1',
-            type: 'linear',
-            display: true,
-            position: 'left',
             gridLines: {
                     display:false
                 }
           }
         ],
         xAxes: [{
-                 type: 'time',
-                 display: true,
-                 position: 'bottom',
-                  time: {
-                      displayFormats: {
-                          quarter: 'MMM YYYY'
-                      }
-                  },
                   gridLines: {
                     display:false
                 }
              }]
-      },
-      pan: {
-              // Boolean to enable panning
-              enabled: true,
-              // Panning directions. Remove the appropriate direction to disable
-              // Eg. 'y' would only allow panning in the y direction
-              mode: 'xy'
-          },
-          // Container for zoom options
-          zoom: {
-              // Boolean to enable zooming
-              enabled: false,
-              // Zooming directions. Remove the appropriate direction to disable
-              // Eg. 'y' would only allow zooming in the y direction
-              mode: 'xy',
-          }
+      }
     };
     $scope.orderdatasetOverride = [
       {
