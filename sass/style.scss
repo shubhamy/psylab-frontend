@@ -428,8 +428,9 @@ z-index: 1000 !important;
     top: 100px;
   }
   .custom-card.third{
-    left: -120px;
-    bottom: 50px;
+    max-width: 400px;
+    left: -200px;
+    bottom: 80px;
   }
 }
 
@@ -1346,8 +1347,8 @@ z-index: 1000 !important;
 .papertrade-section{
   min-height: calc(100vh - 70px);
   .card{
-    width: 400px;
-    height: 500px;
+    width: 350px;
+    height: 450px;
     background: $white;
     p{
     font-size: 16px;
@@ -1396,48 +1397,48 @@ z-index: 1000 !important;
     line-height: 27px;
     font-family: "Open Sans", sans-serif;
   }
-  .performance{
-    // margin:9px 30px;
-    background: $white;
-    width: 100%;
-    h2{
-      color:$brightgrey;
-      font-family: $montserrat;
-      margin: 3rem auto;
-    }
-    div{
-      padding: 16px;
-      font-family:$pt-sans;
-      span{
-        color: #83888D;
-        font-size: 14px;
-      }
-      p{
-        font-size: 16px;
-        padding-top: .5rem;
-      }
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 80%;
-      font-family: $open-sans;
-      margin-bottom: 2rem;
-    }
-
-    td, th {
-      /*border: 1px solid #dddddd;*/
-      text-align: left;
-      padding: 12px;
+}
+.performance{
+  // margin:9px 30px;
+  background: $white;
+  width: 100%;
+  h2{
+    color:$brightgrey;
+    font-family: $montserrat;
+    margin: 3rem auto;
+  }
+  div{
+    padding: 16px;
+    font-family:$pt-sans;
+    span{
+      color: #83888D;
       font-size: 14px;
-      color: $aluminium;
     }
-    tr{
-      td:nth-child(even){
-        font-family: $pt-sans;
-        color: $tundora;
-        font-size: 16px;
-      }
+    p{
+      font-size: 16px;
+      padding-top: .5rem;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 80%;
+    font-family: $open-sans;
+    margin-bottom: 2rem;
+  }
+
+  td, th {
+    /*border: 1px solid #dddddd;*/
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    color: $aluminium;
+  }
+  tr{
+    td:nth-child(even){
+      font-family: $pt-sans;
+      color: $tundora;
+      font-size: 16px;
     }
   }
 }

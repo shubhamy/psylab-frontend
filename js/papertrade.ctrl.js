@@ -16,6 +16,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
           .ok('Please do it!')
           .cancel('Cancel');
       $mdDialog.show(confirm).then(function() {
+        $rootScope.selectedFile.is_active='ko';
         var url=URL_PREFIX+'api/p/eng/'+$rootScope.selectedFile.pk+'/';
         $http({
              method: "PUT",
@@ -28,7 +29,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
               },
              url: url
            }).then(function successCallback(response) {
-             console.log(response);
+            //  console.log(response);
              $mdToast.show(
                $mdToast.simple()
                .textContent('Papertrade Stopped!')
@@ -68,7 +69,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
         }
       }
       if(!$scope.isPapertradeRunning){
-        console.log(AUTHORIZATION);
+        $rootScope.selectedFile.is_active='ok';
         var url=URL_PREFIX+'api/p/eng/'+$rootScope.selectedFile.pk+'/';
         $http({
              method: "PUT",

@@ -665,8 +665,9 @@ canvas {
   top: 100px;
 }
 #section2 .wave-wrapper .custom-card.third {
-  left: -120px;
-  bottom: 50px;
+  max-width: 400px;
+  left: -200px;
+  bottom: 80px;
 }
 #section2 .beat {
   width: 170px;
@@ -1545,8 +1546,8 @@ canvas {
   min-height: calc(100vh - 70px);
 }
 .papertrade-section .card {
-  width: 400px;
-  height: 500px;
+  width: 350px;
+  height: 450px;
   background: #ffffff;
 }
 .papertrade-section .card p {
@@ -1594,41 +1595,42 @@ canvas {
   line-height: 27px;
   font-family: "Open Sans", sans-serif;
 }
-.backtest-section .performance {
+
+.performance {
   background: #ffffff;
   width: 100%;
 }
-.backtest-section .performance h2 {
+.performance h2 {
   color: #575963;
   font-family: "Montserrat", sans-serif;
   margin: 3rem auto;
 }
-.backtest-section .performance div {
+.performance div {
   padding: 16px;
   font-family: "PT Sans", sans-serif;
 }
-.backtest-section .performance div span {
+.performance div span {
   color: #83888D;
   font-size: 14px;
 }
-.backtest-section .performance div p {
+.performance div p {
   font-size: 16px;
   padding-top: .5rem;
 }
-.backtest-section .performance table {
+.performance table {
   border-collapse: collapse;
   width: 80%;
   font-family: "Open Sans", sans-serif;
   margin-bottom: 2rem;
 }
-.backtest-section .performance td, .backtest-section .performance th {
+.performance td, .performance th {
   /*border: 1px solid #dddddd;*/
   text-align: left;
   padding: 12px;
   font-size: 14px;
   color: #83888D;
 }
-.backtest-section .performance tr td:nth-child(even) {
+.performance tr td:nth-child(even) {
   font-family: "PT Sans", sans-serif;
   color: #373c46;
   font-size: 16px;

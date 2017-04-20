@@ -1,13 +1,32 @@
 <div flex class="container papertrade-section" layout="row" layout-align="center center">
   <div class="card md-whiteframe-1dp" layout="column" layout-align="center center" md-padding>
-    <p>{{selectedFile.name}}</p>
-    <p>{{selectedFile.ticker.symbol}}</p>
-    <p>{{selectedFile.shares}}</p>
-    <p>{{selectedFile.trade_frequency}}</p>
-    <p>{{selectedFile.is_active}}</p>
-    <a href="" ng-click="togglePapertrade(ev)" class="btn btn-primary btn-color">
+    <div class="performance" layout="column" layout-align="center center">
+      <h2>Papertrade</h2>
+      <table>
+        <tr>
+          <td>Strategy</td>
+          <td>{{selectedFile.name}}</td>
+        </tr>
+        <tr>
+          <td>Symbol</td>
+          <td>{{selectedFile.ticker.symbol}}</td>
+        </tr>
+        <tr>
+          <td>Shares</td>
+          <td>{{selectedFile.shares}}</td>
+        </tr>
+        <tr>
+          <td>Frequency</td>
+          <td>{{selectedFile.trade_frequency}}</td>
+        </tr>
+      </table>
+      <md-divider></md-divider>
+    </div>
+    <button href="" ng-click="togglePapertrade(ev)" ng-disabled="selectedFile.is_active=='ok'||selectedFile.is_active=='ko'" class="btn btn-primary btn-color">
       <p ng-if="selectedFile.is_active==false">Start Papertrade</p>
-      <p ng-if="selectedFile.is_active!=false">Papertrade is runing</p>
-    </a>
+      <p ng-if="selectedFile.is_active=='ok'">Starting Papertrade ...</p>
+      <p ng-if="selectedFile.is_active=='ko'">Stoping Papertrade ...</p>
+      <p ng-if="selectedFile.is_active==true">Papertrade is runing</p>
+    </button>
   </div>
 </div>
