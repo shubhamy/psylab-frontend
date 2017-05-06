@@ -333,7 +333,6 @@ canvas{
 }
 .container.hover {
   position: absolute;
-  top: 200px;
   z-index: 4 !important;
   width: 100%;
   margin: auto;
@@ -364,11 +363,9 @@ canvas{
     letter-spacing: .016em;
   }
   @media screen and (max-width: $xl-break) {
-    top: 150px;
     h1{font-size: 2rem;}
   }
   @media screen and (max-width: $lg-break) {
-    top: 100px;
     h1{font-size: 2rem;}
   }
 
