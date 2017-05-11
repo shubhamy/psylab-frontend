@@ -342,8 +342,8 @@ a {
   height: 5rem;
   width: 100%;
   position: fixed;
-  background: #ffffff;
-  border-bottom: 1px solid #E0E0E0;
+  background: #6B80F7;
+  box-shadow: 0 2px 20px 0 rgba(128, 128, 128, 0.5);
   top: 0;
   z-index: 10;
 }
@@ -351,18 +351,19 @@ a {
   height: 100%;
 }
 .row-nav .btn-primary.btn-color {
-  color: #ffffff;
-  background: #1F8EED;
+  color: #1F8EED;
+  background: #ffffff;
 }
 .row-nav .nav-li-items ul li {
   display: inline-block;
   margin: auto 1.4rem;
 }
 .row-nav .nav-li-items ul li a {
-  color: #83888D;
+  color: #ffffff;
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
+  opacity: 0.8;
   text-decoration: none;
   transition: color .3s ease;
   letter-spacing: 1px;
@@ -376,7 +377,7 @@ a {
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  color: #1F8EED;
+  opacity: 1;
 }
 
 .second-nav li a {
@@ -388,6 +389,7 @@ a {
   position: absolute;
   border-bottom: none;
   background: transparent;
+  box-shadow: inherit;
 }
 .row-nav.home .btn-primary.btn-color {
   background: #ffffff;
@@ -444,7 +446,7 @@ a {
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: #f8f9fe;
+  background: #ffffff;
 }
 
 .ngview.home {
@@ -569,7 +571,6 @@ canvas {
 
 .container.hover {
   position: absolute;
-  top: 200px;
   z-index: 4 !important;
   width: 100%;
   margin: auto;
@@ -601,17 +602,11 @@ canvas {
   letter-spacing: .016em;
 }
 @media screen and (max-width: 1440px) {
-  .container.hover {
-    top: 150px;
-  }
   .container.hover h1 {
     font-size: 2rem;
   }
 }
 @media screen and (max-width: 1280px) {
-  .container.hover {
-    top: 100px;
-  }
   .container.hover h1 {
     font-size: 2rem;
   }
@@ -922,8 +917,15 @@ canvas {
 .bg-img {
   background-size: cover;
   height: auto;
+  border-radius: 10px;
   background: linear-gradient(120deg, rgba(119, 68, 242, 0.5), rgba(48, 180, 224, 0.5)), url("../images/vid.jpg");
   background-size: 100%;
+}
+@media screen and (min-width: 1440px) {
+  .bg-img {
+    width: 900px;
+    height: 493px;
+  }
 }
 @media screen and (max-width: 1440px) {
   .bg-img {
@@ -943,15 +945,10 @@ canvas {
     height: 384px;
   }
 }
-@media screen and (max-width: 600px) {
-  .bg-img {
-    width: 400px;
-    height: 219px;
-  }
-}
 
 .img-overlay {
   height: auto;
+  border-radius: 10px;
   position: absolute;
 }
 .img-overlay div {
@@ -964,6 +961,16 @@ canvas {
 .img-overlay div .play-icon {
   height: 35px;
   width: 35px;
+}
+@media screen and (min-width: 1440px) {
+  .img-overlay {
+    width: 900px;
+    height: 493px;
+  }
+  .img-overlay .video-embed {
+    width: 900px;
+    height: 493px;
+  }
 }
 @media screen and (max-width: 1440px) {
   .img-overlay {
@@ -1322,6 +1329,8 @@ canvas {
   width: auto;
   background: #ffffff;
   padding: 30px;
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+  border-radius: 10px;
 }
 .response-wrapper .response form md-input-container {
   margin: 40px 0;
@@ -1546,9 +1555,15 @@ canvas {
   min-height: calc(100vh - 70px);
 }
 .papertrade-section .card {
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+  border-radius: 10px;
   width: 350px;
   height: 450px;
   background: #ffffff;
+}
+.papertrade-section .card .performance {
+  border-radius: 0;
+  box-shadow: none;
 }
 .papertrade-section .card p {
   font-size: 16px;
@@ -1569,7 +1584,11 @@ canvas {
   min-height: calc(100vh - 70px);
 }
 .backtest-section .strategy {
-  margin: 30px auto;
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+  margin: 0px auto 50px;
+  border-radius: 10px;
+  position: relative;
+  top: 20px;
   padding: 16px;
   max-height: 300px;
   background: #ffffff;
@@ -1597,6 +1616,8 @@ canvas {
 }
 
 .performance {
+  border-radius: 10px;
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
   background: #ffffff;
   width: 100%;
 }
@@ -1636,6 +1657,10 @@ canvas {
   font-size: 16px;
 }
 
+.graph-wrapper {
+  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
+  margin-right: 30px;
+}
 .graph-wrapper canvas {
   position: relative !important;
 }

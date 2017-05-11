@@ -6,7 +6,8 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
   $scope.selectedFile='untitled';
   var file=$rootScope.selectedFile;
-  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+  console.log($rootScope.selectedFile);
+  if ($rootScope.selectedFile===undefined){
     $location.path('/file');
   }
   $rootScope.selectedItemChange = selectedItemChange;

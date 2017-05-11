@@ -43,7 +43,17 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     }
   }).when("/trader", {
     controller: "TextEditorCtrl",
-    templateUrl: "templates/trader.editor.html"
+    templateUrl: "templates/trader.editor.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
   }).when("/editor", {
     controller: "CodeEditorCtrl",
     templateUrl: "templates/editor.html",

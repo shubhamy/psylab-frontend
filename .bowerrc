@@ -1,4 +1,4 @@
 {
-  "proxy": "http://proxy61.iitd.ac.in:3128",
-  "https-proxy": "http://proxy61.iitd.ac.in:3128"
+    "proxy":"http://proxy61.iitd.ac.in:3128",
+    "https-proxy":"http://proxy61.iitd.ac.in:3128"
 }

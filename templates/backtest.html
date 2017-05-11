@@ -1,5 +1,5 @@
 <div flex class="container backtest-section">
-  <div layout="column" class="md-whiteframe-1dp strategy">
+  <div layout="column" class="strategy">
     <div flex layout="row" class="data"layout-align="center center">
       <div flex="25">
         <span>Name</span>
@@ -20,18 +20,18 @@
     </div>
     <div class="date-picker" flex layout="row" layout-align="center center">
       <md-datepicker ng-model="selectedFile.from" md-placeholder="Start date" md-open-on-focus></md-datepicker>
-      <md-datepicker ng-model="selectedFile.to" md-placeholder="End date" md-open-on-focus></md-datepicker>
+      <md-datepicker ng-model="selectedFile.to" md-placeholder="End date" md-open-on-focus md-min-date="selectedFile.from"></md-datepicker>
     </div>
   </div>
-  <div layout="row">
-    <div flex="60" class="graph-wrapper" layout="column">
-      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
+  <div layout="row" style="border-radius: 10px;">
+    <div flex class="graph-wrapper" layout="column">
+      <div class="graph " layout="column" layout-align="center center">
         <h2>Order Vs Time</h2>
         <canvas id="line" class="chart chart-line" chart-data="pnlGraphData" chart-series="series" chart-options="orderoptions"
         chart-dataset-override="orderdatasetOverride" chart-click="onClick">
         </canvas>
       </div>
-      <div class="graph md-whiteframe-1dp" layout="column" layout-align="center center">
+      <div class="graph " layout="column" layout-align="center center">
         <h2>PnL Vs Time</h2>
         <canvas id="bar" class="chart chart-bar" chart-options="pnloptions"
           chart-dataset-override="pnldatasetOverride" chart-data="orderGraphData" chart-labels="orderlabels" chart-series="series">
@@ -41,8 +41,8 @@
         </canvas> -->
       </div>
     </div>
-    <div flex="35" flex-offset-gt-sm="5">
-      <div class="md-whiteframe-1dp performance" layout="column" layout-align="center center">
+    <div flex="35">
+      <div class=" performance" layout="column" layout-align="center center">
         <h2>Performance</h2>
         <table>
           <tr>

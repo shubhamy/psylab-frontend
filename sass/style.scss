@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "compass";
 @import "partials/variables";
 @import "partials/normalize";
@@ -104,8 +105,9 @@ a{
   height: 5rem;
   width: 100%;
   position: fixed;
-  background: $white;
-  border-bottom: 1px solid #E0E0E0;
+  background: #6B80F7;
+  // border-bottom: 1px solid #E0E0E0;
+  box-shadow: 0 2px 20px 0 rgba(128, 128, 128, 0.5);
   // position: fixed;
   top: 0;
   z-index: 10;
@@ -113,18 +115,19 @@ a{
     height: 100%;
   }
   .btn-primary.btn-color {
-    color: $white;
-    background: $btn-color;
+    color: $btn-color;
+    background: $white;
   }
   .nav-li-items{
     ul li{
       display: inline-block;
       margin: auto 1.4rem;
       a{
-        color: $aluminium;
+        color: $white;
         text-transform: uppercase;
         font-size: 14px;
         font-weight: 500;
+        opacity: 0.8;
         text-decoration: none;
         transition: color .3s ease;
         letter-spacing: 1px;
@@ -135,7 +138,8 @@ a{
         // text-shadow: 2px 2px 1px rgba(0,0,0,.08);
         &:hover{
           @include transition(all 0.3s ease-in-out);
-          color: $hover;
+          // color: $hover;
+          opacity:1;
         }
       }
     }
@@ -149,6 +153,7 @@ a{
   position: absolute;
   border-bottom: none;
   background: transparent;
+  box-shadow: inherit;
     .btn-primary.btn-color {
       background: $white;
       color: $btn-color;
@@ -203,7 +208,7 @@ a{
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: $body-backgorund;
+  background: $white;
 }
 .ngview.home{
   position: relative;
@@ -332,7 +337,6 @@ canvas{
 }
 .container.hover {
   position: absolute;
-  top: 200px;
   z-index: 4 !important;
   width: 100%;
   margin: auto;
@@ -363,11 +367,9 @@ canvas{
     letter-spacing: .016em;
   }
   @media screen and (max-width: $xl-break) {
-    top: 150px;
     h1{font-size: 2rem;}
   }
   @media screen and (max-width: $lg-break) {
-    top: 100px;
     h1{font-size: 2rem;}
   }
 
@@ -686,6 +688,7 @@ z-index: 1000 !important;
 .bg-img {
   background-size: cover;
   height: auto;
+  border-radius: 10px;
   background:
     /* top, transparent red, faked with gradient */
     linear-gradient(
@@ -700,6 +703,10 @@ z-index: 1000 !important;
       // $md-break:960px;
       // $lg-break:1280px;
       // $xl-break:1440px;
+    @media screen and (min-width: $xl-break) {
+      width: 900px;
+      height: 493px;
+    }
     @media screen and (max-width: $xl-break) {
       width: 900px;
       height: 493px;
@@ -712,13 +719,10 @@ z-index: 1000 !important;
       width: 700px;
       height: 384px;
     }
-    @media screen and (max-width: $xs-break) {
-      width: 400px;
-      height: 219px;
-    }
 }
 .img-overlay{
   height: auto;
+  border-radius: 10px;
   position: absolute;
   div{
     height: 100px;
@@ -729,6 +733,14 @@ z-index: 1000 !important;
     .play-icon{
       height: 35px;
       width: 35px;
+    }
+  }
+  @media screen and (min-width: $xl-break) {
+    width: 900px;
+    height: 493px;
+    .video-embed{
+      width: 900px;
+      height: 493px;
     }
   }
   @media screen and (max-width: $xl-break) {
@@ -1111,6 +1123,7 @@ z-index: 1000 !important;
 }
 .response-wrapper{
   font-size: 16px;
+
   // border-left: 1px solid #bdbdbd;
 
   .response{
@@ -1129,6 +1142,8 @@ z-index: 1000 !important;
       width: auto;
       background: $white;
       padding: 30px;
+      box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+      border-radius: 10px;
       md-input-container{
         margin:  40px 0;
       }
@@ -1347,9 +1362,15 @@ z-index: 1000 !important;
 .papertrade-section{
   min-height: calc(100vh - 70px);
   .card{
+    box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+    border-radius: 10px;
     width: 350px;
     height: 450px;
     background: $white;
+    .performance{
+      border-radius: 0;
+      box-shadow: none;
+    }
     p{
     font-size: 16px;
     line-height: 27px;
@@ -1371,7 +1392,11 @@ z-index: 1000 !important;
 .backtest-section{
   min-height: calc(100vh - 70px);
   .strategy{
-    margin: 30px auto;
+    box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+    margin: 0px auto 50px;
+    border-radius: 10px;
+    position: relative;
+    top: 20px;
     padding: 16px;
     max-height: 300px;
     background: $white;
@@ -1400,6 +1425,8 @@ z-index: 1000 !important;
 }
 .performance{
   // margin:9px 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
   background: $white;
   width: 100%;
   h2{
@@ -1443,6 +1470,8 @@ z-index: 1000 !important;
   }
 }
 .graph-wrapper{
+  box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+  margin-right: 30px;
   canvas{
     position: relative !important;
     // height: 320px !important;
