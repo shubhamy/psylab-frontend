@@ -1,12 +1,28 @@
 app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
   var CONTENT_TYPE='application/json; charset=UTF-8';
   $scope.hideterm2=true;
-  $scope.strategies=[];
+  $scope.strategy=[];
   $scope.userFiles=[];
-  $scope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
+  $rootScope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
   $scope.selectedFile='untitled';
   var file=$rootScope.selectedFile;
-  console.log($rootScope.selectedFile);
+  $scope.setSelectedFile= function(file){
+    console.log(file);
+    $scope.aceSession.setValue(file.strategy);
+    $scope.strategy.shares=file.shares;
+    $scope.strategy.loss=file.stop_loss;
+    $scope.strategy.profit=file.profit_booking;
+    $scope.selectedItem=file.ticker;
+    $scope.strategyPk=file.pk;
+    $scope.selectedFile=file.name;
+    $scope.strategy.frequency=file.trade_frequency;
+    $rootScope.selectedFile=null;
+  };
+  $timeout(function() {
+    if (file!==undefined){
+      $scope.setSelectedFile(file);
+    }
+  }, 100);
   if ($rootScope.selectedFile===undefined){
     $location.path('/file');
   }
@@ -30,7 +46,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   if ($rootScope.tickersArray===null || $rootScope.tickersArray===undefined){
     $scope.fetchTickers();
   }
-  $scope.getTickers = function(searchText) {
+  $rootScope.getTickers = function(searchText) {
     var deferred = $q.defer();
     $timeout(function() {
         var tickers = $rootScope.tickersArray.filter(function(ticker) {
@@ -40,21 +56,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     }, 0);
     return deferred.promise;
   };
-  $scope.setSelectedFile= function(file){
-    $scope.aceSession.setValue(file.strategy);
-    $scope.strategies.shares=file.shares;
-    $rootScope.selectedItem=file.ticker;
-    $scope.strategyPk=file.pk;
-    $scope.selectedFile=file.name;
-    $scope.frequency=file.trade_frequency;
-    $rootScope.selectedFile=null;
-  };
-  console.log(file);
-  $timeout(function() {
-    if (file!==undefined){
-      $scope.setSelectedFile(file);
-    }
-  }, 100);
+
   $scope.addTerminal=function () {
     $scope.hideterm2=!$scope.hideterm2;
   };
@@ -168,12 +170,16 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
         }
         else{
           var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
+          console.log(us);
           $http({
                method: "PUT",
                data:{
                  strategy:$rootScope.editor1code,
                  ticker:$rootScope.selectedItem.symbol,
-                 shares:us.shares
+                 shares:us.shares,
+                 profit_booking:us.profit,
+                 stop_loss:us.loss,
+                 trade_frequency:us.frequency
                },
                headers: {
                   'Content-Type': CONTENT_TYPE,

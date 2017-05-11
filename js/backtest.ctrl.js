@@ -4,9 +4,44 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  // if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
-  //   $location.path('/file');
-  // }
+  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+    $location.path('/file');
+  }
+
+  $scope.backtestRun=function(file) {
+    console.log(file);
+    var url=URL_PREFIX+'api/p/backtest/';
+    // $http({
+    //      method: "POST",
+    //      data:{
+    //        name:result,
+    //        strategy:$rootScope.editor1code,
+    //        ticker:$rootScope.selectedItem.symbol,
+    //        shares:$rootScope.pendingStrategy.shares,
+    //        trade_frequency:$rootScope.pendingStrategy.frequency
+    //      },
+    //      headers: {
+    //         'Content-Type': CONTENT_TYPE,
+    //         'Authorization':'Bearer '+Auth.getUserInfo().accessToken
+    //       },
+    //      url: url
+    //    }).then(function successCallback(response) {
+    //      $mdToast.show(
+    //        $mdToast.simple()
+    //        .textContent('File sucessfully saved!')
+    //        .position('bottom right')
+    //        .hideDelay(3000)
+    //      );
+    //     $scope.selectedFile=result;
+    //    }, function errorCallback(error) {
+    //      $mdToast.show(
+    //        $mdToast.simple()
+    //        .textContent('Something went wrong, Please check all the input field')
+    //        .position('bottom right')
+    //        .hideDelay(3000)
+    //      );
+    //  });
+  }
     $scope.orders=[
       {time: '2017-01-01 14:00', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
       {time: '2017-01-01 14:01', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},

@@ -6,21 +6,49 @@
         <p>{{selectedFile.name}}</p>
       </div>
       <div flex="25">
-        <span>Ticker</span>
-        <p>{{selectedFile.ticker.symbol}}</p>
+        <!-- <span>Ticker</span> -->
+        <md-autocomplete
+          md-selected-item="selectedItem"
+          md-selected-item-change="selectedItemChange(ticker)"
+          md-search-text="searchText"
+          md-items="selectedFile.ticker in getTickers(searchText)"
+          md-item-text="selectedFile.ticker.symbol"
+          placeholder="Search Ticker/Symbol"
+          md-no-cache="true">
+          <md-item-template>
+              <span>{{selectedFile.ticker.symbol}}</span>
+              <!-- <span md-highlight-text="searchText" md-highlight-flags="^i">{{ticker.exchange}}</span> -->
+          </md-item-template>
+          <md-not-found>
+              No matches found.
+          </md-not-found>
+        </md-autocomplete>
       </div>
-      <div flex="25">
-        <span>Share</span>
-        <p>{{selectedFile.shares}}</p>
+      <div flex="25" class="share">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Shares</label>
+          <input name="shares" ng-model="selectedFile.shares" placeholder="12345" required type="number">
+          <div ng-messages="userStrategiesForm.shares.$error" role="alert">
+            <div ng-message="required" class="my-message">You must supply a number.</div>
+            <div ng-message="pattern" class="my-message">That doesn't look like a valid number.</div>
+          </div>
+        </md-input-container>
       </div>
-      <div flex="25">
-        <span>Frequency</span>
-        <p>{{selectedFile.trade_frequency}}</p>
+      <div flex="25" class="frequency">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Frequency</label>
+          <md-select ng-model="selectedFile.trade_frequency">
+            <md-option ng-repeat="frequency in frequencies" value="{{frequency}}">
+              {{frequency}}
+            </md-option>
+          </md-select>
+        </md-input-container>
       </div>
     </div>
     <div class="date-picker" flex layout="row" layout-align="center center">
       <md-datepicker ng-model="selectedFile.from" md-placeholder="Start date" md-open-on-focus></md-datepicker>
       <md-datepicker ng-model="selectedFile.to" md-placeholder="End date" md-open-on-focus md-min-date="selectedFile.from"></md-datepicker>
+      <a href="" class="btn btn-primary btn-color" ng-click="backtestRun(selectedFile)">Run</a>
     </div>
   </div>
   <div layout="row" style="border-radius: 10px;">

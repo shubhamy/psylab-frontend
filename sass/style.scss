@@ -1411,9 +1411,22 @@ z-index: 1000 !important;
     }
     .date-picker{
       margin-top:2rem;
+      .btn-color{
+        background: $btn-color;
+      }
     }
     .data{
       padding: 10px 10px 0px 10px;
+      .share{
+        position: relative;
+        top: 20px;
+        padding: 0 20px;
+      }
+      .frequency{
+        position: relative;
+        top: 7px;
+        padding: 0 20px;
+      }
     }
   }
   p{

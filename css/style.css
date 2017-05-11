@@ -1605,8 +1605,21 @@ canvas {
 .backtest-section .strategy .date-picker {
   margin-top: 2rem;
 }
+.backtest-section .strategy .date-picker .btn-color {
+  background: #1F8EED;
+}
 .backtest-section .strategy .data {
   padding: 10px 10px 0px 10px;
+}
+.backtest-section .strategy .data .share {
+  position: relative;
+  top: 20px;
+  padding: 0 20px;
+}
+.backtest-section .strategy .data .frequency {
+  position: relative;
+  top: 7px;
+  padding: 0 20px;
 }
 .backtest-section p {
   font-size: 16px;
