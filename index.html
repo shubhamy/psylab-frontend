@@ -25,7 +25,7 @@
           <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file') || isPath('/backtest') || isPath('/papertrade')">
             <li><a href="#!/play">Feature</a></li>
             <li><a href="#!/trader">Strategy</a></li>
-            <li><a href="#!/data">Contact</a></li>
+            <li><a href="#section7">Contact</a></li>
             <li><a href="#!/file" ng-if="isUserLoggedIn!=undefined">Catalogue</a></li>
             <a ng-click="logInCard()" href=""  ng-if="isUserLoggedIn==undefined" class="btn btn-primary btn-circ btn-color">Sign In</a>
             <a ng-click="logOut()" href="" ng-if="isUserLoggedIn!=undefined" class="btn btn-primary btn-circ btn-color">Logout</a>
@@ -79,7 +79,7 @@
           </ul>
         </div>
         <div class="icons" layout="column" layout-align="center center" flex-gt-sm="40">
-          <h3>We're Soical</h3><br>
+          <h3>We're social</h3><br>
           <ul layout="row">
             <li>
               <a href="" class="facebook">

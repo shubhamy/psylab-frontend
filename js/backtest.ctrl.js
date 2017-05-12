@@ -4,7 +4,9 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+  var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  $scope.selectedFile=selectedFile;
+  if (selectedFile===undefined || selectedFile===null){
     $location.path('/file');
   }
 

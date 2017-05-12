@@ -56,17 +56,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     }
   }).when("/editor", {
     controller: "CodeEditorCtrl",
-    templateUrl: "templates/editor.html",
-    resolve: {
-        auth: function ($q, Auth) {
-            var userInfo = Auth.getUserInfo();
-            if (userInfo) {
-                return $q.when(userInfo);
-            } else {
-                return $q.reject({ authenticated: false });
-            }
-        }
-    }
+    templateUrl: "templates/editor.html"
   }).when("/file", {
     controller: "FileCtrl",
     templateUrl: "templates/file.html",

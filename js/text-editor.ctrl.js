@@ -1,11 +1,12 @@
 app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
   var CONTENT_TYPE='application/json; charset=UTF-8';
   $scope.hideterm2=true;
+  var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
   $scope.strategy=[];
   $scope.userFiles=[];
   $rootScope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
   $scope.selectedFile='untitled';
-  var file=$rootScope.selectedFile;
+  var file=selectedFile;
   $scope.setSelectedFile= function(file){
     console.log(file);
     $scope.aceSession.setValue(file.strategy);
@@ -16,14 +17,14 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     $scope.strategyPk=file.pk;
     $scope.selectedFile=file.name;
     $scope.strategy.frequency=file.trade_frequency;
-    $rootScope.selectedFile=null;
+    selectedFile=null;
   };
   $timeout(function() {
     if (file!==undefined){
       $scope.setSelectedFile(file);
     }
   }, 100);
-  if ($rootScope.selectedFile===undefined){
+  if (selectedFile===undefined){
     $location.path('/file');
   }
   $rootScope.selectedItemChange = selectedItemChange;
@@ -65,7 +66,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   };
   $scope.backTest=function(){
     $location.path("/backtest");
-    $rootScope.selectedFile=file;
+    selectedFile=file;
   };
 
   $scope.saveUntitled=function () {

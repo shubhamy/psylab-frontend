@@ -31,6 +31,8 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
   };
   $scope.editFile=function (file) {
     $location.path("/trader");
+    console.log(file);
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     $rootScope.selectedFile=file;
   };
   $scope.backTest=function(file){
