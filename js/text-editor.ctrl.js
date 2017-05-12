@@ -4,7 +4,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
   $scope.strategy=[];
   $scope.userFiles=[];
-  $rootScope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
+  $rootScope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.selectedFile='untitled';
   var file=selectedFile;
   $scope.setSelectedFile= function(file){

@@ -10,40 +10,71 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     $location.path('/file');
   }
 
+  $rootScope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
+
   $scope.backtestRun=function(file) {
-    console.log(file);
     var url=URL_PREFIX+'api/p/backtest/';
-    // $http({
-    //      method: "POST",
-    //      data:{
-    //        name:result,
-    //        strategy:$rootScope.editor1code,
-    //        ticker:$rootScope.selectedItem.symbol,
-    //        shares:$rootScope.pendingStrategy.shares,
-    //        trade_frequency:$rootScope.pendingStrategy.frequency
-    //      },
-    //      headers: {
-    //         'Content-Type': CONTENT_TYPE,
-    //         'Authorization':'Bearer '+Auth.getUserInfo().accessToken
-    //       },
-    //      url: url
-    //    }).then(function successCallback(response) {
-    //      $mdToast.show(
-    //        $mdToast.simple()
-    //        .textContent('File sucessfully saved!')
-    //        .position('bottom right')
-    //        .hideDelay(3000)
-    //      );
-    //     $scope.selectedFile=result;
-    //    }, function errorCallback(error) {
-    //      $mdToast.show(
-    //        $mdToast.simple()
-    //        .textContent('Something went wrong, Please check all the input field')
-    //        .position('bottom right')
-    //        .hideDelay(3000)
-    //      );
-    //  });
+    $http({
+         method: "POST",
+         data:{
+           name:$rootScope.selectedFile.name,
+           strategy_id:$rootScope.selectedFile.pk,
+           ticker:$rootScope.selectedFile.ticker.symbol,
+           quantity:$rootScope.selectedFile.shares,
+           frequency:$rootScope.selectedFile.trade_frequency,
+           start_time: $rootScope.selectedFile.from,
+           end_time: $rootScope.selectedFile.to
+         },
+         headers: {
+            'Content-Type': CONTENT_TYPE,
+            'Authorization':'Bearer '+Auth.getUserInfo().accessToken
+          },
+         url: url
+       }).then(function successCallback(response) {
+         $mdToast.show(
+           $mdToast.simple()
+           .textContent('File sucessfully saved!')
+           .position('bottom right')
+           .hideDelay(3000)
+         );
+        $scope.selectedFile=result;
+       }, function errorCallback(error) {
+         $mdToast.show(
+           $mdToast.simple()
+           .textContent('Something went wrong, Please check all the input field')
+           .position('bottom right')
+           .hideDelay(3000)
+         );
+     });
   }
+
+  $scope.fetchTickers= function(){
+    var url=URL_PREFIX+'api/p/tickers/';
+    $http({
+         method: "GET",
+         headers: {
+            'Content-Type': CONTENT_TYPE
+          },
+         url: url
+       }).then(function successCallback(response) {
+         $rootScope.tickersArray=response.data;
+       }, function errorCallback(error) {
+     });
+  };
+  if ($rootScope.tickersArray===null || $rootScope.tickersArray===undefined){
+    $scope.fetchTickers();
+  }
+  $rootScope.getTickers = function(searchText) {
+    var deferred = $q.defer();
+    $timeout(function() {
+        var tickers = $rootScope.tickersArray.filter(function(ticker) {
+            return (ticker.symbol.toUpperCase().indexOf(searchText.toUpperCase()) !== -1);
+        });
+        deferred.resolve(tickers);
+    }, 0);
+    return deferred.promise;
+  };
+
     $scope.orders=[
       {time: '2017-01-01 14:00', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
       {time: '2017-01-01 14:01', pnl: Math.floor(Math.random() * 50) + 50, order: Math.floor(Math.random() *10) + 5},
