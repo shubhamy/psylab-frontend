@@ -11,12 +11,12 @@
           md-selected-item="selectedItem"
           md-selected-item-change="selectedItemChange(ticker)"
           md-search-text="searchText"
-          md-items="selectedFile.ticker in getTickers(searchText)"
-          md-item-text="selectedFile.ticker.symbol"
+          md-items="ticker in getTickers(searchText)"
+          md-item-text="ticker.symbol"
           placeholder="Search Ticker/Symbol"
           md-no-cache="true">
           <md-item-template>
-              <span>{{selectedFile.ticker.symbol}}</span>
+              <span>{{ticker.symbol}}</span>
               <!-- <span md-highlight-text="searchText" md-highlight-flags="^i">{{ticker.exchange}}</span> -->
           </md-item-template>
           <md-not-found>
@@ -48,7 +48,7 @@
     <div class="date-picker" flex layout="row" layout-align="center center">
       <md-datepicker ng-model="selectedFile.from" md-placeholder="Start date" md-open-on-focus></md-datepicker>
       <md-datepicker ng-model="selectedFile.to" md-placeholder="End date" md-open-on-focus md-min-date="selectedFile.from"></md-datepicker>
-      <a href="" class="btn btn-primary btn-color" ng-click="backtestRun(selectedFile)">Run</a>
+      <a href="" class="btn btn-primary btn-color" ng-click="backtestRun(selectedFile)">Backtest</a>
     </div>
   </div>
   <div layout="row" style="border-radius: 10px;">
