@@ -4,7 +4,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
   $scope.strategy=[];
   $scope.userFiles=[];
-  $rootScope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
+  $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.selectedFile='untitled';
   var file=selectedFile;
   $scope.setSelectedFile= function(file){
@@ -17,7 +17,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     $scope.strategyPk=file.pk;
     $scope.selectedFile=file.name;
     $scope.strategy.frequency=file.trade_frequency;
-    selectedFile=null;
   };
   $timeout(function() {
     if (file!==undefined){
@@ -40,17 +39,17 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           },
          url: url
        }).then(function successCallback(response) {
-         $rootScope.tickersArray=response.data;
+         $scope.tickersArray=response.data;
        }, function errorCallback(error) {
      });
   };
-  if ($rootScope.tickersArray===null || $rootScope.tickersArray===undefined){
+  if ($scope.tickersArray===null || $scope.tickersArray===undefined){
     $scope.fetchTickers();
   }
-  $rootScope.getTickers = function(searchText) {
+  $scope.getTickers = function(searchText) {
     var deferred = $q.defer();
     $timeout(function() {
-        var tickers = $rootScope.tickersArray.filter(function(ticker) {
+        var tickers = $scope.tickersArray.filter(function(ticker) {
             return (ticker.symbol.toUpperCase().indexOf(searchText.toUpperCase()) !== -1);
         });
         deferred.resolve(tickers);
@@ -131,6 +130,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       });
   };
   $scope.saveStrategy= function(ev,us){
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     $rootScope.pendingStrategy=us;
     if($rootScope.editor1code==null || $rootScope.selectedItem.symbol==null || $rootScope.pendingStrategy.shares==null || $rootScope.pendingStrategy.frequency==null){
       $mdToast.show(
@@ -166,7 +166,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           });
       }
       else{
-        if ($scope.selectedFile == 'untitled') {
+        if (selectedFile == 'untitled') {
           $scope.saveUntitled();
         }
         else{

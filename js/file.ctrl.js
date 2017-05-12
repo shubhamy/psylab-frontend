@@ -27,20 +27,20 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
   }
   $scope.createStrategy=function(){
     $location.path("/trader");
-    $rootScope.selectedFile=null;
+    var file='untitled'
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
   };
   $scope.editFile=function (file) {
     $location.path("/trader");
-    console.log(file);
     $window.sessionStorage["selectedFile"]=JSON.stringify(file);
-    $rootScope.selectedFile=file;
   };
   $scope.backTest=function(file){
     $location.path("/backtest");
-    $rootScope.selectedFile=file;
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
   };
   $scope.paperTrade=function(file){
     $location.path("/papertrade");
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     $rootScope.selectedFile=file;
   };
 });

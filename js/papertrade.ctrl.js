@@ -3,11 +3,12 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  if ($rootScope.selectedFile===undefined || $rootScope.selectedFile===null){
+  $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
   $scope.togglePapertrade=function (ev) {
-    if($rootScope.selectedFile.is_active===true){
+    if($scope.selectedFile.is_active===true){
       var confirm = $mdDialog.confirm()
           .title('Stop Papertrade')
           .textContent('Are you sure you want to stop Papertrade?')
@@ -16,8 +17,8 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
           .ok('Please do it!')
           .cancel('Cancel');
       $mdDialog.show(confirm).then(function() {
-        $rootScope.selectedFile.is_active='ko';
-        var url=URL_PREFIX+'api/p/eng/'+$rootScope.selectedFile.pk+'/';
+        $scope.selectedFile.is_active='ko';
+        var url=URL_PREFIX+'api/p/eng/'+$scope.selectedFile.pk+'/';
         $http({
              method: "PUT",
              data:{
@@ -36,8 +37,9 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .position('bottom right')
                .hideDelay(3000)
              );
-             $rootScope.selectedFile.is_active=false;
+             $scope.selectedFile.is_active=false;
              getUserFiles();
+             $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()
@@ -69,8 +71,8 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
         }
       }
       if(!$scope.isPapertradeRunning){
-        $rootScope.selectedFile.is_active='ok';
-        var url=URL_PREFIX+'api/p/eng/'+$rootScope.selectedFile.pk+'/';
+        $scope.selectedFile.is_active='ok';
+        var url=URL_PREFIX+'api/p/eng/'+$scope.selectedFile.pk+'/';
         $http({
              method: "PUT",
              data:{
@@ -88,7 +90,8 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .position('bottom right')
                .hideDelay(3000)
              );
-             $rootScope.selectedFile.is_active=true;
+             $scope.selectedFile.is_active=true;
+             $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()

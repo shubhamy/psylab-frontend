@@ -6,24 +6,24 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   }
   var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
   $scope.selectedFile=selectedFile;
+  $scope.selectedFile.ticker=$scope.selectedFile.ticker.symbol;
   if (selectedFile===undefined || selectedFile===null){
     $location.path('/file');
   }
-
-  $rootScope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
-
+  $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.backtestRun=function(file) {
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     var url=URL_PREFIX+'api/p/backtest/';
     $http({
          method: "POST",
          data:{
-           name:$rootScope.selectedFile.name,
-           strategy_id:$rootScope.selectedFile.pk,
-           ticker:$rootScope.selectedFile.ticker.symbol,
-           quantity:$rootScope.selectedFile.shares,
-           frequency:$rootScope.selectedFile.trade_frequency,
-           start_time: $rootScope.selectedFile.from,
-           end_time: $rootScope.selectedFile.to
+           name:file.name,
+           strategy_id:file.pk,
+           ticker:file.ticker.symbol,
+           quantity:file.shares,
+           frequency:file.trade_frequency,
+           start_time: file.from,
+           end_time: file.to
          },
          headers: {
             'Content-Type': CONTENT_TYPE,
@@ -47,7 +47,6 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
          );
      });
   }
-
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
     $http({
@@ -57,17 +56,17 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
           },
          url: url
        }).then(function successCallback(response) {
-         $rootScope.tickersArray=response.data;
+         $scope.tickersArray=response.data;
        }, function errorCallback(error) {
      });
   };
-  if ($rootScope.tickersArray===null || $rootScope.tickersArray===undefined){
+  if ($scope.tickersArray===null || $scope.tickersArray===undefined){
     $scope.fetchTickers();
   }
-  $rootScope.getTickers = function(searchText) {
+  $scope.getTickers = function(searchText) {
     var deferred = $q.defer();
     $timeout(function() {
-        var tickers = $rootScope.tickersArray.filter(function(ticker) {
+        var tickers = $scope.tickersArray.filter(function(ticker) {
             return (ticker.symbol.toUpperCase().indexOf(searchText.toUpperCase()) !== -1);
         });
         deferred.resolve(tickers);
