@@ -3,7 +3,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.hideterm2=true;
   $scope.strategy=[];
   $scope.userFiles=[];
-  $rootScope.frequencies=['Hourly','Daily','Weekly','Monthly','Yearly'];
+  $rootScope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.selectedFile='untitled';
   var file=$rootScope.selectedFile;
   $scope.setSelectedFile= function(file){
