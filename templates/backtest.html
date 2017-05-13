@@ -6,7 +6,7 @@
         <p>{{selectedFile.name}}</p>
       </div>
       <div flex="25">
-        <!-- <span>Ticker</span> -->
+        <span>Ticker</span>
         <md-autocomplete
           md-selected-item="selectedFile.ticker"
           md-selected-item-change="selectedItemChange(ticker)"
@@ -111,3 +111,18 @@
     </div>
   </div>
 </div>
+<style>
+md-autocomplete md-autocomplete-wrap{
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+  height: 30px;
+}
+md-autocomplete{
+  top: 1px;
+  height: 30px;
+}
+md-autocomplete input:not(.md-input){
+  height: 30px;
+  line-height: 30px;
+}
+</style>

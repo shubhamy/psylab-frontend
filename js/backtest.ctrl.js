@@ -4,10 +4,9 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
-  $scope.selectedFile=selectedFile;
-  $scope.selectedFile.ticker=$scope.selectedFile.ticker.symbol;
-  if (selectedFile===undefined || selectedFile===null){
+  $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  console.log($scope.selectedFile);
+  if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
   $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
@@ -17,13 +16,12 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     $http({
          method: "POST",
          data:{
-           name:file.name,
            strategy_id:file.pk,
-           ticker:file.ticker.symbol,
+           ticker:file.ticker,
            quantity:file.shares,
            frequency:file.trade_frequency,
-           start_time: file.from,
-           end_time: file.to
+           start_time: moment(file.from).format('YYYY-MM-DD'),
+           end_time: moment(file.to).format('YYYY-MM-DD')
          },
          headers: {
             'Content-Type': CONTENT_TYPE,
@@ -37,7 +35,6 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
            .position('bottom right')
            .hideDelay(3000)
          );
-        $scope.selectedFile=result;
        }, function errorCallback(error) {
          $mdToast.show(
            $mdToast.simple()

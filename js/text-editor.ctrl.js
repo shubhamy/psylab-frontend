@@ -130,8 +130,11 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       });
   };
   $scope.saveStrategy= function(ev,us){
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     $rootScope.pendingStrategy=us;
+    file.stop_loss=us.loss;
+    file.profit_booking=us.profit;
+    file.trade_frequency=us.frequency;
+    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     if($rootScope.editor1code==null || $rootScope.selectedItem.symbol==null || $rootScope.pendingStrategy.shares==null || $rootScope.pendingStrategy.frequency==null){
       $mdToast.show(
         $mdToast.simple()
@@ -171,7 +174,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
         }
         else{
           var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
-          console.log(us);
           $http({
                method: "PUT",
                data:{
@@ -188,6 +190,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                 },
                url: url
              }).then(function successCallback(response) {
+               $window.sessionStorage["selectedFile"]=JSON.stringify(file);
                $mdToast.show(
                  $mdToast.simple()
                  .textContent('File sucessfully saved!')
