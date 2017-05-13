@@ -8,7 +8,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   $scope.selectedFile='untitled';
   var file=selectedFile;
   $scope.setSelectedFile= function(file){
-    console.log(file);
+    // console.log(file);
     $scope.aceSession.setValue(file.strategy);
     $scope.strategy.shares=file.shares;
     $scope.strategy.loss=file.stop_loss;
@@ -68,9 +68,10 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     selectedFile=file;
   };
 
-  $scope.saveUntitled=function () {
+  $scope.saveUntitled=function (us) {
     $mdDialog.cancel();
     // TODO: check if file already exists
+
     var confirm = $mdDialog.prompt()
       .title('What would you name your File?')
      //  .textContent('Bowser is a common name.')
@@ -87,8 +88,10 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
              name:result,
              strategy:$rootScope.editor1code,
              ticker:$rootScope.selectedItem.symbol,
-             shares:$rootScope.pendingStrategy.shares,
-             trade_frequency:$rootScope.pendingStrategy.frequency
+             shares:us.shares,
+             profit_booking:us.profit,
+             stop_loss:us.loss,
+             trade_frequency:us.frequency
            },
            headers: {
               'Content-Type': CONTENT_TYPE,
@@ -102,7 +105,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
              .position('bottom right')
              .hideDelay(3000)
            );
-          $scope.selectedFile=result;
+           window.location.reload();
          }, function errorCallback(error) {
            $mdToast.show(
              $mdToast.simple()
@@ -170,7 +173,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       }
       else{
         if (selectedFile == 'untitled') {
-          $scope.saveUntitled();
+          $scope.saveUntitled(us);
         }
         else{
           var url=URL_PREFIX+'api/p/eng/'+$scope.strategyPk+'/';
