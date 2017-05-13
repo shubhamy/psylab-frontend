@@ -141,7 +141,7 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
                  accessToken: response.data.access_token,
                  email: response.data.email
              };
-             $window.sessionStorage["userInfo"] = JSON.stringify(userInfo);
+             $window.localStorage["userInfo"] = JSON.stringify(userInfo);
              deferred.resolve(userInfo);
            }, function errorCallback(error) {
              deferred.reject(error);
@@ -161,7 +161,7 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
         }).then(function (result) {
             console.log(result);
             userInfo = null;
-            $window.sessionStorage["userInfo"] = null;
+            $window.localStorage["userInfo"] = null;
             deferred.resolve(result);
         }, function (error) {
             deferred.reject(error);
@@ -174,8 +174,8 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
     }
 
     function init() {
-        if ($window.sessionStorage["userInfo"]) {
-            userInfo = JSON.parse($window.sessionStorage["userInfo"]);
+        if ($window.localStorage["userInfo"]) {
+            userInfo = JSON.parse($window.localStorage["userInfo"]);
         }
     }
     init();

@@ -208,7 +208,7 @@ a{
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: $white;
+  background: $body-backgorund;
 }
 .ngview.home{
   position: relative;
@@ -549,6 +549,7 @@ z-index: 1000 !important;
 }
 
 #section3{
+  background: $body-backgorund;
   // max-height: 950px;
   .btn-wrapper{
     padding:4rem;
@@ -782,13 +783,14 @@ z-index: 1000 !important;
   }
 }
 #section5{
+  background: $body-backgorund;
   .heading-wrapper{
     // box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
-    padding: 2rem;
+    padding: 6rem 0;
     border-radius: 7px;
     // max-width: 700px;
     // background: white;
-    margin: 4rem auto;
+    // margin: 4rem auto;
     h1{
       font-weight: 300;
       margin-bottom:  3rem;

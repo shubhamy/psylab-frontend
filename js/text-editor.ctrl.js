@@ -133,9 +133,12 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       });
   };
   $scope.saveStrategy= function(ev,us){
+    // console.log(file);
     $rootScope.pendingStrategy=us;
     file.stop_loss=us.loss;
+    file.ticker=$rootScope.selectedItem;
     file.profit_booking=us.profit;
+    file.shares=us.shares;
     file.trade_frequency=us.frequency;
     $window.sessionStorage["selectedFile"]=JSON.stringify(file);
     if($rootScope.editor1code==null || $rootScope.selectedItem.symbol==null || $rootScope.pendingStrategy.shares==null || $rootScope.pendingStrategy.frequency==null){

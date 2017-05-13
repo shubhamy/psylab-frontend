@@ -67,9 +67,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
     });
   };
   $scope.logInUser=function (user) {
-    $scope.loadingComp=false;
     Auth.login(user).then(function(response) {
-        $scope.loadingComp=true;
         $scope.userInfo = response;
         $rootScope.isUserLoggedIn=true;
         $location.path("/file");
@@ -83,6 +81,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
       });
   };
   $scope.logOut = function () {
+    $rootScope.loadingComp=false;
       Auth.logout().then(function (result) {
           $scope.userInfo = null;
           $location.path("/");
@@ -92,7 +91,9 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
             .position('bottom right')
             .hideDelay(3000)
           );
-          window.location.reload(1);
+          $rootScope.loadingComp=true;
+            $timeout(function() {
+          }, 5000);
       }, function (error) {
           console.log(error);
       });
@@ -168,8 +169,8 @@ $scope.playVideo=function () {
   //       .attr("cx", function(d) { return d[0]; })
   //       .attr("cy", function(d) { return d[1]; });
   // }
-  $scope.loadingComp=true;
-  $timeout(function() {
+  $rootScope.loadingComp=true;
+    $timeout(function() {
   }, 500);
 
   // define variables

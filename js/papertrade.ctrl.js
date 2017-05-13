@@ -38,7 +38,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .hideDelay(3000)
              );
              $scope.selectedFile.is_active=false;
-             getUserFiles();
+             $rootScope.getUserFiles();
              $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(
@@ -91,6 +91,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
                .hideDelay(3000)
              );
              $scope.selectedFile.is_active=true;
+             $rootScope.getUserFiles();
              $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(

@@ -5,7 +5,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
   $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
-  console.log($scope.selectedFile);
+  // console.log($scope.selectedFile);
   if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
@@ -17,7 +17,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
          method: "POST",
          data:{
            strategy_id:file.pk,
-           ticker:file.ticker,
+           ticker:file.ticker.symbol,
            quantity:file.shares,
            frequency:file.trade_frequency,
            start_time: moment(file.from).format('YYYY-MM-DD'),
