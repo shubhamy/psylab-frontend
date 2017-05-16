@@ -16,7 +16,7 @@
     <div class="loader-wrapper row center" ng-hide="loadingComp">
 			<div class="loading"></div>
 		</div>
-    <nav  ng-if="hideThis" ng-class="{'home':isPath('/')}" class="row-nav">
+    <nav ng-class="{'home':isPath('/')}" class="row-nav">
       <div layout="row"	class="wrapper container">
         <div flex-gt-sm="35" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
           <!-- TODO: logo -->
@@ -42,7 +42,7 @@
     </nav>
     <div data-ng-view="" ng-class="{'home':isPath('/')}" class="ngview"></div>
     <div id="particles-js"></div>
-    <footer ng-if="hideThis" id="footer" ng-show="isPath('/')">
+    <footer id="footer" ng-show="isPath('/')">
       <div class="container" layout-gt-sm="row" layou="column" layout-align="start start">
         <div flex-gt-sm="30" hide-sm hide-xs>
           <h3>Psylab Ltd.</h3>
@@ -147,7 +147,7 @@
             }
           },
           "color": {
-            "value": "#1F8EED"
+            "value": "#ffffff"
           },
           "shape": {
             "type": "circle",
@@ -187,7 +187,7 @@
           "line_linked": {
             "enable": true,
             "distance": 150,
-            "color": "#1F8EED",
+            "color": "#ffffff",
             "opacity": 0.4,
             "width": 1
           },

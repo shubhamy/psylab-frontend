@@ -24,79 +24,78 @@ app.config(function ($httpProvider) {
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
   $routeProvider.when("/", {
     controller: "MainCtrl",
-    templateUrl: "templates/comingsoon.html"
-  // })
-  // .when("/data", {
-  //   controller: "DataCtrl",
-  //   templateUrl: "templates/data.html"
-  // }).when("/details", {
-  //   controller: "detailCtrl",
-  //   templateUrl: "templates/details.html",
-  //   resolve: {
-  //       auth: function ($q, Auth) {
-  //           var userInfo = Auth.getUserInfo();
-  //           if (userInfo) {
-  //               return $q.when(userInfo);
-  //           } else {
-  //               return $q.reject({ authenticated: false });
-  //           }
-  //       }
-  //   }
-  // }).when("/trader", {
-  //   controller: "TextEditorCtrl",
-  //   templateUrl: "templates/trader.editor.html",
-  //   resolve: {
-  //       auth: function ($q, Auth) {
-  //           var userInfo = Auth.getUserInfo();
-  //           if (userInfo) {
-  //               return $q.when(userInfo);
-  //           } else {
-  //               return $q.reject({ authenticated: false });
-  //           }
-  //       }
-  //   }
-  // }).when("/editor", {
-  //   controller: "CodeEditorCtrl",
-  //   templateUrl: "templates/editor.html"
-  // }).when("/file", {
-  //   controller: "FileCtrl",
-  //   templateUrl: "templates/file.html",
-  //   resolve: {
-  //       auth: function ($q, Auth) {
-  //           var userInfo = Auth.getUserInfo();
-  //           if (userInfo) {
-  //               return $q.when(userInfo);
-  //           } else {
-  //               return $q.reject({ authenticated: false });
-  //           }
-  //       }
-  //   }
-  // }).when("/backtest", {
-  //   controller: "BacktestCtrl",
-  //   templateUrl: "templates/backtest.html",
-  //   resolve: {
-  //       auth: function ($q, Auth) {
-  //           var userInfo = Auth.getUserInfo();
-  //           if (userInfo) {
-  //               return $q.when(userInfo);
-  //           } else {
-  //               return $q.reject({ authenticated: false });
-  //           }
-  //       }
-  //   }
-  // }).when("/papertrade", {
-  //   controller: "PapertradeCtrl",
-  //   templateUrl: "templates/papertrade.html",
-  //   resolve: {
-  //       auth: function ($q, Auth) {
-  //           var userInfo = Auth.getUserInfo();
-  //           if (userInfo) {
-  //               return $q.when(userInfo);
-  //           } else {
-  //               return $q.reject({ authenticated: false });
-  //           }
-  //       }
-  //   }
+    templateUrl: "templates/home.html"
+  }).when("/data", {
+    controller: "DataCtrl",
+    templateUrl: "templates/data.html"
+  }).when("/details", {
+    controller: "detailCtrl",
+    templateUrl: "templates/details.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/trader", {
+    controller: "TextEditorCtrl",
+    templateUrl: "templates/trader.editor.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/editor", {
+    controller: "CodeEditorCtrl",
+    templateUrl: "templates/editor.html"
+  }).when("/file", {
+    controller: "FileCtrl",
+    templateUrl: "templates/file.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/backtest", {
+    controller: "BacktestCtrl",
+    templateUrl: "templates/backtest.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
+  }).when("/papertrade", {
+    controller: "PapertradeCtrl",
+    templateUrl: "templates/papertrade.html",
+    resolve: {
+        auth: function ($q, Auth) {
+            var userInfo = Auth.getUserInfo();
+            if (userInfo) {
+                return $q.when(userInfo);
+            } else {
+                return $q.reject({ authenticated: false });
+            }
+        }
+    }
   }).otherwise({
     controller: "MainCtrl",
     templateUrl: "templates/error.html"
