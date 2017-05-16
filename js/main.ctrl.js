@@ -19,7 +19,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
       }, function() {
       });
   };
-  $scope.signUpNews=function (email) {
+  $scope.signUpNews=function (email, ev) {
     var url=URL_PREFIX+'api/signup/';
     $http({
          method: "POST",
@@ -33,12 +33,16 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
        }).then(function successCallback(response) {
          if (response.status===200){
            $mdDialog.cancel();
-           $mdToast.show(
-             $mdToast.simple()
-             .textContent('User created sucessfully!')
-             .position('bottom right')
-             .hideDelay(3000)
-           );
+           $mdDialog.show(
+            $mdDialog.alert()
+              .parent(angular.element(document.querySelector('#popupContainer')))
+              .clickOutsideToClose(true)
+              .title('Welcome to Psylab')
+              .textContent('Thanks for subscribing to our newsletter.')
+              .ariaLabel('Alert Dialog Demo')
+              .ok('Got it!')
+              .targetEvent(ev)
+          );
          }
        }, function errorCallback(error) {
          if (error.status===302){
