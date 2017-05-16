@@ -1,7 +1,14 @@
 app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $routeParams, $location, $http, $sce, $mdDialog, $mdToast, $window, $log, $document, nlp, Auth) {
   var CONTENT_TYPE='application/json; charset=UTF-8';
   $scope.hideterm2=true;
-  var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  try {
+    var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  } catch (e) {
+    console.log("Error occured");
+    $location.path('/file');
+  } finally {
+    $location.path('/file');
+  }
   $scope.strategy=[];
   $scope.userFiles=[];
   $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
@@ -23,9 +30,6 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
       $scope.setSelectedFile(file);
     }
   }, 100);
-  if (selectedFile===undefined){
-    $location.path('/file');
-  }
   $rootScope.selectedItemChange = selectedItemChange;
   function selectedItemChange(item) {
     $rootScope.selectedItem=item;

@@ -4,6 +4,18 @@
 @import "partials/normalize";
 @import "partials/layout";
 @import "partials/mixins";
+@font-face {
+  font-family:"Input Mono Narrow";
+  src: url('../fonts/input_mono_narrow.woff') format('woff');
+}
+@font-face {
+  font-family: "Input Mono Bold";
+  src: url('../fonts/input_mono_bold.woff') format('woff');
+}
+@font-face {
+  font-family: "Input Mono Narrow Bold";
+  src: url('../fonts/input_mono_narrow_bold.woff') format('woff');
+}
 body,html{
   background-color:$body-backgorund;
   font-size: 14px;
@@ -294,13 +306,13 @@ footer{
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background:
-    /* top, transparent red, faked with gradient */
-    linear-gradient(
-      120deg,
-      rgba(119, 68, 242, 1) 0%,
-      rgba(48, 180, 224, 1) 75%
-    );
+  // background:
+  //   /* top, transparent red, faked with gradient */
+  //   linear-gradient(
+  //     120deg,
+  //     rgba(119, 68, 242, 1) 0%,
+  //     rgba(48, 180, 224, 1) 75%
+  //   );
   // background: linear-gradient(120deg, #7744f2 0%,  #30b4e0 75%);
   .btn-color{
     background: $white;
@@ -672,17 +684,17 @@ z-index: 1000 !important;
     }
   }
   .video-wrapper{
-    @media screen and (max-width: $xl-break) {
-      height: 493px;
+    @media screen and (min-width: $xs-break) {
+      height: 219px;
     }
-    @media screen and (max-width: $lg-break) {
-      height: 439px;
-    }
-    @media screen and (max-width: $md-break) {
+    @media screen and (min-width: $md-break) {
       height: 384px;
     }
-    @media screen and (max-width: $xs-break) {
-      height: 219px;
+    @media screen and (min-width: $lg-break) {
+      height: 439px;
+    }
+    @media screen and (min-width: $xl-break) {
+      height: 500px;
     }
   }
 }
@@ -753,11 +765,11 @@ z-index: 1000 !important;
     }
   }
   @media screen and (max-width: $lg-break) {
-    width: 900px;
-    height: 506px;
+    width: 800px;
+    height: 439px;
     .video-embed{
-      width: 900px;
-      height: 506px;
+      width: 800px;
+      height: 439px;
     }
   }
   @media screen and (max-width: $md-break) {
@@ -1501,4 +1513,73 @@ z-index: 1000 !important;
       font-family: $montserrat;
     }
   }
+}
+
+.coming-soon{
+  height: 100vh;
+  width: auto;
+  height: 100vh;
+  h5, h2{
+    color: #004dff !important;
+    font-size: 1.3rem !important;
+    font-family:  "Input Mono Narrow" !important;
+    text-transform: inherit;
+  }
+  h2{
+    font-size: 2.4rem !important;
+    max-width: 600px;
+    font-weight: 300;
+    text-align: center;
+  }
+  h3{
+    color: #004dff !important;
+    font-size: 1.5rem !important;
+    font-family: "Input Mono Narrow";
+    font-weight: 500;
+    padding-top: 70px;
+  }
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  // background:
+  //   /* top, transparent red, faked with gradient */
+  //   linear-gradient(
+  //     120deg,
+  //     rgba(119, 68, 242, 1) 0%,
+  //     rgba(48, 180, 224, 1) 75%
+  //   );
+  .form-wrapper{
+    // padding-top: 100px;
+  }
+  .custom-input {
+    border:1px solid #004dff !important;
+    width: 350px;
+    display: block;
+    // border-radius: 4px;
+    font-family: $varela;
+    border: none;
+    padding: 14px;
+    background-color: #fff !important;
+    -webkit-transition: all .3s cubic-bezier(.64,.09,.08,1);
+    transition: all .3s cubic-bezier(.64,.09,.08,1);
+    background: linear-gradient(to bottom,rgba(255,255,255,0) 100%,#7e5dfb 0%);
+    background-position: -350px 0;
+    background-size: 350px 100%;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    color: #004dff;
+  }
+  .custom-input:focus::-webkit-input-placeholder, .md-input:valid::-webkit-input-placeholder{
+     color:#004dff;
+     font-size: 16px;
+   }
+   .btn-color{
+     margin-left: 0px !important;
+     padding: 1.19rem 4rem;
+     color: $white !important;
+     background: #004dff !important;
+    //  border-radius: 4px;
+     border-radius: 0 !important;
+    //  border:1px solid $white;
+   }
 }

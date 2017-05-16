@@ -19,6 +19,39 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
       }, function() {
       });
   };
+  $scope.signUpNews=function (email) {
+    var url=URL_PREFIX+'api/signup/';
+    $http({
+         method: "POST",
+         data:{
+           'email':email,
+         },
+         headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+          },
+         url: url
+       }).then(function successCallback(response) {
+         if (response.status===200){
+           $mdDialog.cancel();
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('User created sucessfully!')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+         }
+       }, function errorCallback(error) {
+         if (error.status===302){
+           $mdDialog.cancel();
+           $mdToast.show(
+             $mdToast.simple()
+             .textContent('Something went wrong, Please try again!')
+             .position('bottom right')
+             .hideDelay(3000)
+           );
+         }
+     });
+  }
   $scope.createUser=function (user) {
     var url=URL_PREFIX+'api/register/';
     $http({
