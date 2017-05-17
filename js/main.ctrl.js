@@ -19,43 +19,70 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
       }, function() {
       });
   };
-  $scope.signUpNews=function (email, ev) {
-    var url=URL_PREFIX+'api/signup/';
-    $http({
-         method: "POST",
-         data:{
-           'email':email,
-         },
-         headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
-          },
-         url: url
-       }).then(function successCallback(response) {
-         if (response.status===200){
-           $mdDialog.cancel();
-           $mdDialog.show(
-            $mdDialog.alert()
-              .parent(angular.element(document.querySelector('#popupContainer')))
-              .clickOutsideToClose(true)
-              .title('Welcome to Psylab')
-              .textContent('Thanks for subscribing to our newsletter.')
-              .ariaLabel('Alert Dialog Demo')
-              .ok('Got it!')
-              .targetEvent(ev)
-          );
-         }
-       }, function errorCallback(error) {
-         if (error.status===302){
-           $mdDialog.cancel();
-           $mdToast.show(
-             $mdToast.simple()
-             .textContent('Something went wrong, Please try again!')
-             .position('bottom right')
-             .hideDelay(3000)
-           );
-         }
-     });
+  function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
   }
+  $scope.signUpNews=function (email, ev) {
+    if (validateEmail(email)){
+      var url=URL_PREFIX+'api/signup/';
+      $http({
+        method: "POST",
+        data:{
+          'email':email,
+        },
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        url: url
+      }).then(function successCallback(response) {
+        console.log(response);
+        if (response.status===200){
+          $mdDialog.cancel();
+          $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('Welcome to Psylab')
+            .textContent('Thanks for signing up')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('Got it!')
+            .targetEvent(ev)
+          );
+        }
+        else if (response.status===302) {
+          $mdDialog.cancel();
+          $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('Welcome to Psylab')
+            .textContent('You are already subscribed')
+            .ariaLabel('Alert Dialog Demo')
+            .ok('Got it!')
+            .targetEvent(ev)
+          );
+        }
+      }, function errorCallback(error) {
+        $scope.signUpemail="You are already subscribed";
+        $mdToast.show(
+          $mdToast.simple()
+          .textContent('You are already subscribed')
+          .position('bottom right')
+          .hideDelay(3000)
+        );
+      });
+    }
+    else{
+      $mdDialog.cancel();
+      $mdToast.show(
+        $mdToast.simple()
+        .textContent('Email is invalid!')
+        .position('bottom right')
+        .hideDelay(3000)
+      );
+    }
+  };
   $scope.createUser=function (user) {
     var url=URL_PREFIX+'api/register/';
     $http({

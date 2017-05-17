@@ -2,7 +2,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   var CONTENT_TYPE='application/json; charset=UTF-8';
   $scope.hideterm2=true;
   try {
-    var selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+    var selectedFile = JSON.parse($window.sessionStorage.selectedFile);
   } catch (e) {
     console.log("Error occured");
     $location.path('/file');
@@ -121,7 +121,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     }, function() {
       $scope.status = 'You didn\'t name your dog.';
     });
-  }
+  };
   $scope.logInUser=function (user) {
     Auth.login(user).then(function(response) {
         $scope.userInfo = response;
@@ -144,8 +144,8 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
     file.profit_booking=us.profit;
     file.shares=us.shares;
     file.trade_frequency=us.frequency;
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
-    if($rootScope.editor1code==null || $rootScope.selectedItem.symbol==null || $rootScope.pendingStrategy.shares==null || $rootScope.pendingStrategy.frequency==null){
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
+    if($rootScope.editor1code===null || $rootScope.selectedItem.symbol===null || $rootScope.pendingStrategy.shares===null || $rootScope.pendingStrategy.frequency===null){
       $mdToast.show(
         $mdToast.simple()
         .textContent('Please check all the input field')
@@ -200,7 +200,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
                 },
                url: url
              }).then(function successCallback(response) {
-               $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+               $window.sessionStorage.selectedFile=JSON.stringify(file);
                $mdToast.show(
                  $mdToast.simple()
                  .textContent('File sucessfully saved!')

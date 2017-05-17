@@ -1703,6 +1703,10 @@ canvas {
   font-family: "Montserrat", sans-serif;
 }
 
+md-dialog .md-dialog-content {
+  font-family: "Input Mono Narrow" !important;
+}
+
 .coming-soon {
   height: 100vh;
   width: auto;
@@ -1730,13 +1734,19 @@ canvas {
   font-weight: 500;
   padding-top: 70px;
 }
+.coming-soon p {
+  position: fixed;
+  bottom: 10px;
+  font-size: 12px !important;
+  font-family: "Input Mono Narrow" !important;
+}
 .coming-soon .custom-input {
   border: 1px solid #004dff !important;
-  width: 350px;
+  width: 200px;
   display: block;
-  font-family: "Varela Round", sans-serif;
+  font-family: "Input Mono Narrow" !important;
   border: none;
-  padding: 14px;
+  padding: 11px;
   background-color: #fff !important;
   -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
@@ -1744,7 +1754,7 @@ canvas {
   background-position: -350px 0;
   background-size: 350px 100%;
   background-repeat: no-repeat;
-  font-size: 16px;
+  font-size: 14px;
   color: #004dff;
 }
 .coming-soon .custom-input:focus::-webkit-input-placeholder, .coming-soon .md-input:valid::-webkit-input-placeholder {
@@ -1752,8 +1762,8 @@ canvas {
   font-size: 16px;
 }
 .coming-soon .btn-color {
-  margin-left: 0px !important;
-  padding: 1.19rem 4rem;
+  margin: auto 0px !important;
+  padding: 13px 2rem;
   color: #ffffff !important;
   background: #004dff !important;
   border-radius: 0 !important;

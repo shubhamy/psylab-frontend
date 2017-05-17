@@ -1514,7 +1514,9 @@ z-index: 1000 !important;
     }
   }
 }
-
+md-dialog .md-dialog-content{
+  font-family:  "Input Mono Narrow" !important;
+}
 .coming-soon{
   height: 100vh;
   width: auto;
@@ -1538,6 +1540,12 @@ z-index: 1000 !important;
     font-weight: 500;
     padding-top: 70px;
   }
+  p{
+    position: fixed;
+    bottom: 10px;
+    font-size: 12px !important;
+    font-family: "Input Mono Narrow" !important;
+  }
   overflow: hidden;
   position: relative;
   background: #fff;
@@ -1553,12 +1561,13 @@ z-index: 1000 !important;
   }
   .custom-input {
     border:1px solid #004dff !important;
-    width: 350px;
+    width: 200px;
     display: block;
     // border-radius: 4px;
-    font-family: $varela;
+    // font-family: $varela;
+    font-family: "Input Mono Narrow" !important;
     border: none;
-    padding: 14px;
+    padding: 11px;
     background-color: #fff !important;
     -webkit-transition: all .3s cubic-bezier(.64,.09,.08,1);
     transition: all .3s cubic-bezier(.64,.09,.08,1);
@@ -1566,7 +1575,7 @@ z-index: 1000 !important;
     background-position: -350px 0;
     background-size: 350px 100%;
     background-repeat: no-repeat;
-    font-size: 16px;
+    font-size: 14px;
     color: #004dff;
   }
   .custom-input:focus::-webkit-input-placeholder, .md-input:valid::-webkit-input-placeholder{
@@ -1574,8 +1583,8 @@ z-index: 1000 !important;
      font-size: 16px;
    }
    .btn-color{
-     margin-left: 0px !important;
-     padding: 1.19rem 4rem;
+     margin: auto 0px !important;
+     padding: 13px 2rem;
      color: $white !important;
      background: #004dff !important;
     //  border-radius: 4px;

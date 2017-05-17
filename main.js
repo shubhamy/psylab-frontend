@@ -101,6 +101,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     controller: "MainCtrl",
     templateUrl: "templates/error.html"
   });
+  $locationProvider.html5Mode(true);
 }]);
 app.run(["$rootScope", "$location", function ($rootScope, $location) {
     $rootScope.$on("$routeChangeSuccess", function (userInfo) {

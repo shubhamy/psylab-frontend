@@ -3,7 +3,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  $scope.selectedFile = JSON.parse($window.sessionStorage.selectedFile);
   if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
@@ -39,7 +39,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
              );
              $scope.selectedFile.is_active=false;
              $rootScope.getUserFiles();
-             $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
+             $window.sessionStorage.selectedFile=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()
@@ -92,7 +92,7 @@ app.controller("PapertradeCtrl", function($scope, $rootScope, $q, $timeout, $rou
              );
              $scope.selectedFile.is_active=true;
              $rootScope.getUserFiles();
-             $window.sessionStorage["selectedFile"]=JSON.stringify($scope.selectedFile);
+             $window.sessionStorage.selectedFile=JSON.stringify($scope.selectedFile);
            }, function errorCallback(error) {
              $mdToast.show(
                $mdToast.simple()

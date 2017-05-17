@@ -4,14 +4,14 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   if (Auth.getUserInfo().accessToken!==undefined){
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
-  $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
+  $scope.selectedFile = JSON.parse($window.sessionStorage.selectedFile);
   // console.log($scope.selectedFile);
   if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
   $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.backtestRun=function(file) {
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
     var url=URL_PREFIX+'api/p/backtest/';
     $http({
          method: "POST",
@@ -43,7 +43,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
            .hideDelay(3000)
          );
      });
-  }
+  };
   $scope.fetchTickers= function(){
     var url=URL_PREFIX+'api/p/tickers/';
     $http({

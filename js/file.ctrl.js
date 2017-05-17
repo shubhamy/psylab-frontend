@@ -21,26 +21,26 @@ app.controller("FileCtrl", function($scope, $rootScope, $q, $timeout, $routePara
            $window.sessionStorage.userInfo= null;
          }
      });
-  }
+  };
   if ($rootScope.userFiles===null || $rootScope.userFiles===undefined){
       $rootScope.getUserFiles();
   }
   $scope.createStrategy=function(){
     $location.path("/trader");
-    var file='untitled'
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+    var file='untitled';
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
   };
   $scope.editFile=function (file) {
     $location.path("/trader");
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
   };
   $scope.backTest=function(file){
     $location.path("/backtest");
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
   };
   $scope.paperTrade=function(file){
     $location.path("/papertrade");
-    $window.sessionStorage["selectedFile"]=JSON.stringify(file);
+    $window.sessionStorage.selectedFile=JSON.stringify(file);
     $rootScope.selectedFile=file;
   };
 });
