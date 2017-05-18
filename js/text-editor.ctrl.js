@@ -6,17 +6,16 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
   } catch (e) {
     console.log("Error occured");
     $location.path('/file');
-  } finally {
-    $location.path('/file');
   }
   $scope.strategy=[];
   $scope.userFiles=[];
   $scope.frequencies=['Minute', 'Hourly','Daily','Weekly'];
   $scope.selectedFile='untitled';
   var file=selectedFile;
+  console.log(file);
   $scope.setSelectedFile= function(file){
     // console.log(file);
-    $scope.aceSession.setValue(file.strategy);
+    $scope.aceSession.setValue(file.buy_strategy);
     $scope.strategy.shares=file.shares;
     $scope.strategy.loss=file.stop_loss;
     $scope.strategy.profit=file.profit_booking;
@@ -90,7 +89,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
            method: "POST",
            data:{
              name:result,
-             strategy:$rootScope.editor1code,
+             buy_strategy:$rootScope.editor1code,
              ticker:$rootScope.selectedItem.symbol,
              shares:us.shares,
              profit_booking:us.profit,
@@ -187,7 +186,7 @@ app.controller("TextEditorCtrl", function($scope, $rootScope, $q, $timeout, $rou
           $http({
                method: "PUT",
                data:{
-                 strategy:$rootScope.editor1code,
+                 buy_strategy:$rootScope.editor1code,
                  ticker:$rootScope.selectedItem.symbol,
                  shares:us.shares,
                  profit_booking:us.profit,
