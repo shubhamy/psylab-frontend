@@ -1,7 +1,7 @@
 
 var app = angular.module('app', ['ngMaterial','ngAnimate','ngRoute','chart.js','ui.ace','nlpCompromise','ngMessages']);
 
-var URL_PREFIX = 'http://psylab.io:8000/';
+var URL_PREFIX = 'http://localhost:8080/';
 var CLIENT_ID='6IHW13vUvCYWrSQLTMaXPW1Sd1BICxgeWSOwQWmw';
 var CLIENT_SECRET='r8QNKCvIahutSDKq6Jj8s0fnJ9tvnlgUyS6ESEgLLRLCAVNiQozkp7hCKQIlpdBg8YgsBtraQQnS0dahgeJeMcJb7zrQglKwQdLAgpNGbITofStCRd8C6CNVo6Qcou6X';
 // using angular material without any default theme
