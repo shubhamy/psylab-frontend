@@ -54,15 +54,15 @@
   <div layout="row" style="border-radius: 10px;">
     <div flex class="graph-wrapper" layout="column">
       <div class="graph " layout="column" layout-align="center center">
-        <h2>Order Vs Time</h2>
-        <canvas id="line" class="chart chart-line" chart-data="pnlGraphData" chart-series="series" chart-options="orderoptions"
-        chart-dataset-override="orderdatasetOverride" chart-click="onClick">
+        <h2>PnL Vs Time</h2>
+        <canvas id="line" class="chart chart-line" chart-data="pnlGraphData" chart-series="series" chart-labels="pnllabels" chart-options="pnloptions"
+        chart-dataset-override="pnldatasetOverride" chart-click="onClick">
         </canvas>
       </div>
       <div class="graph " layout="column" layout-align="center center">
-        <h2>PnL Vs Time</h2>
-        <canvas id="bar" class="chart chart-bar" chart-options="pnloptions"
-          chart-dataset-override="pnldatasetOverride" chart-data="orderGraphData" chart-labels="orderlabels" chart-series="series">
+        <h2>Order Vs Time</h2>
+        <canvas id="bar" class="chart chart-bar" chart-options="orderoptions"
+          chart-dataset-override="orderdatasetOverride" chart-data="orderGraphData" chart-labels="orderlabels" chart-series="series">
         </canvas>
         <!-- <canvas id="bar" class="chart chart-bar" chart-data="orderGraphData"
           chart-options="orderoptions" chart-click="onClick">

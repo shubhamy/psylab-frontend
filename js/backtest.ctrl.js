@@ -11,11 +11,11 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   }
   function dateBetween(from, to) {
     var day;
-    var between = [moment(from).format('DD-MM-YYYY')];
+    var between = [moment(from).format('YYYY-MM-DD')];
     while(from < to) {
         day = from.getDate()
         from = new Date(from.setDate(++day));
-        between.push(moment(from).format('DD-MM-YYYY'));
+        between.push(moment(from).format('YYYY-MM-DD'));
     }
     return between;
   }
@@ -106,10 +106,13 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
   };
     $scope.plotChart=function (performance) {
       $scope.pnldata=[];
+      $scope.pnllabels=[];
       $scope.orderdata=[];
       $scope.orderlabels=[];
       for (i= 0;i<performance.dateArr.length; i++) {
-        $scope.pnldata.push({x:performance.dateArr[i],y:  performance.unrealized_profit[i]+performance.realized_profit[i]});
+        $scope.pnldata.push(performance.unrealized_profit[i]+performance.realized_profit[i]);
+        $scope.pnllabels.push(performance.dateArr[i]);
+        console.log($scope.pnl);
         $scope.orderlabels.push(performance.dateArr[i]);
         $scope.orderdata.push(performance.order_history[i]);
       }
@@ -117,34 +120,16 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
       $scope.pnlGraphData=[];
       $scope.pnlGraphData.push($scope.pnldata);
       $scope.orderGraphData=[];
-
       $scope.orderGraphData.push($scope.orderdata);
       $scope.onClick = function (points, evt) {
         console.log(points, evt);
       };
       $scope.pnldatasetOverride = [
         {
-          label: "Order",
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "#fff",
-          borderColor: "rgba(255,88,20,0.4)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(255,88,20,0.4)",
-          pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(255,88,20,0.4)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 3,
-          pointHitRadius: 10,
+          label: "Order"
         }
       ];
-      $scope.pnloptions = {
+      $scope.orderoptions = {
         tooltips: {
           // X Value of the tooltip as a string
              xLabel: 'time',
@@ -162,7 +147,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
           yAxes: [
             {
               gridLines: {
-                      display:false
+                      display:true
                   }
             }
           ],
@@ -176,26 +161,25 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
       $scope.orderdatasetOverride = [
         {
           label: "PnL",
-          fill: false,
-          lineTension: 0,
-          backgroundColor: "#fff",
-          borderColor: "rgba(255,88,20,0.4)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(255,88,20,0.4)",
-          pointBackgroundColor: "#fff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(255,88,20,0.4)",
-          pointHoverBorderColor: "rgba(220,220,220,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 3,
-          pointHitRadius: 10,
+          backgroundColor: [
+               'rgba(255, 99, 132, 0.2)',
+               'rgba(54, 162, 235, 0.2)',
+               'rgba(255, 206, 86, 0.2)',
+               'rgba(75, 192, 192, 0.2)',
+               'rgba(153, 102, 255, 0.2)',
+               'rgba(255, 159, 64, 0.2)'
+           ],
+           borderColor: [
+               'rgba(255,99,132,1)',
+               'rgba(54, 162, 235, 1)',
+               'rgba(255, 206, 86, 1)',
+               'rgba(75, 192, 192, 1)',
+               'rgba(153, 102, 255, 1)',
+               'rgba(255, 159, 64, 1)'
+           ]
         }
       ];
-      $scope.orderoptions = {
+      $scope.pnloptions = {
         legend: { display: true },
         tooltips: {
           // X Value of the tooltip as a string
@@ -218,7 +202,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
               display: true,
               position: 'left',
               gridLines: {
-                      display:false
+                      display:true
                   }
             }
           ],
