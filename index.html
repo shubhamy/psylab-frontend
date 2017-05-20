@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trading Automation Framework</title>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans|Titillium+Web|Varela+Round|Lato|Montserrat|Railway" rel="stylesheet">
     <link rel="stylesheet" href="themify-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/angular-overwrite.css">
@@ -23,8 +23,7 @@
         </div>
         <div flex="65" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
           <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file') || isPath('/backtest') || isPath('/papertrade')">
-            <li><a href="#!/play">Feature</a></li>
-            <li><a href="#!/trader">Strategy</a></li>
+            <li><a href="#!/section2">Feature</a></li>
             <li><a href="#section7">Contact</a></li>
             <li><a href="#!/file" ng-if="isUserLoggedIn!=undefined">Catalogue</a></li>
             <a ng-click="logInCard()" href=""  ng-if="isUserLoggedIn==undefined" class="btn btn-primary btn-circ btn-color">Sign In</a>

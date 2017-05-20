@@ -249,6 +249,7 @@ body, html {
   background-color: #ebeff1;
   font-size: 14px;
   overflow-x: hidden;
+  background-image: url("../images/bg.png");
 }
 
 *:focus {
@@ -564,6 +565,13 @@ canvas {
   z-index: 2;
 }
 
+.btm-border {
+  height: 3px;
+  width: 100px;
+  background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
+  margin: 20px auto;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -646,7 +654,7 @@ canvas {
   z-index: 10;
   font-size: 16px;
   line-height: 27px;
-  color: #9da6b8;
+  color: #6e7584;
   font-family: "Open Sans", sans-serif;
   max-width: 350px;
   padding: 16px;
@@ -850,13 +858,14 @@ canvas {
   font-family: "Varela Round", sans-serif;
 }
 .heading-wrapper h1 {
-  color: #373c46;
+  color: #445372;
   font-family: "Montserrat", sans-serif;
   font-size: 2.3rem;
   font-weight: 600;
   margin: 0;
   text-align: center;
   text-transform: uppercase;
+  text-shadow: 6px 6px 6px rgba(85, 138, 187, 0.2);
   letter-spacing: 2px;
 }
 
@@ -1566,6 +1575,10 @@ canvas {
   .error404 .bottompattern {
     margin-top: 30px;
   }
+}
+
+.background-overlay {
+  background-image: url("../images/bg.png");
 }
 
 .papertrade-section {

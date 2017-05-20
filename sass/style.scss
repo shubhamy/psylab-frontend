@@ -20,6 +20,7 @@ body,html{
   background-color:$body-backgorund;
   font-size: 14px;
   overflow-x: hidden;
+  background-image: url('../images/bg.png');
 }
 *:focus {
     outline: none !important;
@@ -337,6 +338,17 @@ canvas{
   // display:none;
   z-index: 2;
 }
+
+.btm-border{
+  height: 3px;
+  width: 100px;
+  background: linear-gradient(
+    120deg,
+    rgba(119, 68, 242, 1) 0%,
+    rgba(48, 180, 224, 1) 75%
+  );
+  margin: 20px auto;
+}
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -408,7 +420,7 @@ z-index: 1000 !important;
     z-index: 10;
     font-size: 16px;
     line-height: 27px;
-    color: #9da6b8;
+    color: #6e7584;
     font-family: $open-sans;
     max-width: 350px;
     padding: 16px;
@@ -624,13 +636,14 @@ z-index: 1000 !important;
   padding: 6em;
   font-family: $varela;
   h1{
-    color: $tundora;
+    color: $astronaut;
     font-family: $montserrat;
     font-size: 2.3rem;
     font-weight: 600;
     margin: 0;
     text-align: center;
     text-transform: uppercase;
+    text-shadow: 6px 6px 6px rgba(85, 138, 187, 0.2);
     letter-spacing: 2px;
   }
 }
@@ -1371,6 +1384,9 @@ z-index: 1000 !important;
       margin-top:30px;
     }
   }
+}
+.background-overlay{
+  background-image: url('../images/bg.png');
 }
 // papertrade.html starts from here
 .papertrade-section{
