@@ -18,8 +18,11 @@
 		</div>
     <nav ng-class="{'home':isPath('/')}" class="row-nav">
       <div layout="row"	class="wrapper container">
-        <div flex-gt-sm="35" flex="100" layout="row" layout-align-sm="center center" layout-align-xs="center center">
+        <div flex-gt-sm="35" flex="100" class="logo-wrapper" layout="row" layout-align-sm="center center" layout-align-xs="center center">
           <!-- TODO: logo -->
+          <img src='images/psylab2dummy11.png' height="70" width="70" />
+          <!-- <img src='images/psylab2dummy21.png' height="70" width="70" /> -->
+          <!-- <img src='images/psylab2dummy22.png' height="70" width="70" /> -->
         </div>
         <div flex="65" hide-sm hide-xs layout="row" layout-align="end center" class="nav-li-items">
           <ul ng-hide="isPath('/editor')||isPath('/trader') || isPath('/file') || isPath('/backtest') || isPath('/papertrade')">

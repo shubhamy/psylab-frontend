@@ -393,6 +393,10 @@ a {
   opacity: 1;
 }
 
+.logo-wrapper img {
+  margin: 10px 20px;
+}
+
 .second-nav li a {
   font-size: 12px !important;
 }
