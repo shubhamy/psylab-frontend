@@ -136,7 +136,7 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
               },
              url: url
            }).then(function successCallback(response) {
-             console.log(response);
+            //  console.log(response);.
              userInfo = {
                  accessToken: response.data.access_token,
                  email: response.data.email
@@ -159,7 +159,7 @@ app.factory("Auth", ["$http","$q","$window",function ($http, $q, $window) {
               'Authorization':'Bearer '+userInfo.accessToken
             }
         }).then(function (result) {
-            console.log(result);
+            // console.log(result);
             userInfo = null;
             $window.localStorage["userInfo"] = null;
             deferred.resolve(result);

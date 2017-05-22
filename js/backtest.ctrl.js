@@ -5,7 +5,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
     var AUTHORIZATION='Bearer '+Auth.getUserInfo().accessToken;
   }
   $scope.selectedFile = JSON.parse($window.sessionStorage["selectedFile"]);
-  // console.log($scope.selectedFile);
+  console.log($scope.selectedFile);
   if ($scope.selectedFile===undefined || $scope.selectedFile===null){
     $location.path('/file');
   }
@@ -49,6 +49,7 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
          url: url
        }).then(function successCallback(response) {
          response=response.data;
+         console.log(response);
         $scope.performance.anual_volume=response.anual_volume;
         $scope.performance.anualized_downside_standard=response.anualized_downside_standard;
         $scope.performance.anualized_return=response.anualized_return;
@@ -60,6 +61,8 @@ app.controller("BacktestCtrl", function($scope, $rootScope, $q, $timeout, $route
         $scope.performance.realized_profit=response.realized_profit;
         $scope.performance.unrealized_profit=response.unrealized_profit;
         $scope.performance.order_history=response.order_history;
+        $scope.performance.winning_rate=response.rates.win;
+        $scope.performance.losing_rate=response.rates.loss;
         $scope.performance.dateArr=dateBetween(file.from, file.to);
         console.log($scope.performance);
         $scope.plotChart($scope.performance);

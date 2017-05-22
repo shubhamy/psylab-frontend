@@ -1051,6 +1051,7 @@ z-index: 1000 !important;
 .login-form-wrapper{
   padding: 16px 25px;
   height: auto;
+  overflow: hidden;
   font-size: 1rem;
   background:$white;
   font-family: $pt-sans;
@@ -1060,6 +1061,18 @@ z-index: 1000 !important;
     font-family: $varela;
     font-weight: 500;
     font-size: 2em;
+  }
+  .loader-wrapper{
+    height: 100%;
+    width: 330px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background:rgba(255,255,255,0.6);
+    vertical-align: middle;
+    text-align: center;
+    z-index: 11;
   }
   .btn-primary{
     color:$tundora;

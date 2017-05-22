@@ -100,6 +100,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
     });
   };
   $scope.logInUser=function (user) {
+    $scope.loginLoading=true;
     Auth.login(user).then(function(response) {
         $scope.userInfo = response;
         $rootScope.isUserLoggedIn=true;
@@ -111,6 +112,7 @@ app.controller('MainCtrl', function($scope, $location, $mdDialog, $mdToast, $roo
           .hideDelay(3000)
         );
         $mdDialog.cancel();
+        $scope.loginLoading=false;
       });
   };
   $scope.logOut = function () {

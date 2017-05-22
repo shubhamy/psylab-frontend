@@ -1242,6 +1242,7 @@ canvas {
 .login-form-wrapper {
   padding: 16px 25px;
   height: auto;
+  overflow: hidden;
   font-size: 1rem;
   background: #ffffff;
   font-family: "PT Sans", sans-serif;
@@ -1252,6 +1253,18 @@ canvas {
   font-family: "Varela Round", sans-serif;
   font-weight: 500;
   font-size: 2em;
+}
+.login-form-wrapper .loader-wrapper {
+  height: 100%;
+  width: 330px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.6);
+  vertical-align: middle;
+  text-align: center;
+  z-index: 11;
 }
 .login-form-wrapper .btn-primary {
   color: #373c46;
