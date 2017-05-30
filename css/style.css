@@ -246,10 +246,9 @@ input[type="checkbox"], input[type="radio"] {
   src: url("../fonts/input_mono_narrow_bold.woff") format("woff");
 }
 body, html {
-  background-color: #ebeff1;
   font-size: 14px;
   overflow-x: hidden;
-  background-image: url("../images/bg.png");
+  background: #6804F4;
 }
 
 *:focus {
@@ -400,18 +399,18 @@ a {
 }
 
 .row-nav.home {
-  top: 0;
+  top: 20px;
   position: absolute;
   border-bottom: none;
   background: transparent;
   box-shadow: inherit;
 }
 .row-nav.home .btn-primary.btn-color {
-  background: #ffffff;
-  color: #43458b;
+  background: #6804F4;
+  color: #ffffff;
 }
 .row-nav.home .nav-li-items ul li a {
-  color: #ffffff;
+  color: #221e38;
 }
 
 .btn-circ {
@@ -461,7 +460,7 @@ a {
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: #ffffff;
+  background: #6804F4;
 }
 
 .ngview.home {
@@ -471,7 +470,10 @@ a {
 }
 
 footer {
+  background: #ffffff;
   font-family: "Varela Round", sans-serif;
+  position: relative;
+  padding: 20px;
   min-height: 200px;
 }
 footer p {
@@ -539,105 +541,51 @@ footer .container .icons .github:hover {
   color: #131418;
 }
 
-header {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-}
-@media (min-width: 880px) {
-  header {
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-  }
-}
-@media (min-width: 1200px) {
-  header {
-    height: 100vh;
-  }
-}
-@media (min-width: 1500px) {
-  header {
-    height: calc( 100vh - 100px);
-  }
+.schoolLine.lightLine {
+  border-color: #f7f1fa;
 }
 
-header .stripes {
+.vLine1, .vLine2, .vLine3, .vLine4, .vLine5 {
+  z-index: 0;
   position: absolute;
-  width: 100%;
+  top: 0;
+  min-height: 100vh;
   height: 100%;
-  bottom: 260px;
+  border-left: 1px solid;
 }
-@media (min-width: 670px) {
-  header .stripes {
-    bottom: 290px;
-  }
+
+.vLine1 {
+  left: 14px;
 }
-@media (min-width: 880px) {
-  header .stripes {
-    bottom: 190px;
-  }
+
+.vLine2 {
+  left: 25%;
 }
-header .stripes .stripe {
-  position: absolute;
-  height: 190px;
+
+.vLine3 {
+  left: 50%;
 }
-header .stripes .s4 {
-  height: 191px;
-  bottom: -189px;
-  left: 0;
-  right: 60%;
-  min-width: 0;
-  width: 100%;
-  background: linear-gradient(90deg, #f783c3, #f399ff);
+
+.vLine4 {
+  left: 75%;
 }
-@media (min-width: 880px) {
-  header .stripes .s4 {
-    right: calc(50% + 90px);
-    min-width: 430px;
-  }
-}
-header .stripes .s5 {
-  height: 191px;
-  bottom: -189px;
-  right: 0;
-  width: 26%;
-  background: linear-gradient(90deg, #c76eff, #b778ff);
-}
-header .stripes .background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #895cf2, #ffabf4);
-}
-header .stripes .s1 {
-  bottom: 380px;
-  left: 16%;
-  width: 41%;
-  background: linear-gradient(90deg, rgba(67, 67, 141, 0.05), rgba(67, 67, 141, 0.1));
-}
-header .stripes .s2 {
-  bottom: 0;
-  left: 0;
-  width: 27%;
-  background: linear-gradient(90deg, #c76eff, #b778ff);
-}
-header .stripes .s3 {
-  bottom: 0;
-  right: 0;
-  width: 30%;
-  background: linear-gradient(90deg, #f4a3ea, #ffbe8a);
+
+.vLine5 {
+  right: 14px;
 }
 
 #section1 {
-  height: 100vh;
+  height: calc(100vh - 40px);
   overflow: hidden;
   position: relative;
-  background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
+  top: 20px;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  background: #ffffff;
 }
 #section1 .btn-color {
-  background: #ffffff;
-  color: #43458b;
+  background: #6804F4;
+  color: #ffffff;
   border-radius: 4px;
 }
 #section1 .select {
@@ -684,7 +632,7 @@ canvas {
 .container.hover {
   height: 600px;
   z-index: 4 !important;
-  color: #ffffff;
+  color: #221e38;
 }
 .container.hover h5 {
   font-size: 1.5rem;
@@ -699,10 +647,11 @@ canvas {
   max-width: 800px;
   font-family: "Nunito", sans-serif;
   font-weight: 500;
-  color: #fff;
+  color: #221e38;
   text-align: center;
   line-height: initial;
   letter-spacing: 1px;
+  z-index: 5;
 }
 .container.hover p {
   line-height: 1.65em;
@@ -735,7 +684,10 @@ canvas {
 }
 
 #section2 {
-  background: #ffffff;
+  margin: 20px;
+}
+#section2 h1 {
+  color: #ffffff;
 }
 #section2 .wave-wrapper {
   margin-top: 20px;
@@ -784,15 +736,15 @@ canvas {
   width: 170px;
   height: 170px;
   opacity: 0.6;
-  border: 2px solid #43458b;
+  border: 2px solid white;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   z-index: 10;
 }
 #section2 .dot {
-  border: 1px solid #43458b;
-  background: transparent;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.27);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -809,8 +761,8 @@ canvas {
   opacity: 0;
 }
 #section2 .dot2 {
-  border: 1px solid #43458b;
-  background: transparent;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.27);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -884,7 +836,9 @@ canvas {
 }
 
 #section3 {
-  background: #f6f9fc;
+  background: #ffffff;
+  margin: 20px;
+  border-radius: 10px;
 }
 #section3 .btn-wrapper {
   padding: 4rem;
@@ -928,6 +882,7 @@ canvas {
   height: 330px;
   width: 280px;
   background: #ffffff;
+  z-index: 5;
   margin: auto 2rem;
   box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   -moz-transition: all 0.3s ease-in-out;
@@ -955,6 +910,7 @@ canvas {
 }
 .heading-wrapper h1 {
   color: #32325d;
+  z-index: 5;
   font-family: "Montserrat", sans-serif;
   font-size: 2.3rem;
   font-weight: 600;
@@ -1010,8 +966,10 @@ canvas {
 }
 
 #section4 {
-  background: white;
   font-family: "Varela Round", sans-serif;
+}
+#section4 h1 {
+  color: #ffffff;
 }
 #section4 .container {
   padding-bottom: 100px;
@@ -1065,7 +1023,7 @@ canvas {
   background-size: cover;
   height: auto;
   border-radius: 10px;
-  background: linear-gradient(120deg, rgba(119, 68, 242, 0.5), rgba(48, 180, 224, 0.5)), url("../images/vid.jpg");
+  background: linear-gradient(120deg, #ffffff, #ffffff), url("../images/vid.jpg");
   background-size: 100%;
 }
 @media screen and (min-width: 1440px) {
@@ -1101,8 +1059,8 @@ canvas {
 .img-overlay div {
   height: 100px;
   width: 100px;
-  background: #ffffff;
-  opacity: 0.9;
+  background: #6804f4;
+  opacity: 1;
   border-radius: 50%;
 }
 .img-overlay div .play-icon {
@@ -1183,6 +1141,12 @@ canvas {
 
 #section6 {
   background: #ffffff;
+  margin: 20px;
+  border-radius: 10px;
+}
+#section6 .container {
+  position: relative;
+  padding-bottom: 100px;
 }
 
 .timeline ul {
@@ -1311,7 +1275,9 @@ canvas {
   }
 }
 #section7 {
-  background: linear-gradient(90deg, #895cf2, #ffabf4);
+  margin: 20px;
+  border-radius: 10px;
+  background: #221e38;
 }
 #section7 h1 {
   color: #ffffff;

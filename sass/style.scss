@@ -17,10 +17,9 @@
   src: url('../fonts/input_mono_narrow_bold.woff') format('woff');
 }
 body,html{
-  background-color:$body-backgorund;
   font-size: 14px;
   overflow-x: hidden;
-  background-image: url('../images/bg.png');
+  background: #6804F4;
 }
 *:focus {
     outline: none !important;
@@ -166,19 +165,19 @@ a{
   font-size: 12px !important;
 }
 .row-nav.home{
-  top:0;
+  top:20px;
   position: absolute;
   border-bottom: none;
   background: transparent;
   box-shadow: inherit;
-    .btn-primary.btn-color {
-      background: $white;
-      color: $btn-color;
-    }
+  .btn-primary.btn-color {
+    background: #6804F4;
+    color: $white;
+  }
   .nav-li-items{
     ul li{
       a{
-        color: $white;
+        color: #221e38;
       }
     }
   }
@@ -225,7 +224,7 @@ a{
   top: 70px;
   min-height: calc(100vh - 70px);
   z-index: 5;
-  background: $white;
+  background: #6804F4;
 }
 .ngview.home{
   position: relative;
@@ -234,8 +233,10 @@ a{
 }
 
 footer{
-  // background: $footer;
+  background: $white  ;
   font-family: $varela;
+  position: relative;
+  padding: 20px;
   min-height: 200px;
   p{
     text-align: center;
@@ -305,101 +306,45 @@ footer{
     }
   }
 }
-// home.html starts from here
-  // text editor scss
-header {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-  // padding-bottom: 80px;
-  @media (min-width: 880px) {
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-  }
-  @media (min-width: 1200px){
-    height: 100vh;
-  }
-  @media (min-width: 1500px){
-      height: calc( 100vh - 100px);
-  }
+
+.schoolLine.lightLine {
+  border-color: #f7f1fa;
 }
-header .stripes {
+.vLine1, .vLine2, .vLine3, .vLine4, .vLine5 {
+  z-index: 0;
   position: absolute;
-  width: 100%;
+  top: 0;
+  min-height: 100vh;
   height: 100%;
-  bottom: 260px;
-  // transform: skewY(-12deg);
-  @media (min-width: 670px){
-      bottom: 290px;
-  }
-  @media (min-width: 880px){
-    bottom: 190px;
-  }
-  .stripe {
-      position: absolute;
-      height: 190px;
-  }
-  .s4 {
-    height: 191px;
-    bottom: -189px;
-    left: 0;
-    right: 60%;
-    min-width: 0;
-    width: 100%;
-    background: linear-gradient(90deg,#f783c3,#f399ff);
-    @media (min-width: 880px) {
-      right: calc(50% + 90px);
-      min-width: 430px;
-    }
-  }
-   .s5 {
-    height: 191px;
-    bottom: -189px;
-    right: 0;
-    width: 26%;
-    background: linear-gradient(90deg, #c76eff, #b778ff);
-  }
-  .background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,#895cf2,#ffabf4);
-  }
-   .s1 {
-    bottom: 380px;
-    left: 16%;
-    width: 41%;
-    background: linear-gradient(90deg,rgba(67,67,141,.05),rgba(67,67,141,.1));
-  }
-   .s2 {
-    bottom: 0;
-    left: 0;
-    width: 27%;
-    background: linear-gradient(90deg,#c76eff,#b778ff);
-  }
-  .s3 {
-    bottom: 0;
-    right: 0;
-    width: 30%;
-    background: linear-gradient(90deg,#f4a3ea,#ffbe8a);
-  }
+  border-left: 1px solid;
+}
+.vLine1 {
+  left: 14px;
+}
+.vLine2 {
+  left: 25%;
+}
+.vLine3 {
+  left: 50%;
+}
+.vLine4 {
+  left: 75%;
+}
+.vLine5 {
+    right: 14px;
 }
 #section1{
-  height: 100vh;
+  height: calc(100vh - 40px);
   overflow: hidden;
   position: relative;
-  background:
-    /* top, transparent red, faked with gradient */
-    linear-gradient(
-      120deg,
-      rgba(119, 68, 242, 1) 0%,
-      rgba(48, 180, 224, 1) 75%
-    );
+  top: 20px;
+  margin: 0 20px 20px 20px;
+  border-radius: 10px;
+  background:$white;
   // background: linear-gradient(120deg, #7744f2 0%,  #30b4e0 75%);
   .btn-color{
-    background: $white;
-    color: $btn-color;
+    background: #6804F4;
+    color:$white;
     border-radius: 4px;
   }
   .select{
@@ -441,7 +386,7 @@ canvas{
   // position: absolute;
   height: 600px;
   z-index: 4 !important;
-  color: $white;
+  color: #221e38;
   h5{
     font-size:1.5rem;
     margin-bottom:2rem;
@@ -455,10 +400,11 @@ canvas{
     max-width: 800px;
     font-family: $nunito;
     font-weight: 500;
-    color: #fff;
+    color: #221e38;
     text-align: center;
     line-height: initial;
     letter-spacing: 1px;
+    z-index: 5;
   }
   p{
     line-height: 1.65em;
@@ -481,15 +427,18 @@ canvas{
   }
 }
 .links {
-stroke: none;
-stroke-opacity: 0.2;
-z-index: 1000 !important;
+  stroke: none;
+  stroke-opacity: 0.2;
+  z-index: 1000 !important;
 }
 
 // section2/ how it works#
 
 #section2{
-  background: $white;
+  margin: 20px;
+  h1{
+    color: $white;
+  }
 .wave-wrapper{
   margin-top: 20px;
   margin-left: 30px;
@@ -542,7 +491,7 @@ z-index: 1000 !important;
   width: 170px;
   height: 170px;
   opacity: 0.6;
-  border: 2px solid $btn-color;
+  border: 2px solid white;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -550,8 +499,8 @@ z-index: 1000 !important;
 }
 
 .dot {
-  border: 1px solid $btn-color;
-  background: transparent;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.27);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -568,8 +517,8 @@ z-index: 1000 !important;
   opacity: 0;
 }
 .dot2 {
-  border: 1px solid $btn-color;
-  background: transparent;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.27);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -651,7 +600,9 @@ z-index: 1000 !important;
 }
 
 #section3{
-  background: #f6f9fc;
+  background: $white;
+  margin: 20px;
+  border-radius: 10px;
   // max-height: 950px;
   .btn-wrapper{
     padding:4rem;
@@ -699,6 +650,7 @@ z-index: 1000 !important;
   height: 330px;
   width: 280px;
   background: $white;
+  z-index: 5;
   margin: auto 2rem;
   box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   @include transition(all 0.3s ease-in-out);
@@ -715,6 +667,8 @@ z-index: 1000 !important;
   font-family: $varela;
   h1{
     color:#32325d;
+    z-index: 5;
+
     font-family: $montserrat;
     font-size: 2.3rem;
     font-weight: 600;
@@ -771,7 +725,9 @@ z-index: 1000 !important;
   }
 }
 #section4{
-  background: white;
+  h1{
+    color: $white;
+  }
   font-family: $varela;
   .container{
     padding-bottom: 100px;
@@ -825,8 +781,8 @@ z-index: 1000 !important;
     /* top, transparent red, faked with gradient */
     linear-gradient(
       120deg,
-      rgba(119, 68, 242, 0.5),
-      rgba(48, 180, 224, 0.5)
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
     ),
     url('../images/vid.jpg');
       background-size: 100%;
@@ -859,8 +815,8 @@ z-index: 1000 !important;
   div{
     height: 100px;
     width: 100px;
-    background: $white;
-    opacity: 0.9;
+    background:#6804f4;
+    opacity: 1;
     border-radius: 50%;
     .play-icon{
       height: 35px;
@@ -936,6 +892,19 @@ z-index: 1000 !important;
 }
 #section6{
   background: $white;
+  margin: 20px;
+  border-radius: 10px;
+  .container{
+    position: relative;
+    padding-bottom: 100px;
+    // top: -350px;
+    // @media screen and (max-width: $xl-break) {
+    //   top: -220px;
+    // }
+    // @media screen and (max-width: $lg-break) {
+    //   top: -200px;
+    // }
+  }
 }
 .timeline ul {
   padding: 50px 0;
@@ -1091,7 +1060,9 @@ z-index: 1000 !important;
   // }
 }
 #section7{
-  background: linear-gradient(90deg, #895cf2, #ffabf4);
+  margin: 20px;
+  border-radius: 10px;
+  background: #221e38;
   h1{
     color: $white;
   }

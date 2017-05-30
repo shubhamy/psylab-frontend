@@ -1,13 +1,10 @@
-<header layout="column" layout-align="center center">
-  <div class="stripes">
-    <div class="stripe s4"></div>
-    <div class="stripe s5"></div>
-    <div class="background"></div>
-    <div class="stripe s1"></div>
-    <div class="stripe s2"></div>
-    <div class="stripe s3"></div>
-  </div>
+<section id="section1" layout="column" layout-align="center center">
   <div class="container hover" layout="column" layout-align="center center">
+    <div class="vLine1 schoolLine lightLine"></div>
+		<div class="vLine2 schoolLine lightLine"></div>
+		<div class="vLine3 schoolLine lightLine"></div>
+		<div class="vLine4 schoolLine lightLine"></div>
+		<div class="vLine5 schoolLine lightLine"></div>
     <h5>PSYLAB</h5>
     <h1>Using Artificial Intelligence to build your trading strategies
     </h1>
@@ -15,26 +12,28 @@
       <a ng-href="#section2" class="btn btn-lg btn-primary btn-color" >Know More</a>
     </div>
   </div>
-</header>
+</section>
 <section id="section2">
-  <div class="heading-wrapper" layout="column" layout-align="center center">
-    <h1>Write your strategies in plain text</h1>
-    <div class="btm-border"></div>
-    <div class="wave-wrapper"  layout-gt-md="column" layout-align="center center">
-      <div show-gt-md hide-xs hide-sm class="dot"></div>
-      <!-- <div class="beat"></div> -->
-      <div show-gt-md hide-xs hide-sm class="dot2"></div>
-      <div class="custom-card first" layout="row" layout-align="center center">
-        <i class='ti-stats-up'></i>
-        <p>20 days Exponential Moving Average crosses 10 days Exponential moving average</p>
-      </div>
-      <div class="custom-card second" layout="row" layout-align="center center">
-        <i class='ti-pulse'></i>
-        <p>price crosses below yesterday close AND volume is 25% higher than 10 days moving average of volume</p>
-      </div>
-      <div class="custom-card third" layout="row" layout-align="center center">
-        <i class='ti-vector'></i>
-        <p>10 days Moving Average of 14 days rsi crosses above 14 days RSI AND today open is higher than previous day close</p>
+  <div class="container">
+    <div class="heading-wrapper" layout="column" layout-align="center center">
+      <h1>Write your strategies in plain text</h1>
+      <div class="btm-border"></div>
+      <div class="wave-wrapper"  layout-gt-md="column" layout-align="center center">
+        <div show-gt-md hide-xs hide-sm class="dot"></div>
+        <!-- <div class="beat"></div> -->
+        <div show-gt-md hide-xs hide-sm class="dot2"></div>
+        <div class="custom-card first" layout="row" layout-align="center center">
+          <i class='ti-stats-up'></i>
+          <p>20 days Exponential Moving Average crosses 10 days Exponential moving average</p>
+        </div>
+        <div class="custom-card second" layout="row" layout-align="center center">
+          <i class='ti-pulse'></i>
+          <p>price crosses below yesterday close AND volume is 25% higher than 10 days moving average of volume</p>
+        </div>
+        <div class="custom-card third" layout="row" layout-align="center center">
+          <i class='ti-vector'></i>
+          <p>10 days Moving Average of 14 days rsi crosses above 14 days RSI AND today open is higher than previous day close</p>
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +43,11 @@
     <img src="images/editor.png">
   </div> -->
   <div class="container">
+    <div class="vLine1 schoolLine lightLine"></div>
+    <div class="vLine2 schoolLine lightLine"></div>
+    <div class="vLine3 schoolLine lightLine"></div>
+    <div class="vLine4 schoolLine lightLine"></div>
+    <div class="vLine5 schoolLine lightLine"></div>
     <div class="heading-wrapper" layout="column" layout-align="center center">
       <h1>Features & benefits</h1>
       <div class="btm-border"></div>
@@ -203,7 +207,7 @@
       <a class="img-overlay" layout="row" href='' ng-click="playVideo()"  layout-align="center center">
         <div ng-if="!playVisible" layout="row" layout-align="center center">
           <svg xmlns="http://www.w3.org/2000/svg" class="play-icon" viewBox="0 0 50 50">
-              <path d="M10,5.251v39.497L43.572,25L10,5.251z"></path>
+              <path d="M10,5.251v39.497L43.572,25L10,5.251z" style="fill: white"></path>
           </svg>
         </div>
         <iframe class='video-embed' ng-if="playVisible" src="https://www.youtube.com/embed/5J5bDQHQR1g?autoplay=1" frameborder="0" allowfullscreen></iframe>
@@ -222,28 +226,35 @@
   </div>
 </section> -->
 <section id="section6">
-  <div class="heading-wrapper" layout="column" l`ayout-align="center center">
-    <h1>What's next</h1>
-    <div class="btm-border"></div>
+  <div class="container">
+    <div class="vLine1 schoolLine lightLine"></div>
+    <div class="vLine2 schoolLine lightLine"></div>
+    <div class="vLine3 schoolLine lightLine"></div>
+    <div class="vLine4 schoolLine lightLine"></div>
+    <div class="vLine5 schoolLine lightLine"></div>
+    <div class="heading-wrapper" layout="column" l`ayout-align="center center">
+      <h1>What's next</h1>
+      <div class="btm-border"></div>
+    </div>
+    <section class="timeline">
+      <ul>
+        <li>
+          <div layout="row">
+            <i class="ti-desktop"></i>
+            <p>A next level strategy writing platform for programmers</p>
+          </div>
+        </li>
+        <li>
+          <div layout="row">
+            <i class="ti-announcement"></i>
+            <p>Live trading coming soon</p>
+          </div>
+        </li>
+        <li>
+        </li>
+      </ul>
+    </section>
   </div>
-  <section class="timeline">
-    <ul>
-      <li>
-        <div layout="row">
-          <i class="ti-desktop"></i>
-          <p>A next level strategy writing platform for programmers</p>
-        </div>
-      </li>
-      <li>
-        <div layout="row">
-          <i class="ti-announcement"></i>
-          <p>Live trading coming soon</p>
-        </div>
-      </li>
-      <li>
-      </li>
-    </ul>
-  </section>
 </section>
 <section id="section7">
   <div class="heading-wrapper" layout="column" layout-align="center center">
