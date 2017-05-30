@@ -443,16 +443,17 @@ canvas{
   z-index: 4 !important;
   color: $white;
   h5{
-    font-size:1.3rem;
+    font-size:1.5rem;
     margin-bottom:2rem;
     letter-spacing: 3px;
+    font-family: $ubuntu;
     font-weight: 500;
   }
   h1{
-    font-size: 42px;
+    font-size: 50px;
     margin-top:0;
     max-width: 800px;
-    font-family: $ubuntu;
+    font-family: $nunito;
     font-weight: 500;
     color: #fff;
     text-align: center;
@@ -512,14 +513,10 @@ z-index: 1000 !important;
       font-size: 26px;
       margin-right: 20px;
       background-image: -webkit-linear-gradient(
-        120deg,
-        rgba(119, 68, 242, 0.8) 0%,
-        rgba(48, 180, 224, 0.6) 75%
+        90deg, #895cf2, #ffabf4
       );
       background-image: linear-gradient(
-        120deg,
-        rgba(119, 68, 242, 0.8) 0%,
-        rgba(48, 180, 224, 0.6) 75%
+      90deg, #895cf2, #ffabf4
       );
       color:transparent;
       -webkit-background-clip: text;
@@ -744,7 +741,35 @@ z-index: 1000 !important;
     color: $aluminium;
   }
 }
+.main .stripes{
+  // position: absolute;
+  z-index: -1;
+  width: 100%;
+  display: grid;
+  transform: skewY(-12deg);
+  height: 100%;
+  grid: repeat(2,200px)/1fr minmax(0,1000px) 1fr;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  background: linear-gradient(100grad,#545fdd,#6772e5 50%);
+  @media screen and (min-width: 670px) {
+    height: calc(100% - 120px);
+  }
+  span{
 
+    &:nth-child(1) {
+      grid-column: 2;
+      background: linear-gradient(100grad,rgba(41,50,205,0) 70%,rgba(41,50,205,.5));
+    }
+    &:nth-child(2) {
+      background: linear-gradient(100grad,#76eea7,#4acf8c);
+    }
+    &:nth-child(3){
+      grid-row: 2;
+    background: linear-gradient(100grad,#6adaff,rgba(106,218,255,.7));
+    }
+  }
+}
 #section4{
   background: white;
   font-family: $varela;
@@ -964,14 +989,10 @@ z-index: 1000 !important;
         font-size: 36px;
         margin: auto 20px auto 0;
         background-image: -webkit-linear-gradient(
-          120deg,
-          rgba(119, 68, 242, 0.8) 0%,
-          rgba(48, 180, 224, 0.6) 75%
+        90deg, #895cf2, #ffabf4
         );
         background-image: linear-gradient(
-          120deg,
-          rgba(119, 68, 242, 0.8) 0%,
-          rgba(48, 180, 224, 0.6) 75%
+        90deg, #895cf2, #ffabf4
         );
         color:transparent;
         -webkit-background-clip: text;
@@ -1070,7 +1091,7 @@ z-index: 1000 !important;
   // }
 }
 #section7{
-  background: linear-gradient(120deg, #7744f2 0%,  #30b4e0 75%);
+  background: linear-gradient(90deg, #895cf2, #ffabf4);
   h1{
     color: $white;
   }

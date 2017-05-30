@@ -364,7 +364,7 @@ a {
   height: 100%;
 }
 .row-nav .btn-primary.btn-color {
-  color: #1F8EED;
+  color: #43458b;
   background: #ffffff;
 }
 .row-nav .nav-li-items ul li {
@@ -408,7 +408,7 @@ a {
 }
 .row-nav.home .btn-primary.btn-color {
   background: #ffffff;
-  color: #1F8EED;
+  color: #43458b;
 }
 .row-nav.home .nav-li-items ul li a {
   color: #ffffff;
@@ -637,7 +637,7 @@ header .stripes .s3 {
 }
 #section1 .btn-color {
   background: #ffffff;
-  color: #1F8EED;
+  color: #43458b;
   border-radius: 4px;
 }
 #section1 .select {
@@ -687,16 +687,17 @@ canvas {
   color: #ffffff;
 }
 .container.hover h5 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   letter-spacing: 3px;
+  font-family: "Ubuntu", sans-serif;
   font-weight: 500;
 }
 .container.hover h1 {
-  font-size: 42px;
+  font-size: 50px;
   margin-top: 0;
   max-width: 800px;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 500;
   color: #fff;
   text-align: center;
@@ -760,8 +761,8 @@ canvas {
 #section2 .wave-wrapper .custom-card i {
   font-size: 26px;
   margin-right: 20px;
-  background-image: -webkit-linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
-  background-image: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  background-image: -webkit-linear-gradient(90deg, #895cf2, #ffabf4);
+  background-image: linear-gradient(90deg, #895cf2, #ffabf4);
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -783,14 +784,14 @@ canvas {
   width: 170px;
   height: 170px;
   opacity: 0.6;
-  border: 2px solid #1F8EED;
+  border: 2px solid #43458b;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
   z-index: 10;
 }
 #section2 .dot {
-  border: 1px solid #1F8EED;
+  border: 1px solid #43458b;
   background: transparent;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -808,7 +809,7 @@ canvas {
   opacity: 0;
 }
 #section2 .dot2 {
-  border: 1px solid #1F8EED;
+  border: 1px solid #43458b;
   background: transparent;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -889,7 +890,7 @@ canvas {
   padding: 4rem;
 }
 #section3 .btn-wrapper .btn-color {
-  background: #1F8EED;
+  background: #43458b;
   border-radius: 4px;
 }
 #section3 .container {
@@ -978,6 +979,34 @@ canvas {
   font-size: 1em;
   line-height: 1.4em;
   color: #83888D;
+}
+
+.main .stripes {
+  z-index: -1;
+  width: 100%;
+  display: grid;
+  transform: skewY(-12deg);
+  height: 100%;
+  grid: repeat(2, 200px)/1fr minmax(0, 1000px) 1fr;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  background: linear-gradient(100grad, #545fdd, #6772e5 50%);
+}
+@media screen and (min-width: 670px) {
+  .main .stripes {
+    height: calc(100% - 120px);
+  }
+}
+.main .stripes span:nth-child(1) {
+  grid-column: 2;
+  background: linear-gradient(100grad, rgba(41, 50, 205, 0) 70%, rgba(41, 50, 205, 0.5));
+}
+.main .stripes span:nth-child(2) {
+  background: linear-gradient(100grad, #76eea7, #4acf8c);
+}
+.main .stripes span:nth-child(3) {
+  grid-row: 2;
+  background: linear-gradient(100grad, #6adaff, rgba(106, 218, 255, 0.7));
 }
 
 #section4 {
@@ -1146,10 +1175,10 @@ canvas {
   margin-bottom: 3rem;
 }
 #section5 .heading-wrapper h1 span {
-  color: #1F8EED;
+  color: #43458b;
 }
 #section5 .btn-color {
-  background: #1F8EED;
+  background: #43458b;
 }
 
 #section6 {
@@ -1184,7 +1213,7 @@ canvas {
   position: absolute;
   left: 50%;
   z-index: 100;
-  background: #1F8EED !important;
+  background: #43458b !important;
   bottom: 5px;
   transform: translateX(-50%);
   width: 10px;
@@ -1210,8 +1239,8 @@ canvas {
 .timeline ul li div i {
   font-size: 36px;
   margin: auto 20px auto 0;
-  background-image: -webkit-linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
-  background-image: linear-gradient(120deg, rgba(119, 68, 242, 0.8) 0%, rgba(48, 180, 224, 0.6) 75%);
+  background-image: -webkit-linear-gradient(90deg, #895cf2, #ffabf4);
+  background-image: linear-gradient(90deg, #895cf2, #ffabf4);
   color: transparent;
   -webkit-background-clip: text;
 }
@@ -1282,7 +1311,7 @@ canvas {
   }
 }
 #section7 {
-  background: linear-gradient(120deg, #7744f2 0%, #30b4e0 75%);
+  background: linear-gradient(90deg, #895cf2, #ffabf4);
 }
 #section7 h1 {
   color: #ffffff;
@@ -1364,7 +1393,7 @@ canvas {
   width: 200px;
 }
 .login-form-wrapper .btn-primary.btn-color {
-  background: #1F8EED;
+  background: #43458b;
   color: #ffffff;
 }
 .login-form-wrapper .btn-wrapper {
@@ -1434,7 +1463,7 @@ canvas {
 }
 .detail-header .btn-color {
   font-family: "Varela Round", sans-serif !important;
-  background: #1F8EED;
+  background: #43458b;
 }
 
 .editor-section {
@@ -1497,7 +1526,7 @@ canvas {
 }
 .code-execute-panel .btn-color {
   margin: 16px;
-  background: #1F8EED;
+  background: #43458b;
 }
 
 .convert-wrapper {
@@ -1509,7 +1538,7 @@ canvas {
 }
 .convert-wrapper .btn-color {
   margin: 16px;
-  background: #1F8EED;
+  background: #43458b;
 }
 
 .search-nav {
@@ -1580,7 +1609,7 @@ canvas {
   transition: color .3s ease;
 }
 .file-section .data-rows .btn-color {
-  background: #1F8EED;
+  background: #43458b;
   padding: 0.3rem 1.1rem;
   margin: .2rem .7rem;
   border-radius: 4px;
@@ -1632,8 +1661,8 @@ canvas {
   padding-right: 3px;
 }
 .error404 h2 a:hover {
-  color: #1F8EED;
-  border-bottom: 5px solid #1F8EED;
+  color: #43458b;
+  border-bottom: 5px solid #43458b;
 }
 .error404 #scene ul {
   width: 100% !important;
@@ -1709,7 +1738,7 @@ canvas {
   font-family: "Open Sans", sans-serif;
 }
 .papertrade-section .card .btn-color {
-  background: #1F8EED;
+  background: #43458b;
   border-radius: 4px;
   padding: 1rem 1.1rem;
 }
@@ -1743,7 +1772,7 @@ canvas {
   margin-top: 2rem;
 }
 .backtest-section .strategy .date-picker .btn-color {
-  background: #1F8EED;
+  background: #43458b;
 }
 .backtest-section .strategy .data {
   padding: 10px 10px 0px 10px;
