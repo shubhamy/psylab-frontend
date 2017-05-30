@@ -19,7 +19,6 @@
 body,html{
   font-size: 14px;
   overflow-x: hidden;
-  background: #6804F4;
 }
 *:focus {
     outline: none !important;
@@ -162,7 +161,7 @@ a{
   }
 }
 .second-nav  li a{
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 .row-nav.home{
   top:20px;
@@ -223,12 +222,14 @@ a{
   position: relative;
   top: 70px;
   min-height: calc(100vh - 70px);
+  background-image: url('../images/bg.png');
   z-index: 5;
-  background: #6804F4;
 }
 .ngview.home{
+  background: linear-gradient(90deg,#895cf2,#ffabf4);
   position: relative;
   top: 0;
+  padding-bottom: 1px;
   z-index: inherit;
 }
 
@@ -262,7 +263,7 @@ footer{
       line-height: 23px;
     }
     a{
-      color: #1F8EED;
+      color: #6804f4;
       margin: 1rem auto;
       line-height: 23px;
     }
@@ -314,7 +315,6 @@ footer{
   z-index: 0;
   position: absolute;
   top: 0;
-  min-height: 100vh;
   height: 100%;
   border-left: 1px solid;
 }
@@ -356,6 +356,9 @@ footer{
     user-select: initial;
     pointer-events: initial;
     cursor: initial;
+  }
+  img{
+    z-index: 5;
   }
 }
 canvas{
@@ -399,9 +402,9 @@ canvas{
     margin-top:0;
     max-width: 800px;
     font-family: $nunito;
-    font-weight: 500;
+    font-weight: 600;
     color: #221e38;
-    text-align: center;
+    text-align: left;
     line-height: initial;
     letter-spacing: 1px;
     z-index: 5;
@@ -649,17 +652,16 @@ canvas{
 .item-card{
   height: 330px;
   width: 280px;
-  background: $white;
   z-index: 5;
   margin: auto 2rem;
-  box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
+  // box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   @include transition(all 0.3s ease-in-out);
   @media screen and (max-width: $md-break) {
     margin: 2rem;
   }
 }
 .item-card:hover{
-  box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
+  // box-shadow: 0 2px 64px 0 rgba(208,208,208,.5);
   @include transition(all 0.3s ease-in-out);
 }
 .heading-wrapper{
@@ -683,16 +685,19 @@ canvas{
   font-family: $varela;
   h3{
     font-weight: 500;
-    color: $brightgrey;
-    text-align: center;
+    font-size: 1.5rem;
+    color: #32325d;
   }
   p{
-    text-align: center;
     max-width: 250px;
-    margin: auto;
     font-size:1em;
     line-height: 1.4em;
-    color: $aluminium;
+    color: #6b7c93;
+  }
+  #rocket-icon{
+    // width: 75px;
+    margin-left: -11px;
+    transform: rotate(-45deg);
   }
 }
 .main .stripes{
@@ -813,12 +818,14 @@ canvas{
   border-radius: 10px;
   position: absolute;
   div{
+    @include transition(all 0.3s ease-in-out);
     height: 100px;
     width: 100px;
     background:#6804f4;
-    opacity: 1;
+    opacity: 0.6;
     border-radius: 50%;
     .play-icon{
+      @include transition(all 0.3s ease-in-out);
       height: 35px;
       width: 35px;
     }
@@ -863,10 +870,19 @@ canvas{
       height: 219px;
     }
   }
-  // @include transition(all 0.3s ease-in-out);
-  &:hover{
-    background-color: rgba(0, 0, 0, 0.2);
-    // @include transition(all 0.3s ease-in-out);
+  &:hover > div{
+    height: 150px;
+    width: 150px;
+    background:#6804f4;
+    opacity: 1;
+    border-radius: 50%;
+    @include transition(all 0.3s ease-in-out);
+    .play-icon{
+      height: 50px;
+      width: 50px;
+      @include transition(all 0.3s ease-in-out);
+    }
+    // background-color: rgba(0, 0, 0, 0.2);
   }
 }
 #section5{
@@ -1472,7 +1488,6 @@ canvas{
   }
 }
 .background-overlay{
-  background-image: url('../images/bg.png');
 }
 // papertrade.html starts from here
 .papertrade-section{

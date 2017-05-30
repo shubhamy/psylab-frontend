@@ -248,7 +248,6 @@ input[type="checkbox"], input[type="radio"] {
 body, html {
   font-size: 14px;
   overflow-x: hidden;
-  background: #6804F4;
 }
 
 *:focus {
@@ -363,7 +362,7 @@ a {
   height: 100%;
 }
 .row-nav .btn-primary.btn-color {
-  color: #43458b;
+  color: #1F8EED;
   background: #ffffff;
 }
 .row-nav .nav-li-items ul li {
@@ -395,7 +394,7 @@ a {
 }
 
 .second-nav li a {
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 .row-nav.home {
@@ -459,13 +458,15 @@ a {
   position: relative;
   top: 70px;
   min-height: calc(100vh - 70px);
+  background-image: url("../images/bg.png");
   z-index: 5;
-  background: #6804F4;
 }
 
 .ngview.home {
+  background: linear-gradient(90deg, #895cf2, #ffabf4);
   position: relative;
   top: 0;
+  padding-bottom: 1px;
   z-index: inherit;
 }
 
@@ -500,7 +501,7 @@ footer .container p {
   line-height: 23px;
 }
 footer .container a {
-  color: #1F8EED;
+  color: #6804f4;
   margin: 1rem auto;
   line-height: 23px;
 }
@@ -549,7 +550,6 @@ footer .container .icons .github:hover {
   z-index: 0;
   position: absolute;
   top: 0;
-  min-height: 100vh;
   height: 100%;
   border-left: 1px solid;
 }
@@ -597,6 +597,9 @@ footer .container .icons .github:hover {
   user-select: initial;
   pointer-events: initial;
   cursor: initial;
+}
+#section1 img {
+  z-index: 5;
 }
 
 canvas {
@@ -646,9 +649,9 @@ canvas {
   margin-top: 0;
   max-width: 800px;
   font-family: "Nunito", sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   color: #221e38;
-  text-align: center;
+  text-align: left;
   line-height: initial;
   letter-spacing: 1px;
   z-index: 5;
@@ -844,7 +847,7 @@ canvas {
   padding: 4rem;
 }
 #section3 .btn-wrapper .btn-color {
-  background: #43458b;
+  background: #1F8EED;
   border-radius: 4px;
 }
 #section3 .container {
@@ -881,10 +884,8 @@ canvas {
 .item-card {
   height: 330px;
   width: 280px;
-  background: #ffffff;
   z-index: 5;
   margin: auto 2rem;
-  box-shadow: 0 2px 9px 0 rgba(208, 208, 208, 0.5);
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -897,7 +898,6 @@ canvas {
 }
 
 .item-card:hover {
-  box-shadow: 0 2px 64px 0 rgba(208, 208, 208, 0.5);
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -925,16 +925,18 @@ canvas {
 }
 .works-column h3 {
   font-weight: 500;
-  color: #575963;
-  text-align: center;
+  font-size: 1.5rem;
+  color: #32325d;
 }
 .works-column p {
-  text-align: center;
   max-width: 250px;
-  margin: auto;
   font-size: 1em;
   line-height: 1.4em;
-  color: #83888D;
+  color: #6b7c93;
+}
+.works-column #rocket-icon {
+  margin-left: -11px;
+  transform: rotate(-45deg);
 }
 
 .main .stripes {
@@ -1057,13 +1059,21 @@ canvas {
   position: absolute;
 }
 .img-overlay div {
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   height: 100px;
   width: 100px;
   background: #6804f4;
-  opacity: 1;
+  opacity: 0.6;
   border-radius: 50%;
 }
 .img-overlay div .play-icon {
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   height: 35px;
   width: 35px;
 }
@@ -1117,8 +1127,24 @@ canvas {
     height: 219px;
   }
 }
-.img-overlay:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+.img-overlay:hover > div {
+  height: 150px;
+  width: 150px;
+  background: #6804f4;
+  opacity: 1;
+  border-radius: 50%;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.img-overlay:hover > div .play-icon {
+  height: 50px;
+  width: 50px;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 #section5 {
@@ -1133,10 +1159,10 @@ canvas {
   margin-bottom: 3rem;
 }
 #section5 .heading-wrapper h1 span {
-  color: #43458b;
+  color: #1F8EED;
 }
 #section5 .btn-color {
-  background: #43458b;
+  background: #1F8EED;
 }
 
 #section6 {
@@ -1177,7 +1203,7 @@ canvas {
   position: absolute;
   left: 50%;
   z-index: 100;
-  background: #43458b !important;
+  background: #1F8EED !important;
   bottom: 5px;
   transform: translateX(-50%);
   width: 10px;
@@ -1359,7 +1385,7 @@ canvas {
   width: 200px;
 }
 .login-form-wrapper .btn-primary.btn-color {
-  background: #43458b;
+  background: #1F8EED;
   color: #ffffff;
 }
 .login-form-wrapper .btn-wrapper {
@@ -1429,7 +1455,7 @@ canvas {
 }
 .detail-header .btn-color {
   font-family: "Varela Round", sans-serif !important;
-  background: #43458b;
+  background: #1F8EED;
 }
 
 .editor-section {
@@ -1492,7 +1518,7 @@ canvas {
 }
 .code-execute-panel .btn-color {
   margin: 16px;
-  background: #43458b;
+  background: #1F8EED;
 }
 
 .convert-wrapper {
@@ -1504,7 +1530,7 @@ canvas {
 }
 .convert-wrapper .btn-color {
   margin: 16px;
-  background: #43458b;
+  background: #1F8EED;
 }
 
 .search-nav {
@@ -1575,7 +1601,7 @@ canvas {
   transition: color .3s ease;
 }
 .file-section .data-rows .btn-color {
-  background: #43458b;
+  background: #1F8EED;
   padding: 0.3rem 1.1rem;
   margin: .2rem .7rem;
   border-radius: 4px;
@@ -1627,8 +1653,8 @@ canvas {
   padding-right: 3px;
 }
 .error404 h2 a:hover {
-  color: #43458b;
-  border-bottom: 5px solid #43458b;
+  color: #1F8EED;
+  border-bottom: 5px solid #1F8EED;
 }
 .error404 #scene ul {
   width: 100% !important;
@@ -1679,10 +1705,6 @@ canvas {
   }
 }
 
-.background-overlay {
-  background-image: url("../images/bg.png");
-}
-
 .papertrade-section {
   min-height: calc(100vh - 70px);
 }
@@ -1704,7 +1726,7 @@ canvas {
   font-family: "Open Sans", sans-serif;
 }
 .papertrade-section .card .btn-color {
-  background: #43458b;
+  background: #1F8EED;
   border-radius: 4px;
   padding: 1rem 1.1rem;
 }
@@ -1738,7 +1760,7 @@ canvas {
   margin-top: 2rem;
 }
 .backtest-section .strategy .date-picker .btn-color {
-  background: #43458b;
+  background: #1F8EED;
 }
 .backtest-section .strategy .data {
   padding: 10px 10px 0px 10px;
